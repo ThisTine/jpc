@@ -1,8 +1,8 @@
-# SIT Openhouse website 🎉
-design -> [Figma](https://www.figma.com/file/2131IaOxPgUKKG4P8jeMzT/Openhouse2023?type=design&node-id=0%3A1&mode=design&t=BFTgLYMepp5IG8lH-1)
+# JPC website 🎉
+design -> [Figma](https://www.figma.com/file/s0wl7M7f0k9ircoKrlPxyH/JPC16-Website?type=design&node-id=283%3A1297&mode=design&t=AdzJcavHB5ZwFfG0-1)
 
 
-staging -> [https://openhouse23.thistine.com](https://openhouse23.thistine.com)
+staging -> [https://jpc.thistine.com](https://jpc.thistine.com)
 
 prod -> [TBA]
 
