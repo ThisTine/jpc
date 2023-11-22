@@ -1,12 +1,12 @@
 {
   "rules": {
-    "comma-dangle":"warn",
-    "semi":"error",
-    "no-multiple-empty-lines":"error",
-    "indent": ["error",2],
+    "comma-dangle": "warn",
+    "semi": "error",
+    "no-multiple-empty-lines": "error",
+    "indent": ["error", 2],
     "handle-callback-err": "error",
-    "linebreak-style": ["error","unix"],
-    "max-lines": ["error",250],
+    // "linebreak-style": ["error","unix"],
+    "max-lines": ["error", 250],
     "react/react-in-jsx-scope": "off",
     "react/prefer-stateless-function": "error",
     "react/button-has-type": "error",
@@ -40,5 +40,9 @@
     "react/self-closing-comp": "warn",
     "react/jsx-sort-props": "warn"
   },
-  "extends": ["next/core-web-vitals","plugin:react/recommended","plugin:tailwindcss/recommended"]
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:tailwindcss/recommended"
+  ]
 }
