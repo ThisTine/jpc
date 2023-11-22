@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cls(ibm.className)}>{children}</body>
+      <body className={cls(ibm.className, "bg-[#EFF2F2]")}>{children}</body>
     </html>
   );
 }
