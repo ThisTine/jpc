@@ -1,9 +1,9 @@
-import ConfettiBalloon from "@/assets/confetti-balloon.svg";
-import CSImage from "@/assets/cs-image.svg";
-import Confetti from "@/assets/confetti.svg";
-import Cubic from "@/assets/cartoon-cubic.svg";
 import Cassette from "@/assets/cartoon-cassette.svg";
+import Cubic from "@/assets/cartoon-cubic.svg";
 import Tamagochi from "@/assets/cartoon-tamagochi.svg";
+import ConfettiBalloon from "@/assets/confetti-balloon.svg";
+import Confetti from "@/assets/confetti.svg";
+import CSImage from "@/assets/cs-image.svg";
 import { cls } from "@/utils/misc";
 import { Modak } from "next/font/google";
 import Image from "next/image";
@@ -25,7 +25,7 @@ const CsSIT = () => {
             <p
               className={cls(
                 modak.className,
-                "text-[104px] mt-10 text-stroke-black-2px"
+                "text-[104px] mt-10 text-red-stroke-black-2px"
               )}
             >
               CS @ SIT
@@ -54,10 +54,10 @@ const CsSIT = () => {
           className={cls("w-[95%] lg:w-1/2")}
           src={ConfettiBalloon}
         />
-        <div className={cls("w-[380px] mt-16 static")}>
+        <div className={cls("w-[80%] mt-16 relative")}>
           <div
             className={cls(
-              "absolute -z-10 translate-x-2 translate-y-3 rounded-full w-[380px] h-[380px] bg-[#ff6961]"
+              "absolute -z-10 translate-x-2 translate-y-2.5 rounded-full w-[100%] h-full bg-[#ff6961]"
             )}
           />
           <Image alt="cs-image" className={cls("")} src={CSImage} />
@@ -65,7 +65,7 @@ const CsSIT = () => {
         <p
           className={cls(
             modak.className,
-            "text-[54px] mt-10 text-stroke-black-2px"
+            "text-[54px] mt-10 text-red-stroke-black-2px"
           )}
         >
           CS @ SIT
@@ -85,17 +85,17 @@ const CsSIT = () => {
       <div className={cls("mt-10 w-full px-4 flex justify-between")}>
         <Image
           alt="cubic"
-          className={cls("w-[104px] lg:w-[250px]")}
+          className={cls("w-[100px] lg:w-[250px]")}
           src={Cubic}
         />
         <Image
           alt="cassette"
-          className={cls("w-[104px] lg:w-[220px] lg:mt-16")}
+          className={cls("w-[100px] lg:w-[220px] lg:mt-16")}
           src={Cassette}
         />
         <Image
           alt="tamagochi"
-          className={cls("w-[104px] lg:w-[250px]")}
+          className={cls("w-[96px] lg:w-[250px]")}
           src={Tamagochi}
         />
       </div>

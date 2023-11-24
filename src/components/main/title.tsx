@@ -2,7 +2,7 @@ import CartoonDuck from "@/assets/cartoon-duck.svg";
 import CartoonJigsaw from "@/assets/cartoon-jigsaw.svg";
 import CartoonTamagochi from "@/assets/cartoon-tamagochi.svg";
 import TopConfetti from "@/assets/confetti-top.svg";
-import IgLogo from "@/assets/ig-logo-top.svg";
+import IgLogo from "@/assets/ig-logo.svg";
 import InfoBg from "@/assets/info-bg.svg";
 import InfoCloud from "@/assets/info-cloud.svg";
 import InfoRope from "@/assets/info-rope.svg";
@@ -35,11 +35,7 @@ const Title = () => {
           "absolute md:top-[66px] md:right-[54px] top-[32px] right-6"
         )}
       >
-        <Image
-          alt="ig-logo-top"
-          className={cls("max-sm:w-[45px]")}
-          src={IgLogo}
-        />
+        <Image alt="ig-logo" className={cls("max-sm:w-[45px]")} src={IgLogo} />
       </div>
       <Image
         alt="logo"
@@ -49,7 +45,7 @@ const Title = () => {
       <div className={cls("flex flex-col items-center relative")}>
         <p
           className={cls(
-            "text-[40px] font-[700] tracking-[2px] text-stroke-white-4px max-sm:hidden"
+            "text-[40px] font-[700] tracking-[2px] text-blue-stroke-white-4px max-sm:hidden"
           )}
         >
           12-14 January 2024 @KMUTT
@@ -74,7 +70,7 @@ const Title = () => {
         />
         <p
           className={cls(
-            "text-[20px] font-[700] text-center tracking-[2px] text-stroke-white-2px -rotate-6 md:hidden lg:hidden"
+            "text-[20px] font-[700] text-center tracking-[2px] text-blue-stroke-white-2px -rotate-6 md:hidden lg:hidden"
           )}
         >
           12-14 January 2024 @KMUTT
