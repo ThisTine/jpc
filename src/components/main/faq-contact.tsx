@@ -139,27 +139,27 @@ const FaqContact = () => {
           >
             Contact us
           </p>
-          <div className={cls("flex space-x-7 lg:space-x-12")}>
+          <div className={cls("flex space-x-7 lg:space-x-12 z-10")}>
             <Image
               alt="ig-logo"
-              className={cls("w-[40px] h-auto lg:w-[106px]")}
+              className={cls("w-[40px] h-auto lg:w-[106px] cursor-pointer")}
               src={IgLogo}
             />
             <Image
               alt="facebook-logo"
-              className={cls("w-[40px] h-auto lg:w-[106px]")}
+              className={cls("w-[40px] h-auto lg:w-[106px] cursor-pointer")}
               src={FacbookLogo}
             />
             <Image
               alt="email-logo"
-              className={cls("w-[40px] h-auto lg:w-[106px]")}
+              className={cls("w-[40px] h-auto lg:w-[106px] cursor-pointer")}
               src={EmailLogo}
             />
           </div>
         </div>
         <Image
           alt="tree-bg"
-          className={cls("absolute bottom-0 ml-10 pb-8 lg:w-[70%]")}
+          className={cls("absolute bottom-0 ml-10 pb-8 z-0 lg:w-[70%]")}
           src={TreeBg}
         />
         <Image

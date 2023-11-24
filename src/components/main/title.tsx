@@ -32,10 +32,14 @@ const Title = () => {
       </div>
       <div
         className={cls(
-          "absolute md:top-[66px] md:right-[54px] top-[32px] right-6"
+          "absolute md:top-[66px] md:right-[54px] top-[32px] right-6 z-10"
         )}
       >
-        <Image alt="ig-logo" className={cls("max-sm:w-[45px]")} src={IgLogo} />
+        <Image
+          alt="ig-logo"
+          className={cls("max-sm:w-[45px] cursor-pointer")}
+          src={IgLogo}
+        />
       </div>
       <Image
         alt="logo"
