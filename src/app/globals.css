@@ -4,9 +4,22 @@
 
 /*CSS Goes here*/
 
-.text-stroke {
+.text-stroke-white-4px {
   color: #5e6a80;
   text-shadow: -4px -4px 0 #fff, 0 -4px 0 #fff, 4px -4px 0 #fff, 4px 0 0 #fff,
     4px 4px 0 #fff, 0 4px 0 #fff, -4px 4px 0 #fff, -4px 0 0 #fff,
     0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.text-stroke-white-2px {
+  color: #5e6a80;
+  text-shadow: -2px -2px 0 #fff, 0 -2px 0 #fff, 2px -2px 0 #fff, 2px 0 0 #fff,
+    2px 2px 0 #fff, 0 2px 0 #fff, -2px 2px 0 #fff, -2px 0 0 #fff,
+    0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.text-stroke-black-2px {
+  color: #ff6961;
+  text-shadow: -2px -2px 0 #000, 0 -2px 0 #000, 2px -2px 0 #000, 2px 0 0 #000,
+    2px 2px 0 #000, 0 2px 0 #000, -2px 2px 0 #000, -2px 0 0 #000,
+    0px 2px 2px rgba(0, 0, 0, 0.25);
 }
