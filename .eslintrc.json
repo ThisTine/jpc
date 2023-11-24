@@ -1,6 +1,6 @@
 {
   "rules": {
-    "comma-dangle": "warn",
+    "comma-dangle": "off",
     "semi": "error",
     "no-multiple-empty-lines": "error",
     "indent": ["error", 2],
@@ -11,7 +11,7 @@
     "react/prefer-stateless-function": "error",
     "react/button-has-type": "error",
     "react/no-unused-prop-types": "error",
-    "react/jsx-pascal-case": "error",
+    "react/jsx-pascal-case": "off",
     "react/jsx-no-script-url": "error",
     "react/no-children-prop": "error",
     "react/no-danger": "error",
@@ -38,7 +38,7 @@
     "react/no-typos": "warn",
     "react/display-name": "warn",
     "react/self-closing-comp": "warn",
-    "react/jsx-sort-props": "warn"
+    "react/jsx-sort-props": "off"
   },
   "extends": [
     "next/core-web-vitals",
