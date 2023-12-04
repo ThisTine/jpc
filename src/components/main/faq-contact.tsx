@@ -49,37 +49,39 @@ const faqs = [
 const FaqContact = () => {
   return (
     <div className={cls("relative bg-[#FF6961]")}>
-      <div className="relative pt-24 lg:pt-28">
+      <div className="relative pt-24 xl:pt-28">
         <div className="bg-[#EFF2F2]">
           <Image
             alt="faq-contact-bg"
             className={cls(
-              "absolute top-[68px] h-[28px] object-cover -z-500 w-full lg:h-[96px] lg:top-0 lg:mt-4"
+              "absolute top-[68px] h-[28px] object-cover -z-500 w-full xl:h-[96px] xl:top-0 xl:mt-4"
             )}
             src={FaqTopBg}
           />
           <Image
             alt="cloud"
             className={cls(
-              "absolute z-0 top-6 -left-8 w-48 lg:w-80 lg:left-32 lg:-top-16"
+              "absolute z-0 top-6 -left-8 w-48 md:left-12 xl:w-80 xl:left-32 xl:-top-16"
             )}
             src={Cloud}
           />
           <div
             className={cls(
-              "pt-3 pb-10 w-full flex flex-col items-center lg:pb-20"
+              "pt-3 pb-10 w-full flex flex-col items-center xl:pb-20"
             )}
           >
             <p
               className={cls(
                 modak.className,
-                "text-[84px] text-center text-green-stroke-white-3px relative lg:text-[96px]"
+                "text-[84px] text-center text-green-stroke-white-3px relative xl:text-[96px]"
               )}
             >
               FAQS
             </p>
             <div
-              className={cls("px-8 mt-4 flex flex-col space-y-8 lg:w-[60%]")}
+              className={cls(
+                "px-8 mt-4 flex flex-col space-y-8 md:w-[70%] xl:w-[60%]"
+              )}
             >
               {faqs.map((faq, index) => (
                 <CollapsedCard
@@ -95,37 +97,39 @@ const FaqContact = () => {
       <div className="relative">
         <Image
           alt="faq-contact-bg"
-          className={cls("h-[150px] object-cover lg:h-full")}
+          className={cls("h-[150px] object-cover xl:h-full")}
           src={FaqBottomBg}
         />
         <Image
           alt="confetti"
           className={cls(
-            "absolute h-[50px] w-full object-cover bottom-16 lg:h-auto lg:object-none lg:bottom-36"
+            "absolute h-[50px] w-full object-cover bottom-16 xl:h-auto xl:object-none xl:bottom-36"
           )}
           src={Confetti}
         />
         <Image
           alt="cartoon-duck"
           className={cls(
-            "absolute w-[120px] bottom-6 right-2 lg:w-[300px] lg:bottom-40"
+            "absolute w-[120px] bottom-6 right-2 md:w-[180px] xl:w-[300px] xl:bottom-40"
           )}
           src={CartoonDuck}
         />
         <Image
           alt="cartoon-cassette"
-          className={cls("absolute w-[210px] -bottom-20 left-24 max-sm:hidden")}
+          className={cls(
+            "absolute w-[210px] -bottom-20 left-24 hidden xl:block"
+          )}
           src={Cassette}
         />
         <Image
           alt="confetti-line"
           className={cls(
-            "absolute top-[95px] h-[150px] w-full object-cover lg:h-auto lg:object-none lg:top-40"
+            "absolute top-[95px] h-[150px] w-full object-cover xl:h-auto xl:object-none xl:top-40"
           )}
           src={ConfettiLine}
         />
       </div>
-      <div className={cls("bg-[#A5CE89] h-[500px] lg:h-[800px]")}>
+      <div className={cls("bg-[#A5CE89] h-[500px] xl:h-[800px]")}>
         <div
           className={cls(
             "h-full flex flex-col justify-center items-center space-y-7 pb-40"
@@ -134,37 +138,45 @@ const FaqContact = () => {
           <p
             className={cls(
               modak.className,
-              "text-[40px] text-center text-white-stroke-black-3px relative lg:text-[96px]"
+              "text-[40px] text-center text-white-stroke-black-3px relative md:text-[60px] xl:text-[96px]"
             )}
           >
             Contact us
           </p>
-          <div className={cls("flex space-x-7 lg:space-x-12 z-10")}>
+          <div className={cls("flex space-x-7 xl:space-x-12 z-10")}>
             <Image
               alt="ig-logo"
-              className={cls("w-[40px] h-auto lg:w-[106px] cursor-pointer")}
+              className={cls(
+                "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+              )}
               src={IgLogo}
             />
             <Image
               alt="facebook-logo"
-              className={cls("w-[40px] h-auto lg:w-[106px] cursor-pointer")}
+              className={cls(
+                "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+              )}
               src={FacbookLogo}
             />
             <Image
               alt="email-logo"
-              className={cls("w-[40px] h-auto lg:w-[106px] cursor-pointer")}
+              className={cls(
+                "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+              )}
               src={EmailLogo}
             />
           </div>
         </div>
         <Image
           alt="tree-bg"
-          className={cls("absolute bottom-0 ml-10 pb-8 z-0 lg:w-[70%]")}
+          className={cls("absolute bottom-0 ml-10 pb-8 z-0 md:ml-6 md:w-[70%]")}
           src={TreeBg}
         />
         <Image
           alt="joseph"
-          className={cls("absolute -bottom-20 right-0 w-[25%] max-sm:hidden")}
+          className={cls(
+            "absolute right-0 w-[25%] md:-bottom-12 xl:-bottom-20 hidden md:block"
+          )}
           src={Joseph}
         />
       </div>
@@ -187,14 +199,14 @@ const CollapsedCard = ({ title, description }: CollapsedCardProps) => {
         className={cls("flex justify-between cursor-pointer")}
         onClick={() => setIsCollapsed(!isCollapsed)}
       >
-        <p className={cls("text-xl pr-6 lg:text-3xl")}>{title}</p>
+        <p className={cls("text-xl pr-6 xl:text-3xl")}>{title}</p>
         {isCollapsed ? <ExpandMore /> : <ExpandLess />}
       </div>
       <div className={cls("mt-6")}>
         <p
           className={cls(
             isCollapsed && "hidden",
-            "text-base lg:text-2xl lg:py-4"
+            "text-base xl:text-2xl xl:py-4"
           )}
         >
           {description}

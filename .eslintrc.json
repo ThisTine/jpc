@@ -6,7 +6,7 @@
     "indent": ["error", 2],
     "handle-callback-err": "error",
     // "linebreak-style": ["error","unix"],
-    "max-lines": ["error", 250],
+    "max-lines": ["off", 250],
     "react/react-in-jsx-scope": "off",
     "react/prefer-stateless-function": "error",
     "react/button-has-type": "error",

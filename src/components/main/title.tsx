@@ -10,6 +10,7 @@ import InfoTitle from "@/assets/info-title.svg";
 import JosephShadow from "@/assets/joseph-shadow.svg";
 import Joseph from "@/assets/joseph-title.svg";
 import JpcMobile from "@/assets/jpc-mobile.svg";
+import JpcTablet from "@/assets/jpc-tablet.svg";
 import LogoIcon from "@/assets/logo.svg";
 import RegisterButton from "@/assets/register-button.svg";
 import Sparkle from "@/assets/sparkle.svg";
@@ -32,70 +33,77 @@ const Title = () => {
       </div>
       <div
         className={cls(
-          "absolute md:top-[66px] md:right-[54px] top-[32px] right-6 z-10"
+          "absolute xl:top-[66px] xl:right-[54px] top-[32px] right-6 z-10"
         )}
       >
         <Image
           alt="ig-logo"
-          className={cls("max-sm:w-[45px] cursor-pointer")}
+          className={cls("w-[45px] md:w-[76px] xl:w-full cursor-pointer")}
           src={IgLogo}
         />
       </div>
       <Image
         alt="logo"
-        className={cls("w-[175px] max-sm:w-[110px] max-sm:h-[75px]")}
+        className={cls("xl:w-[175px] xl:h-auto w-[110px] h-[75px]")}
         src={LogoIcon}
       />
       <div className={cls("flex flex-col items-center relative")}>
         <p
           className={cls(
-            "text-[40px] font-[700] tracking-[2px] text-blue-stroke-white-4px max-sm:hidden"
+            "text-[40px] md:text-3xl md:mt-16 xl:mt-0 font-[700] tracking-[2px] text-blue-stroke-white-4px max-sm:hidden"
           )}
         >
           12-14 January 2024 @KMUTT
         </p>
         <Image
           alt="title-bg"
-          className={cls("absolute -z-10 top-[80px] mr-[100px] max-sm:hidden")}
+          className={cls(
+            "absolute -z-10 top-[80px] mr-[100px] hidden xl:block"
+          )}
           src={TitleBg}
           width={1100}
         />
         <Image
           alt="title"
-          className={cls("mt-16 max-sm:hidden")}
+          className={cls("mt-16 hidden xl:block")}
           height={450}
           src={TitleIcon}
           width={1000}
         />
         <Image
           alt="jpc-mobile"
-          className={cls("mt-6 max-sm:w-[450px] md:hidden lg:hidden")}
+          className={cls("mt-6 max-sm:w-[450px] md:hidden xl:hidden")}
           src={JpcMobile}
+        />
+        <Image
+          alt="jpc-tablet"
+          className={cls("mt-6 hidden md:block xl:hidden")}
+          src={JpcTablet}
         />
         <p
           className={cls(
-            "text-[20px] font-[700] text-center tracking-[2px] text-blue-stroke-white-2px -rotate-6 md:hidden lg:hidden"
+            "text-[20px] font-[700] text-center tracking-[2px] text-blue-stroke-white-2px -rotate-6 md:hidden xl:hidden"
           )}
         >
           12-14 January 2024 @KMUTT
         </p>
         <Image
           alt="joseph"
-          className={cls("absolute -z-10 top-[40px] right-0 max-sm:hidden")}
+          className={cls("absolute -z-10 top-[40px] right-0 hidden xl:block")}
           src={Joseph}
           width={300}
         />
         <Image
           alt="register-button"
           className={cls(
-            "absolute top-[560px] hover:cursor-pointer max-sm:w-[210px] max-sm:top-[520px]"
+            "absolute xl:top-[560px] md:top-[40%] top-[520px] xl:w-[444px] md:w-[400px] w-[210px] hover:cursor-pointer"
           )}
           src={RegisterButton}
         />
         <Image
           alt="cartoon-duck"
           className={cls(
-            "absolute top-[580px] -left-10 w-[400px] max-sm:w-[260px] max-sm:-left-14 max-sm:top-[620px]"
+            "absolute xl:top-[580px] xl:-left-10 xl:w-[400px] md:w-[320px] md:top-[45%] w-[260px] -left-14 top-[620px]"
           )}
           src={CartoonDuck}
         />
@@ -104,18 +112,17 @@ const Title = () => {
           className={cls("absolute top-[650px] right-8 md:hidden")}
           src={Sparkle}
         />
-
         <Image
           alt="cartoon-jigsaw"
           className={cls(
-            "absolute top-[480px] left-[250px] max-sm:w-[120px] max-sm:left-0 max-sm:top-[500px]"
+            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px]"
           )}
           src={CartoonJigsaw}
         />
         <Image
           alt="cartoon-egg"
           className={cls(
-            "absolute top-[500px] right-[200px] max-sm:w-[120px] max-sm:right-[0px] max-sm:top-[430px]"
+            "absolute xl:w-auto xl:top-[500px] xl:right-[200px] md:w-[250px] md:top-[40%] w-[120px] right-0 top-[430px]"
           )}
           src={CartoonTamagochi}
         />
@@ -124,32 +131,32 @@ const Title = () => {
         <Image
           alt="info-bg"
           className={cls(
-            "mt-28 -z-10 max-sm:mt-48 max-sm:h-[950px] max-sm:object-cover"
+            "md:mt-24 xl:mt-28 -z-10 max-sm:mt-48 h-[950px] md:h-[1100px] xl:h-auto object-cover"
           )}
           src={InfoBg}
         />
         <Image
           alt="info-cloud"
           className={cls(
-            "absolute top-[830px] max-sm:w-[90%] md:top-[850px] md:right-32"
+            "absolute -z-10 top-[830px] w-[90%] md:w-[80%] md:top-[56%] md:right-4 xl:top-[850px] xl:right-32"
           )}
           src={InfoCloud}
         />
         <Image
           alt="joseph-shadow"
           className={cls(
-            "absolute top-[920px] max-sm:w-44 md:top-[980px] md:left-24"
+            "absolute w-44 md:w-[240px] xl:w-auto top-[920px] md:top-[1250px] xl:top-[980px] md:left-12 xl:left-24"
           )}
           src={JosephShadow}
         />
         <div
           className={cls(
-            "flex flex-col items-start absolute top-[1130px] md:top-[1050px] md:right-44 w-[90%] md:w-2/4"
+            "flex flex-col items-start absolute top-[1130px] md:top-[1250px] xl:top-[1050px] md:ml-40 xl:right-44 w-[90%] md:w-2/4"
           )}
         >
           <Image alt="info-title" className={cls("")} src={InfoTitle} />
           <div className="md:ml-10">
-            <h5 className={cls("md:pr-4 mt-9")}>
+            <h5 className={cls("xl:pr-4 mt-9")}>
               Junior Programmer Camp คือค่ายสำหรับน้อง ๆ เพื่อน ๆ
               ที่มีความสนใจในหลักสูตร Computer Science หรือ ComSci Inter{" "}
             </h5>
@@ -166,32 +173,34 @@ const Title = () => {
         <Image
           alt="info-rope"
           className={cls(
-            "absolute max-sm:w-[20%] bottom-14 right-6 md:bottom-[150px] md:right-24"
+            "absolute xl:w-auto md:w-[15%] w-[20%] bottom-14 right-6 md:bottom-[180px] md:right-12 xl:right-24"
           )}
           src={InfoRope}
         />
         <Image
           alt="star-yellow"
           className={cls(
-            "absolute -bottom-10 left-10 md:bottom-0 md:left-6 max-sm:w-28"
+            "absolute -bottom-10 left-10 md:-bottom-4 md:left-2 xl:bottom-0 xl:left-6 w-28 md:w-[20%] xl:w-auto"
           )}
           src={StarYellow}
         />
         <Image
           alt="star-red"
           className={cls(
-            "absolute -bottom-4 right-8 md:-bottom-2 md:left-[430px] max-sm:w-16"
+            "absolute -bottom-4 right-8 md:left-[40%] xl:-bottom-2 xl:left-[430px] max-sm:w-16"
           )}
           src={StarRed}
         />
         <Image
           alt="star-yellow"
-          className={cls("absolute -bottom-8 right-[420px] max-sm:hidden")}
+          className={cls(
+            "absolute -bottom-8 right-[420px] md:right-0 max-sm:hidden"
+          )}
           src={StarYellow}
         />
         <Image
           alt="star-red"
-          className={cls("absolute -bottom-5 right-20 max-sm:hidden")}
+          className={cls("absolute -bottom-5 right-20 hidden xl:block")}
           src={StarRed}
         />
       </div>

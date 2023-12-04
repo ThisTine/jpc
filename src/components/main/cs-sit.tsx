@@ -2,6 +2,7 @@ import Cassette from "@/assets/cartoon-cassette.svg";
 import Cubic from "@/assets/cartoon-cubic.svg";
 import Tamagochi from "@/assets/cartoon-tamagochi.svg";
 import ConfettiBalloon from "@/assets/confetti-balloon.svg";
+import Balloon from "@/assets/balloon.svg";
 import Confetti from "@/assets/confetti.svg";
 import CSImage from "@/assets/cs-image.svg";
 import { cls } from "@/utils/misc";
@@ -14,13 +15,16 @@ const CsSIT = () => {
   return (
     <div className={cls("mt-20 flex flex-col items-center relative")}>
       {/* Desktop */}
-      <div className={cls("w-[90%] flex justify-between max-sm:hidden")}>
+      <div className={cls("w-[90%] justify-between flex max-xl:hidden")}>
         <div className={cls("w-[60%]")}>
-          <Image
-            alt="confetti-balloon"
-            className={cls("w-[95%]")}
-            src={ConfettiBalloon}
-          />
+          <div className="relative flex">
+            <Image alt="balloon" className={cls("w-[50%]")} src={Balloon} />
+            <Image
+              alt="confetti-balloon"
+              className={cls("absolute ml-[30%]")}
+              src={ConfettiBalloon}
+            />
+          </div>
           <div className="ml-24">
             <p
               className={cls(
@@ -43,34 +47,45 @@ const CsSIT = () => {
               "absolute -z-10 translate-x-3 translate-y-2 rounded-full w-[500px] h-[500px] bg-[#ff6961]"
             )}
           />
-          <Image alt="cs-image" className={cls("")} src={CSImage} />
+          <Image
+            alt="cs-image"
+            className={cls("w-[500px] h-[500px]")}
+            src={CSImage}
+          />
         </div>
       </div>
 
       {/* Mobile */}
-      <div className={cls("flex flex-col items-center md:hidden lg:hidden")}>
-        <Image
-          alt="confetti-balloon"
-          className={cls("w-[95%] lg:w-1/2")}
-          src={ConfettiBalloon}
-        />
-        <div className={cls("w-[80%] mt-16 relative")}>
+      <div className={cls("flex flex-col items-center xl:hidden")}>
+        <div className="flex md:ml-20 md:w-full">
+          <Image
+            alt="balloon"
+            className={cls("w-[50%] md:w-[40%]")}
+            src={Balloon}
+          />
+          <Image
+            alt="confetti-balloon"
+            className={cls("absolute ml-[25%] w-[75%] md:w-[50%] md:ml-[20%]")}
+            src={ConfettiBalloon}
+          />
+        </div>
+        <div className={cls("w-[80%] mt-16 relative md:w-[540px]")}>
           <div
             className={cls(
               "absolute -z-10 translate-x-2 translate-y-2.5 rounded-full w-[100%] h-full bg-[#ff6961]"
             )}
           />
-          <Image alt="cs-image" className={cls("")} src={CSImage} />
+          <Image alt="cs-image" className={cls("md:w-[540px]")} src={CSImage} />
         </div>
         <p
           className={cls(
             modak.className,
-            "text-[54px] mt-10 text-red-stroke-black-2px"
+            "text-[54px] md:text-[84px] mt-10 text-red-stroke-black-2px"
           )}
         >
           CS @ SIT
         </p>
-        <p className={cls("px-6 mt-4 text-center")}>
+        <p className={cls("px-6 mt-4 text-center md:text-xl md:px-28")}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam..
@@ -79,23 +94,23 @@ const CsSIT = () => {
 
       <Image
         alt="confetti"
-        className={cls("absolute bottom-6 -z-10 h-[50px] lg:h-auto")}
+        className={cls("absolute bottom-6 -z-10 h-[50px] md:h-auto")}
         src={Confetti}
       />
       <div className={cls("mt-10 w-full px-4 flex justify-between")}>
         <Image
           alt="cubic"
-          className={cls("w-[100px] lg:w-[250px]")}
+          className={cls("w-[100px] xl:w-[250px]")}
           src={Cubic}
         />
         <Image
           alt="cassette"
-          className={cls("w-[100px] lg:w-[220px] lg:mt-16")}
+          className={cls("w-[100px] xl:w-[220px] xl:mt-16")}
           src={Cassette}
         />
         <Image
           alt="tamagochi"
-          className={cls("w-[96px] lg:w-[250px]")}
+          className={cls("w-[96px] xl:w-[250px]")}
           src={Tamagochi}
         />
       </div>
