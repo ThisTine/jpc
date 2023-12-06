@@ -54,7 +54,7 @@ const FaqContact = () => {
           <Image
             alt="faq-contact-bg"
             className={cls(
-              "absolute top-[68px] h-[28px] object-cover -z-500 w-full xl:h-[96px] xl:top-0 xl:mt-4"
+              "absolute top-[68px] h-[28px] object-cover -z-500 w-full md:h-[94px] md:top-0 md:mt-2 xl:h-[96px] xl:mt-4"
             )}
             src={FaqTopBg}
           />
@@ -97,7 +97,7 @@ const FaqContact = () => {
       <div className="relative">
         <Image
           alt="faq-contact-bg"
-          className={cls("h-[150px] object-cover xl:h-full")}
+          className={cls("h-[150px] object-cover xl:h-full xl:w-full")}
           src={FaqBottomBg}
         />
         <Image

@@ -1,3 +1,4 @@
+import Agenda from "@/components/main/agenda";
 import CSSIT from "@/components/main/cs-sit";
 import FaqContact from "@/components/main/faq-contact";
 import Title from "@/components/main/title";
@@ -9,6 +10,7 @@ export default function Home() {
     <main className="w-screen overflow-hidden">
       <Title />
       <CSSIT />
+      <Agenda />
       <FaqContact />
       <div className={cls(isDisabled && "bg-gray-50", ["", ""])}></div>
     </main>
