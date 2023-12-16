@@ -23,8 +23,10 @@ import { cls } from "@/utils/misc";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Title = () => {
+  const router = useRouter();
   return (
     <div className={cls("relative")}>
       <div className={cls("absolute w-full flex justify-center")}>
@@ -100,6 +102,9 @@ const Title = () => {
         />
         <Image
           alt="register-button"
+          onClick={() => {
+            router.push("/register");
+          }}
           className={cls(
             "absolute xl:top-[560px] md:top-[40%] top-[520px] xl:w-[444px] md:w-[400px] w-[210px] hover:cursor-pointer"
           )}

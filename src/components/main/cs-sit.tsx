@@ -6,10 +6,8 @@ import Balloon from "@/assets/balloon.svg";
 import Confetti from "@/assets/confetti.svg";
 import CSImage from "@/assets/cs-image.svg";
 import { cls } from "@/utils/misc";
-import { Modak } from "next/font/google";
 import Image from "next/image";
-
-const modak = Modak({ subsets: [], weight: "400" });
+import { modak } from "@/utils/fonts";
 
 const CsSIT = () => {
   return (

@@ -4,9 +4,7 @@ import AgendaBg from "@/assets/agenda.svg";
 import AgendaLogo from "@/assets/agenda-logo.svg";
 import { cls } from "@/utils/misc";
 import { ibmBold } from "@/utils/fonts";
-import { Modak } from "next/font/google";
-
-const modak = Modak({ subsets: [], weight: "400" });
+import { modak } from "@/utils/fonts";
 
 const Agenda = () => {
   return (
