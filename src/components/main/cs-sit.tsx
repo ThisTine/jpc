@@ -35,9 +35,7 @@ const CsSIT = () => {
               CS @ SIT
             </p>
             <p className={cls("text-[24px] mt-4 pr-20")}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam..
+              CS@SIT ย่อมาจาก  Computer Science at School of Information Technology คือหลักสูตรวิทยาการคอมพิวเตอร์ (หลักสูตรภาษาอังกฤษ) จากคณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
             </p>
           </div>
         </div>

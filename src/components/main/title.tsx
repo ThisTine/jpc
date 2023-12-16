@@ -156,10 +156,12 @@ const Title = () => {
         >
           <Image alt="info-title" className={cls("")} src={InfoTitle} />
           <div className="md:ml-10">
-            <h5 className={cls("xl:pr-4 mt-9")}>
-              Junior Programmer Camp คือค่ายสำหรับน้อง ๆ เพื่อน ๆ
-              ที่มีความสนใจในหลักสูตร Computer Science หรือ ComSci Inter{" "}
-            </h5>
+            <p className={cls("xl:pr-4 text-h5 mt-9")}>
+              Junior Programmers Camp คือค่ายสำหรับน้อง ๆ  และเพื่อน ๆ
+              <br/> ที่มีความสนใจในหลักสูตร Computer Science หรือ ComSci Inter
+              <br/> ของมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรีโดยเป็นค่ายที่มีทั้ง <br/>
+              กิจกรรมและ วิชาการที่จะทำให้เราได้รู้จักเพื่อนใหม่ ๆ และพี่ ๆ ชาวค่าย
+            </p>
             <button
               className={cls(
                 "mt-11 max-sm:w-full bg-[#FFD700] rounded-2xl border-2 border-black"
