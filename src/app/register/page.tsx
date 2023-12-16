@@ -1,8 +1,18 @@
+import FirstPhraseForm from "@/components/form/Step1";
+import { Box } from "@mui/material";
+
 const Page = () => {
   return (
-    <main>
-      <h1>Form</h1>
-    </main>
+    <Box
+      sx={{
+        display: "flex",
+        minHeight: "100vh",
+        justifyContent: "center",
+        paddingTop: "3rem",
+      }}
+    >
+      <FirstPhraseForm />
+    </Box>
   );
 };
 
