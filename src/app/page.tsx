@@ -7,12 +7,12 @@ import { cls } from "@/utils/misc";
 export default function Home() {
   const isDisabled = false;
   return (
-    <main className="w-screen overflow-hidden">
+    <main>
       <Title />
       <CSSIT />
       <Agenda />
       <FaqContact />
-      <div className={cls(isDisabled && "bg-gray-50", ["", ""])}></div>
+      <div className={cls(isDisabled && "bg-gray-50", ["", ""])} />
     </main>
   );
 }
