@@ -7,7 +7,7 @@ import { cls } from "@/utils/misc";
 export default function Home() {
   const isDisabled = false;
   return (
-    <main>
+    <main className="w-full overflow-hidden">
       <Title />
       <CSSIT />
       <Agenda />
