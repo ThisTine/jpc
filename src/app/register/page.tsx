@@ -1,5 +1,7 @@
-import FirstPhraseForm from "@/components/form/Step1";
-import { Box } from "@mui/material";
+import RegisterProfile from "@/components/register/RegisterProfile/RegisterProfileForm";
+import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
+import RegisterTest from "@/components/register/RegisterTest/RegisterTest";
+import { Box, Container } from "@mui/material";
 
 const Page = () => {
   return (
@@ -11,7 +13,11 @@ const Page = () => {
         paddingTop: "3rem",
       }}
     >
-      <FirstPhraseForm />
+      <Container>
+        <RegisterProfile />
+        <RegisterQuestion />
+        <RegisterTest />
+      </Container>
     </Box>
   );
 };

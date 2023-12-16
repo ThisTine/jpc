@@ -1,6 +1,6 @@
 import { Box, Card, Stack, Typography } from "@mui/material";
 
-export default function FirstPhraseForm() {
+export default function RegisterConsent() {
   return (
     <Box sx={{ width: "1324px" }}>
       <Card
