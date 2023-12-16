@@ -24,7 +24,7 @@ import Image from "next/image";
 const Title = () => {
   return (
     <div className={cls("relative")}>
-      <div className={cls("absolute flex justify-center")}>
+      <div className={cls("absolute w-full flex justify-center")}>
         <Image
           alt="confetti-top"
           className={cls("max-sm:w-full object-fill")}
