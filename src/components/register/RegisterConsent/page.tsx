@@ -1,6 +1,5 @@
 import RegisterProfile from "@/components/register/RegisterProfile/RegisterProfileForm";
 import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
-import RegisterStepper from "@/components/register/RegisterStepper";
 import RegisterTest from "@/components/register/RegisterTest/RegisterTest";
 import { Box, Container } from "@mui/material";
 
@@ -15,7 +14,6 @@ const Page = () => {
       }}
     >
       <Container>
-        <RegisterStepper />
         <RegisterProfile />
         <RegisterQuestion />
         <RegisterTest />
