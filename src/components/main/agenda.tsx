@@ -3,13 +3,18 @@ import React from "react";
 import AgendaBg from "@/assets/agenda.svg";
 import AgendaLogo from "@/assets/agenda-logo.svg";
 import { cls } from "@/utils/misc";
-import { ibmBold} from "@/utils/fonts";
+import { ibmBold } from "@/utils/fonts";
+import { Modak } from "next/font/google";
 
+const modak = Modak({ subsets: [], weight: "400" });
 
 const Agenda = () => {
   return (
     <div
-      className={cls(ibmBold.className, "flex flex-col items-center md:pt-0 pt-[70px] relative")}
+      className={cls(
+        ibmBold.className,
+        "flex flex-col items-center md:pt-0 pt-[70px] relative"
+      )}
     >
       <div className="absolute top-[6%] flex justify-center">
         <Image
@@ -19,6 +24,7 @@ const Agenda = () => {
         />
         <p
           className={cls(
+            modak.className,
             "xl:text-[6.5vw] md:text-[70px] md:px-32 text-[42px] px-56 text-center leading-none text-yellow-stroke-black-2px"
           )}
         >
@@ -31,19 +37,23 @@ const Agenda = () => {
         )}
       >
         <p className={cls("md:text-[2.5vw] text-[3vw] text-[#2A3D5D]")}>
-          25 พ.ย. - 13 ธ.ค. 66
+          วันนี้ - 31 ธ.ค. 66
         </p>
         <p className="text-[4vw] md:text-[2.7vw]">รับสมัคร!</p>
       </div>
       <div
         className={cls(
-          "flex flex-col items-start absolute top-[41%] ml-[68%]"
+          "flex flex-col items-start absolute leading-4 md:leading-none top-[45%] md:top-[41%] ml-[68%]"
         )}
       >
         <p className={cls("md:text-[2.5vw] text-[3vw] text-[#2A3D5D]")}>
-          23 ธ.ค. 66
+          2 ม.ค. 67
         </p>
-        <p className="text-[4vw] font-extrabold md:text-[2.7vw]">ประกาศผลรอบ 1</p>
+        <p className="text-[4vw] font-extrabold md:text-[2.7vw]">
+          ประกาศผล
+          <br />
+          การคัดเลือก
+        </p>
       </div>
       <div
         className={cls(
@@ -51,9 +61,9 @@ const Agenda = () => {
         )}
       >
         <p className={cls("md:text-[2.5vw] text-[3vw] text-[#2A3D5D]")}>
-          29 ธ.ค. 66
+          2 - 4 ม.ค. 67
         </p>
-        <p className="text-[4vw] md:text-[2.7vw]">ประกาศผลรอบ 2</p>
+        <p className="text-[4vw] md:text-[2.7vw]">ยืนยันสิทธิ์</p>
       </div>
       <div
         className={cls(
