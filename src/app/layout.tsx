@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { IBM_Plex_Sans_Thai } from "next/font/google";
 import "./globals.css";
 import { cls } from "@/utils/misc";
+import {ibm} from "@/utils/fonts";
 
-const ibm = IBM_Plex_Sans_Thai({ subsets: ["thai"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Create Next App",

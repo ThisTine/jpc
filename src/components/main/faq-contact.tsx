@@ -14,6 +14,7 @@ import TreeBg from "@/assets/tree-bg.svg";
 import { cls } from "@/utils/misc";
 import { Modak } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 const modak = Modak({ subsets: [], weight: "400" });
@@ -80,7 +81,7 @@ const FaqContact = () => {
             </p>
             <div
               className={cls(
-                "px-8 mt-4 flex flex-col space-y-8 md:w-[70%] xl:w-[60%]"
+                "px-8 mt-4 flex flex-col space-y-8 w-[100%] md:w-[70%] xl:w-[60%]"
               )}
             >
               {faqs.map((faq, index) => (
@@ -144,20 +145,24 @@ const FaqContact = () => {
             Contact us
           </p>
           <div className={cls("flex space-x-7 xl:space-x-12 z-10")}>
-            <Image
-              alt="ig-logo"
-              className={cls(
-                "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
-              )}
-              src={IgLogo}
-            />
-            <Image
-              alt="facebook-logo"
-              className={cls(
-                "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
-              )}
-              src={FacbookLogo}
-            />
+            <Link href="https://www.instagram.com/jpc_sitkmutt" target="_blank">
+              <Image
+                alt="ig-logo"
+                className={cls(
+                  "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+                )}
+                src={IgLogo}
+              />
+            </Link>
+            <Link href="https://www.facebook.com/jpckmutt" target="_blank">
+              <Image
+                alt="facebook-logo"
+                className={cls(
+                  "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+                )}
+                src={FacbookLogo}
+              />
+            </Link>
             <Image
               alt="email-logo"
               className={cls(

@@ -6,10 +6,8 @@ import Balloon from "@/assets/balloon.svg";
 import Confetti from "@/assets/confetti.svg";
 import CSImage from "@/assets/cs-image.svg";
 import { cls } from "@/utils/misc";
-import { Modak } from "next/font/google";
 import Image from "next/image";
-
-const modak = Modak({ subsets: [], weight: "400" });
+import { modak } from "@/utils/fonts";
 
 const CsSIT = () => {
   return (
@@ -35,9 +33,9 @@ const CsSIT = () => {
               CS @ SIT
             </p>
             <p className={cls("text-[24px] mt-4 pr-20")}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam..
+              CS@SIT ย่อมาจาก Computer Science at School of Information
+              Technology คือหลักสูตรวิทยาการคอมพิวเตอร์ (หลักสูตรภาษาอังกฤษ)
+              จากคณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
             </p>
           </div>
         </div>
@@ -86,9 +84,9 @@ const CsSIT = () => {
           CS @ SIT
         </p>
         <p className={cls("px-6 mt-4 text-center md:text-xl md:px-28")}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam..
+          CS@SIT ย่อมาจาก Computer Science at School of Information Technology
+          คือหลักสูตรวิทยาการคอมพิวเตอร์ (หลักสูตรภาษาอังกฤษ)
+          จากคณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
         </p>
       </div>
 

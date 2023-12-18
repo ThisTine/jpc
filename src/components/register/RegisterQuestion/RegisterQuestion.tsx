@@ -1,0 +1,127 @@
+"use client";
+
+import { FormControl, Stack, TextField, Typography } from "@mui/material";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
+import RegisterLocalStorage from "../RegisterLocalStorage";
+
+export const registerQuestionFormData = z.object({
+  pr: z.string(),
+  self_introduction: z.string(),
+  why_join: z.string(),
+  expect: z.string(),
+  experience: z.string(),
+  goal: z.string(),
+});
+
+export interface RegisterQuestionFormData
+  extends z.infer<typeof registerQuestionFormData> {}
+
+export default function RegisterQuestion() {
+  const form = useForm<RegisterQuestionFormData>({
+    defaultValues: {
+      pr: "",
+      self_introduction: "",
+      why_join: "",
+      expect: "",
+      experience: "",
+      goal: "",
+    },
+  });
+
+  return (
+    <FormProvider {...form}>
+      <Stack gap={2}>
+        <Stack width="100%">
+          <Typography className="text-lg">
+            🌟 เพื่อน ๆ ได้รับข่าวสารการประชาสัมพันธ์จากช่องทางใด?
+          </Typography>
+          <TextField
+            variant="outlined"
+            fullWidth
+            placeholder="กรุณาใส่คำตอบ"
+            label="คำตอบของคุณ"
+            {...form.register("pr")}
+          />
+        </Stack>
+
+        <Stack width="100%">
+          <Typography className="text-lg">
+            🌟 แนะนำตัวคร่าว ๆ ให้โจเซฟรู้จักเพื่อน ๆ หน่อยครับ
+          </Typography>
+          <TextField
+            variant="outlined"
+            fullWidth
+            multiline
+            minRows={4}
+            label="คำตอบของคุณ"
+            placeholder="กรุณาใส่คำตอบ*"
+            {...form.register("self_introduction")}
+          />
+        </Stack>
+
+        <Stack width="100%">
+          <Typography className="text-lg">
+            🌟 โจเซฟอยากรู้ว่าเพราะอะไรเพื่อน ๆ ถึงอยากเข้าร่วมค่ายนี้?
+          </Typography>
+          <TextField
+            variant="outlined"
+            fullWidth
+            multiline
+            minRows={4}
+            label="คำตอบของคุณ"
+            placeholder="กรุณาใส่คำตอบ*"
+            {...form.register("why_join")}
+          />
+        </Stack>
+      </Stack>
+      <Stack width="100%">
+        <Typography className="text-lg">
+          🌟 เพื่อน ๆ คาดหวังอะไรจากการเข้าค่ายครั้งนี้?
+        </Typography>
+        <TextField
+          variant="outlined"
+          fullWidth
+          multiline
+          minRows={4}
+          label="คำตอบของคุณ"
+          placeholder="กรุณาใส่คำตอบ*"
+          {...form.register("expect")}
+        />
+      </Stack>
+
+      <Stack width="100%">
+        <Typography className="text-lg">
+          🌟 เพื่อน ๆ จะรู้สึกอย่างไรหากต้องเรียนรู้สิ่งใหม่ ๆ
+          ที่ไม่เคยรู้จักมาก่อนหรอครับ?
+        </Typography>
+        <TextField
+          variant="outlined"
+          fullWidth
+          multiline
+          minRows={4}
+          label="คำตอบของคุณ"
+          placeholder="กรุณาใส่คำตอบ*"
+          {...form.register("experience")}
+        />
+      </Stack>
+
+      <Stack width="100%">
+        <Typography className="text-lg">
+          🌟 โจเซฟอยากรู้ว่าเป้าหมายในอีก 4 ปีของเพื่อน ๆ เป็นอย่างไรบ้าง?
+        </Typography>
+        <TextField
+          variant="outlined"
+          fullWidth
+          multiline
+          minRows={4}
+          label="คำตอบของคุณ"
+          placeholder="กรุณาใส่คำตอบ*"
+          {...form.register("goal")}
+        />
+      </Stack>
+
+      <RegisterLocalStorage store="registerQuestion" />
+    </FormProvider>
+  );
+}
