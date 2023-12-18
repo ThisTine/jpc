@@ -5,6 +5,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
 import { registerQuestionFormData } from "@/share/validation/formData";
+import { ibmBold } from "@/utils/fonts";
 
 export interface RegisterQuestionFormData
   extends z.infer<typeof registerQuestionFormData> {}
