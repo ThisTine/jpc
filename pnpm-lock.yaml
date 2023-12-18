@@ -41,6 +41,9 @@ dependencies:
   react-icons:
     specifier: ^4.12.0
     version: 4.12.0(react@18.2.0)
+  react-imask:
+    specifier: ^7.2.0
+    version: 7.2.0(react@18.2.0)
   tailwind-merge:
     specifier: ^2.0.0
     version: 2.0.0
@@ -130,6 +133,14 @@ packages:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
+    dev: false
+
+  /@babel/runtime-corejs3@7.23.6:
+    resolution: {integrity: sha512-Djs/ZTAnpyj0nyg7p1J6oiE/tZ9G2stqAFlLGZynrW+F3k2w2jGK2mLOBxzYIOcZYA89+c3d3wXKpYLcpwcU6w==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      core-js-pure: 3.34.0
+      regenerator-runtime: 0.14.0
     dev: false
 
   /@babel/runtime@7.23.2:
@@ -1131,6 +1142,11 @@ packages:
     resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
     dev: false
 
+  /core-js-pure@3.34.0:
+    resolution: {integrity: sha512-pmhivkYXkymswFfbXsANmBAewXx86UBfmagP+w0wkK06kLsLlTK5oQmsURPivzMkIBQiYq2cjamcZExIwlFQIg==}
+    requiresBuild: true
+    dev: false
+
   /cosmiconfig@7.1.0:
     resolution: {integrity: sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA==}
     engines: {node: '>=10'}
@@ -1960,6 +1976,13 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /imask@7.2.0:
+    resolution: {integrity: sha512-HE6PKDEJSDyB9Cox8elCUE7AGi/t8Be9eXvo+ktIPJ472mx86aHm31zK+kk2aX8ELk0lHZrQWccMknv4DmXQkg==}
+    engines: {npm: '>=4.0.0'}
+    dependencies:
+      '@babel/runtime-corejs3': 7.23.6
+    dev: false
+
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -2657,6 +2680,17 @@ packages:
     peerDependencies:
       react: '*'
     dependencies:
+      react: 18.2.0
+    dev: false
+
+  /react-imask@7.2.0(react@18.2.0):
+    resolution: {integrity: sha512-6Mio8IHvAURgJHBIyqLwCtBCrbhPm3Mvc6YfZXgrD5A/QH43/FDSSGS/P0AQRUQ6XEqugnCoWOWpVdt+VjOQ4g==}
+    engines: {npm: '>=4.0.0'}
+    peerDependencies:
+      react: '>=0.14.0'
+    dependencies:
+      imask: 7.2.0
+      prop-types: 15.8.1
       react: 18.2.0
     dev: false
 
