@@ -1,21 +1,10 @@
 "use client";
 
-import { Stack, StackProps, TextField, Typography } from "@mui/material";
-import { useForm, FormProvider } from "react-hook-form";
-import { z } from "zod";
-import RegisterProfileFormLS from "../RegisterLocalStorage";
-import TextFieldMasked from "./RegisterProfilePhone";
+import {Stack, StackProps, TextField, Typography} from "@mui/material";
+import {FormProvider, useForm} from "react-hook-form";
+import {z} from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
-
-export const registerProfileFormData = z.object({
-  name: z.string(),
-  nickName: z.string(),
-  phone: z.string(),
-  email: z.string(),
-  school: z.string(),
-  educationLevel: z.string(),
-  dicease: z.string(),
-});
+import {registerProfileFormData} from "@/share/validation/formData";
 
 export interface RegisterProfileFormData
   extends z.infer<typeof registerProfileFormData> {}

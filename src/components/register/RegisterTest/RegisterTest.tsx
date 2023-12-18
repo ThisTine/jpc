@@ -1,22 +1,12 @@
 "use client";
 
-import { Stack, Typography } from "@mui/material";
-import { FormProvider, useForm } from "react-hook-form";
-import { z } from "zod";
+import {Stack} from "@mui/material";
+import {FormProvider, useForm} from "react-hook-form";
+import {z} from "zod";
 import RegisterTestMultipleChoice from "./RegisterTestMultipleChoice";
 import RegisterTestSingleChoice from "./RegisterTestSingleChoice";
 import RegisterTestWriting from "./RegisterTestWriting";
-
-export const registerTestFormData = z.object({
-  q1: z.array(z.string()),
-  q2: z.array(z.string()),
-  q3: z.array(z.string()),
-  q4: z.string(),
-  q5: z.array(z.string()),
-  q6: z.string(),
-  q7: z.string(),
-  q8: z.string(),
-});
+import {registerTestFormData} from "@/share/validation/formData";
 
 export interface RegisterTestFormData
   extends z.infer<typeof registerTestFormData> {}

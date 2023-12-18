@@ -1,18 +1,10 @@
 "use client";
 
-import { FormControl, Stack, TextField, Typography } from "@mui/material";
-import { FormProvider, useForm } from "react-hook-form";
-import { z } from "zod";
+import {Stack, TextField, Typography} from "@mui/material";
+import {FormProvider, useForm} from "react-hook-form";
+import {z} from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
-
-export const registerQuestionFormData = z.object({
-  pr: z.string(),
-  self_introduction: z.string(),
-  why_join: z.string(),
-  expect: z.string(),
-  experience: z.string(),
-  goal: z.string(),
-});
+import {registerQuestionFormData} from "@/share/validation/formData";
 
 export interface RegisterQuestionFormData
   extends z.infer<typeof registerQuestionFormData> {}
