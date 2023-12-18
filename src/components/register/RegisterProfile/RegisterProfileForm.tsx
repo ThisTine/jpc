@@ -1,21 +1,10 @@
 "use client";
 
-import { Stack, StackProps, TextField, Typography } from "@mui/material";
-import { useForm, FormProvider } from "react-hook-form";
-import { z } from "zod";
-import RegisterProfileFormLS from "../RegisterLocalStorage";
-import TextFieldMasked from "./RegisterProfilePhone";
+import {Stack, StackProps, TextField, Typography} from "@mui/material";
+import {FormProvider, useForm} from "react-hook-form";
+import {z} from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
-
-export const registerProfileFormData = z.object({
-  name: z.string(),
-  nickName: z.string(),
-  phone: z.string(),
-  email: z.string(),
-  school: z.string(),
-  educationLevel: z.string(),
-  dicease: z.string(),
-});
+import {registerProfileFormData} from "@/share/validation/formData";
 
 export interface RegisterProfileFormData
   extends z.infer<typeof registerProfileFormData> {}
@@ -38,6 +27,16 @@ export default function RegisterProfile(props: RegisterProfileProps) {
   return (
     <FormProvider {...form}>
       <Stack width="100%" gap={2} {...props}>
+        <Typography
+          fontSize="24px"
+          color="#2D73AE"
+          sx={{
+            alignSelf: "center",
+            my: "1rem",
+          }}
+        >
+          ข้อมูลส่วนตัว
+        </Typography>
         <Stack width="100%">
           <Typography className="text-lg">ชื่อ - นามสกุล</Typography>
           <TextField
@@ -71,7 +70,7 @@ export default function RegisterProfile(props: RegisterProfileProps) {
           <TextField
             variant="outlined"
             fullWidth
-            placeholder="อีเมล"
+            placeholder="ใส่อีเมลของคุณ"
             {...form.register("email")}
           />
         </Stack>
@@ -103,7 +102,7 @@ export default function RegisterProfile(props: RegisterProfileProps) {
           <TextField
             variant="outlined"
             fullWidth
-            placeholder="โรคประจำตัว"
+            placeholder="ใส่โรคประจำตัวของคุณ"
             {...form.register("dicease")}
           />
         </Stack>

@@ -1,18 +1,11 @@
 "use client";
 
-import { FormControl, Stack, TextField, Typography } from "@mui/material";
+import { Stack, TextField, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
-
-export const registerQuestionFormData = z.object({
-  pr: z.string(),
-  self_introduction: z.string(),
-  why_join: z.string(),
-  expect: z.string(),
-  experience: z.string(),
-  goal: z.string(),
-});
+import { registerQuestionFormData } from "@/share/validation/formData";
+import { ibmBold } from "@/utils/fonts";
 
 export interface RegisterQuestionFormData
   extends z.infer<typeof registerQuestionFormData> {}
@@ -31,6 +24,21 @@ export default function RegisterQuestion() {
 
   return (
     <FormProvider {...form}>
+      <Stack my={5}>
+        <Typography
+          sx={{
+            fontSize: "20px",
+            fontFamily: ibmBold.style.fontFamily,
+            color: "#A5CE89",
+            alignSelf: "center",
+            "@media (min-width: 724px)": {
+              fontSize: "24px",
+            },
+          }}
+        >
+          คำถามให้น้องๆ จากโจเชฟ 📝
+        </Typography>
+      </Stack>
       <Stack gap={2}>
         <Stack width="100%">
           <Typography className="text-lg">
@@ -42,11 +50,14 @@ export default function RegisterQuestion() {
             placeholder="กรุณาใส่คำตอบ"
             label="คำตอบของคุณ"
             {...form.register("pr")}
+            sx={{
+              my: "8px",
+            }}
           />
         </Stack>
 
         <Stack width="100%">
-          <Typography className="text-lg">
+          <Typography className="text-lg" mb="10px">
             🌟 แนะนำตัวคร่าว ๆ ให้โจเซฟรู้จักเพื่อน ๆ หน่อยครับ
           </Typography>
           <TextField
@@ -61,7 +72,7 @@ export default function RegisterQuestion() {
         </Stack>
 
         <Stack width="100%">
-          <Typography className="text-lg">
+          <Typography className="text-lg" mb="10px">
             🌟 โจเซฟอยากรู้ว่าเพราะอะไรเพื่อน ๆ ถึงอยากเข้าร่วมค่ายนี้?
           </Typography>
           <TextField
@@ -75,8 +86,9 @@ export default function RegisterQuestion() {
           />
         </Stack>
       </Stack>
-      <Stack width="100%">
-        <Typography className="text-lg">
+
+      <Stack width="100%" my="16px">
+        <Typography className="text-lg" mb="10px">
           🌟 เพื่อน ๆ คาดหวังอะไรจากการเข้าค่ายครั้งนี้?
         </Typography>
         <TextField
@@ -91,7 +103,7 @@ export default function RegisterQuestion() {
       </Stack>
 
       <Stack width="100%">
-        <Typography className="text-lg">
+        <Typography className="text-lg" mb="10px">
           🌟 เพื่อน ๆ จะรู้สึกอย่างไรหากต้องเรียนรู้สิ่งใหม่ ๆ
           ที่ไม่เคยรู้จักมาก่อนหรอครับ?
         </Typography>
@@ -106,8 +118,8 @@ export default function RegisterQuestion() {
         />
       </Stack>
 
-      <Stack width="100%">
-        <Typography className="text-lg">
+      <Stack width="100%" my="16px">
+        <Typography className="text-lg" mb="10px">
           🌟 โจเซฟอยากรู้ว่าเป้าหมายในอีก 4 ปีของเพื่อน ๆ เป็นอย่างไรบ้าง?
         </Typography>
         <TextField

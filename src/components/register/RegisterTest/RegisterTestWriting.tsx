@@ -23,7 +23,9 @@ export default function RegisterTestWriting({
 
   return (
     <Stack width="100%">
-      <Typography className="text-lg">{title}</Typography>
+      <Typography className="text-lg" mb="12px">
+        {title}
+      </Typography>
       <TextField
         fullWidth
         multiline
