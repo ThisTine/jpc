@@ -27,6 +27,16 @@ export default function RegisterProfile(props: RegisterProfileProps) {
   return (
     <FormProvider {...form}>
       <Stack width="100%" gap={2} {...props}>
+        <Typography
+          fontSize="24px"
+          color="#2D73AE"
+          sx={{
+            alignSelf: "center",
+            my: "1rem",
+          }}
+        >
+          ข้อมูลส่วนตัว
+        </Typography>
         <Stack width="100%">
           <Typography className="text-lg">ชื่อ - นามสกุล</Typography>
           <TextField
@@ -60,7 +70,7 @@ export default function RegisterProfile(props: RegisterProfileProps) {
           <TextField
             variant="outlined"
             fullWidth
-            placeholder="อีเมล"
+            placeholder="ใส่อีเมลของคุณ"
             {...form.register("email")}
           />
         </Stack>
@@ -92,7 +102,7 @@ export default function RegisterProfile(props: RegisterProfileProps) {
           <TextField
             variant="outlined"
             fullWidth
-            placeholder="โรคประจำตัว"
+            placeholder="ใส่โรคประจำตัวของคุณ"
             {...form.register("dicease")}
           />
         </Stack>

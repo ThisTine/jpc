@@ -1,12 +1,13 @@
 "use client";
 
-import {Stack} from "@mui/material";
-import {FormProvider, useForm} from "react-hook-form";
-import {z} from "zod";
+import { Checkbox, Stack, Typography } from "@mui/material";
+import { FormProvider, useForm } from "react-hook-form";
+import { z } from "zod";
 import RegisterTestMultipleChoice from "./RegisterTestMultipleChoice";
 import RegisterTestSingleChoice from "./RegisterTestSingleChoice";
 import RegisterTestWriting from "./RegisterTestWriting";
-import {registerTestFormData} from "@/share/validation/formData";
+import { registerTestFormData } from "@/share/validation/formData";
+import { ibmBold } from "@/utils/fonts";
 
 export interface RegisterTestFormData
   extends z.infer<typeof registerTestFormData> {}
@@ -27,6 +28,18 @@ export default function RegisterTest() {
 
   return (
     <FormProvider {...form}>
+      <Stack my={2}>
+        <Typography
+          sx={{
+            fontSize: "24px",
+            fontFamily: ibmBold.style.fontFamily,
+            color: "#2A3D5D",
+            alignSelf: "center",
+          }}
+        >
+          Question
+        </Typography>
+      </Stack>
       <Stack gap={2}>
         <RegisterTestMultipleChoice
           title="1. ข้อใดคือโปรแกรมคอมพิวเตอร์ (Software) (ตอบได้หลายข้อ) ?"
@@ -108,6 +121,19 @@ export default function RegisterTest() {
           title="8. จงอธิบายวิธีแก้ปัญหาใด ๆ เมื่อคุณเผชิญเข้ากับปัญหาในชีวิต แบบเป็นขั้นตอน "
           name="q8"
         />
+
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <Checkbox name="consent" color="primary" required disableRipple />
+          <Typography>
+            ข้าพเจ้าขอยืนยันว่าข้อมูลทั้งหมดถูกต้องและเป็นความจริงทุกประการ
+          </Typography>
+        </Stack>
       </Stack>
     </FormProvider>
   );

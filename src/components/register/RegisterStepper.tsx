@@ -10,18 +10,12 @@ export const registrationStep = proxy({
   totalStep: 4,
 });
 
-export default function RegisterStepper() {
+export default function RegisterStepper({ step }: { step: number }) {
   const { currentStep, totalStep } = useSnapshot(registrationStep);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      registrationStep.currentStep++;
-      if (registrationStep.currentStep > registrationStep.totalStep) {
-        registrationStep.currentStep = 1;
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  });
+    registrationStep.currentStep = step;
+  }, [step]);
 
   const renderStep = (step: number, currentStep: number, active: boolean) => (
     <Box
@@ -36,7 +30,7 @@ export default function RegisterStepper() {
     >
       {currentStep > step ? (
         <Typography
-          fontSize="16px"
+          fontSize="14px"
           fontWeight="bold"
           bgcolor="#A5CE89"
           color="white"
@@ -45,7 +39,7 @@ export default function RegisterStepper() {
         </Typography>
       ) : (
         <Typography
-          fontSize="16px"
+          fontSize="14px"
           fontWeight="bold"
           color={!active ? "#A5CE89" : "white"}
         >
@@ -64,7 +58,7 @@ export default function RegisterStepper() {
         marginBottom="2rem"
       >
         {[...Array(totalStep)].map((_, index) => (
-          <Fragment key={_}>
+          <Fragment key={index}>
             {renderStep(index + 1, currentStep, index + 1 == currentStep)}
             {index + 1 !== totalStep ? (
               <Box

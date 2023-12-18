@@ -1,31 +1,111 @@
-import { Box, Card, Stack, Typography } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
+import { ibmBold } from "@/utils/fonts";
+import { SetStateAction } from "react";
 
-export default function RegisterConsent() {
+export default function RegisterConsent({
+  currentStep,
+  setCurrentStep,
+}: {
+  currentStep: number;
+  setCurrentStep: React.Dispatch<SetStateAction<number>>;
+}) {
   return (
-    <Box sx={{ width: "1324px" }}>
-      <Card
-        sx={{ paddingTop: "3rem", paddingLeft: "4rem", paddingRight: "4rem" }}
-      >
+    <Box>
+      <Box>
         <Stack>
-          <Box>
-            <Stack>
-              <Typography fontSize="34px" fontWeight="bold" color="#2A3D5D">
-                แบบฟอร์มลงทะเบียน JPC16
-              </Typography>
-              <Typography fontSize="16px" color="black">
-                มาลงทะเบียนกันเถอะเย้เย้ ก็แค่ป้อจาย ที่หลายใจหนึ่งคน
-                ก็คงไม่มีเหตุผล หื้อเฮาทนต่อไป ขนาดห่างกันบ่ถึงวา
-                ยังแอบส่งตาไปหาใคร บ่มีความเกรงใจบ้างเลย
-              </Typography>
-            </Stack>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "start",
+              rowGap: "1rem",
+              mb: "3rem",
+            }}
+          >
+            <Typography
+              fontSize="24px"
+              fontFamily={ibmBold.style.fontFamily}
+              color="#2D73AE"
+              sx={{
+                "@media (min-width: 1024px)": {
+                  fontSize: "34px",
+                },
+              }}
+            >
+              หนังสือยินยอมเพื่อขอใช้ประโยชน์ข้อมูลส่วนบุคคล
+            </Typography>
+            <Typography>
+              คณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+            </Typography>
+            <Typography>
+              &emsp;ทั้งนี้ ท่านมีสิทธิที่จะถอนความยินยอมหรือขอให้คณะ ฯ
+              ลบข้อมูลเมื่อใดก็ได้ตลอดระยะเวลาที่ข้อมูลส่วนบุคคลของท่านอยู่กับคณะ
+              ฯ
+              อย่างไรก็ตามการถอนความยินยอมของท่านอาจส่งผลกระทบต่อท่านจากการใช้บริการต่าง
+              ๆ เช่น ท่านจะไม่ได้รับสิทธิประโยชน์ที่ทางคณะ ฯ ให้บริการอยู่
+              หรือไม่ได้รับข้อมูลข่าวสารอันเป็นประโยชน์แก่ท่าน เป็นต้น
+              ดังนั้นเพื่อประโยชน์ของท่านจึงควรศึกษาและสอบถามถึงผลกระทบ
+              ก่อนเพิกถอนความยินยอมดังกล่าว
+              กรณีที่ท่านต้องการถอนความยินยอมกรุณาติดต่อผ่านอีเมล
+              info@sit.kmutt.ac.th
+            </Typography>
+            <Typography>
+              1. เพื่อประโยชน์ทางการศึกษา การวิเคราะห์ ประมวลผล จัดทำสถิติ
+              รวมไปถึงการจัดบริการต่าง ๆ เช่น การแนะแนว การสมัครงาน
+              การพัฒนาทักษะด้านต่าง ๆ
+              <br />
+              2. เพื่อจัดทำสื่อโฆษณา การเผยแพร่การประชาสัมพันธ์ต่อสาธารณะ
+              ผ่านช่องทางสื่ออิเล็กทรอนิกส์ สื่อออนไลน์ สื่อวิดีโอ
+              สื่อสิ่งพิมพ์ต่าง ๆ เช่น เว็บไซต์ Social Media การติดประกาศ
+              และช่องทางอื่น ๆ
+              <br />
+              3. เพื่อใช้ข้อมูลของท่านในการแจ้งข้อมูลข่าวสาร การเรียนการสอน
+              บริการของคณะ ฯ และการโฆษณาประชาสัมพันธ์ เช่น
+              การเปิดรับสมัครนักศึกษาใหม่ การอบรม หรือกิจกรรมที่เกี่ยวข้อง
+              <br />
+              4. วัตถุประสงค์อื่น ๆ เพื่อประโยชน์ของคณะฯ และ/หรือมหาวิทยาลัย
+              และ/หรือนักศึกษา
+            </Typography>
+            <Typography>
+              &emsp;คณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
+              ให้ความสำคัญด้านการเคารพสิทธิในความเป็นส่วนตัว
+              และการรักษาความปลอดภัยของข้อมูลส่วนบุคคลของท่าน โดยคณะฯ
+              ได้กำหนดนโยบาย ระเบียบ และหลักเกณฑ์ต่าง ๆ ในการดำเนินงาน ของคณะ ฯ
+              เพื่อให้เป็นไปตามมาตรฐาน ในการรักษาความปลอดภัยของข้อมูลส่วนบุคคล
+              เพื่อให้ท่านได้มั่นใจว่า ข้อมูลส่วนบุคคลของท่านที่คณะ ฯ
+              ได้รับจะถูกนำไปใช้ ตรงตามความต้องการของท่าน และถูกต้องตามกฎหมาย
+              โดยคณะ ฯ จะจัดเก็บข้อมูลส่วนบุคคลของท่านตลอดระยะเวลา ที่จำเป็น
+              ในการดำเนินการตามวัตถุประสงค์ของคณะ ฯ รวมถึงงานต่าง ๆ ที่จำเป็น
+              <br />
+              &emsp;ทางคณะ ฯ เก็บ รวบรวมและใช้ข้อมูลส่วนบุคคลของท่าน
+              รวมทั้งภาพถ่าย และวีดีโอ ที่เกิดจากการเข้าร่วมกิจกรรมของท่าน
+              ซึ่งจัดโดยมหาวิทยาลัย คณะ ฯ และ/หรือนักศึกษา
+              เพื่อวัตถุประสงค์ของคณะฯ ตลอดจนตามวัตถุประสงค์ดังต่อไปนี้
+            </Typography>
           </Box>
-          <hr style={{ marginTop: "1rem", marginBottom: "1.5rem" }} />
-          <Typography fontSize="34px" fontWeight="bold" color="#2D73AE">
-            หนังสือยินยอมเพื่อขอใช้ประโยชน์ข้อมูลส่วนบุคคล
-          </Typography>
-          <Box></Box>
+          <Box
+            sx={{
+              boxShadow: "none",
+              width: "180px",
+              backgroundColor: "#2D73AE",
+              color: "white",
+              borderRadius: "8px",
+              padding: "0.6rem 2rem",
+              alignSelf: "end",
+              fontSize: "14px",
+              fontFamily: ibmBold.style.fontFamily,
+              textAlign: "center",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setCurrentStep(currentStep + 1);
+              window.scrollTo(0, 0);
+            }}
+          >
+            ยอมรับและถัดไป
+          </Box>
         </Stack>
-      </Card>
+      </Box>
     </Box>
   );
 }
