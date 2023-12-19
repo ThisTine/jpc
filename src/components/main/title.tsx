@@ -157,7 +157,7 @@ const Title = () => {
         <Image
           alt="cartoon-jigsaw"
           className={cls(
-            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px]"
+            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px] animate-bounce"
           )}
           src={CartoonJigsaw}
         />
