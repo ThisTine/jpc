@@ -28,7 +28,9 @@ export default function RegisterTestMultipleChoice({
 
   return (
     <Stack width="100%">
-      <Typography className="text-lg">{title}</Typography>
+      <Typography className="text-lg" mb="10px">
+        {title}
+      </Typography>
       <Stack gap={1}>
         {renderChoices.map((choice) => (
           <FormControlLabel
