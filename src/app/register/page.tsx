@@ -55,7 +55,7 @@ const Page = () => {
         return (
           <Box
             sx={{
-              height: "100%",
+              minHeight: "80vh",
               justifyContent: "center",
               display: "flex",
               flexDirection: "column",
@@ -88,6 +88,7 @@ const Page = () => {
           paddingX: "24px",
           paddingTop: "30px",
           paddingBottom: currentStep == 1 ? "30px" : "120px",
+          minHeight: "100vh",
           "@media (min-width: 768px)": {
             paddingX: "4rem",
             paddingTop: "50px",
@@ -95,12 +96,14 @@ const Page = () => {
           "@media (min-width: 1440px)": {
             paddingX: "6rem",
           },
+          "@media (min-width: 1920px)": {
+            paddingX: "40rem",
+          },
         }}
       >
         <Box
           sx={{
             display: "flex",
-            minHeight: "100vh",
             justifyContent: "center",
             paddingY: "3rem",
             paddingX: "1rem",
@@ -111,14 +114,29 @@ const Page = () => {
               paddingX: "3rem",
             },
             "@media (min-width: 1440px)": {
-              paddingX: "5rem",
+              paddingX: "1rem",
             },
           }}
         >
-          <Container>
+          <Container
+            maxWidth="xl"
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
             {currentStep == 1 ? <RegisterTitle /> : null}
             {currentStep <= 4 ? (
-              <Box my={1}>
+              <Box
+                my={1}
+                sx={{
+                  alignSelf: "center",
+                  width: "100%",
+                  "@media (min-width: 1024px)": {
+                    width: "700px",
+                  },
+                }}
+              >
                 <RegisterStepper step={currentStep} />
               </Box>
             ) : null}
