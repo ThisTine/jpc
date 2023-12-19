@@ -1,10 +1,10 @@
 "use client";
+import registerButtonAnimation from "@/assets/animations/register_button.json";
 import CartoonDuck from "@/assets/cartoon-duck.svg";
 import CartoonJigsaw from "@/assets/cartoon-jigsaw.svg";
 import CartoonTamagochi from "@/assets/cartoon-tamagochi.svg";
 import TopConfetti from "@/assets/confetti-top.svg";
 import IgLogo from "@/assets/ig-logo.svg";
-import InfoBg from "@/assets/info-bg.svg";
 import InfoCloud from "@/assets/info-cloud.svg";
 import InfoRope from "@/assets/info-rope.svg";
 import InfoTitle from "@/assets/info-title.svg";
@@ -13,36 +13,39 @@ import Joseph from "@/assets/joseph-title.svg";
 import JpcMobile from "@/assets/jpc-mobile.svg";
 import JpcTablet from "@/assets/jpc-tablet.svg";
 import LogoIcon from "@/assets/logo.svg";
-import RegisterButton from "@/assets/register-button.svg";
 import Sparkle from "@/assets/sparkle.svg";
 import StarRed from "@/assets/star-red.svg";
 import StarYellow from "@/assets/star-yellow.svg";
 import TitleBg from "@/assets/title-bg.svg";
 import TitleIcon from "@/assets/title.svg";
+import useAnimationParallax from "@/hooks/useAnimationParallax";
 import { cls } from "@/utils/misc";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import lottie, { AnimationItem } from "lottie-web";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import {useEffect, useMemo, useRef, useState} from "react";
-import lottie, {AnimationItem, LottiePlayer} from "lottie-web";
-import registerButtonAnimation from "@/assets/animations/register_button.json";
-
+import { useEffect, useRef, useState } from "react";
 
 const Title = () => {
   const router = useRouter();
-  const buttonContainer = useRef<HTMLDivElement|null>(null);
-  const [registerButtonController, setRegisterButtonController] = useState<AnimationItem | null>(null);
+  const buttonContainer = useRef<HTMLDivElement | null>(null);
+  const starYellow = useAnimationParallax(-500, 100, 1);
+  const starRed = useAnimationParallax(-500, 100, 0.5);
+  const starYellow2 = useAnimationParallax(-250, 100, 1);
+  const starRed2 = useAnimationParallax(-150, 100, 0.5);
+  const [registerButtonController, setRegisterButtonController] =
+    useState<AnimationItem | null>(null);
   useEffect(() => {
     const b = lottie.loadAnimation({
       container: buttonContainer.current as Element,
       renderer: "svg",
       loop: false,
-      autoplay:false,
-      animationData: registerButtonAnimation
+      autoplay: false,
+      animationData: registerButtonAnimation,
     });
     setRegisterButtonController(b);
-    return ()=> {
+    return () => {
       lottie.destroy();
       setRegisterButtonController(null);
     };
@@ -52,6 +55,7 @@ const Title = () => {
     <div className={cls("relative")}>
       <div className={cls("absolute w-full flex justify-center")}>
         <Image
+          data-aos="zoom-out-down"
           alt="confetti-top"
           className={cls("max-sm:w-full object-fill")}
           src={TopConfetti}
@@ -61,6 +65,7 @@ const Title = () => {
         className={cls(
           "absolute xl:top-[66px] xl:right-[54px] top-[32px] right-6 z-10"
         )}
+        data-aos="zoom-out-left"
       >
         <Link href="https://www.instagram.com/jpc_sitkmutt" target="_blank">
           <Image
@@ -72,19 +77,23 @@ const Title = () => {
       </div>
       <Image
         alt="logo"
+        data-aos="zoom-out-right"
         className={cls("xl:w-[175px] xl:h-auto w-[110px] h-[75px]")}
         src={LogoIcon}
       />
       <div className={cls("flex flex-col items-center relative")}>
-        <p
+        <div
           className={cls(
             "text-[40px] md:text-3xl md:mt-16 xl:mt-0 font-[700] tracking-[2px] text-blue-stroke-white-4px max-sm:hidden"
           )}
+          data-aos="zoom-out-up"
+          data-aos-delay="100"
         >
           12-14 January 2024 @KMUTT
-        </p>
+        </div>
         <Image
           alt="title-bg"
+          data-aos="zoom-out-up"
           className={cls(
             "absolute -z-10 top-[80px] mr-[100px] hidden xl:block"
           )}
@@ -93,6 +102,7 @@ const Title = () => {
         />
         <Image
           alt="title"
+          data-aos="zoom-out-up"
           className={cls("mt-16 hidden xl:block")}
           height={450}
           src={TitleIcon}
@@ -100,6 +110,7 @@ const Title = () => {
         />
         <Image
           alt="jpc-mobile"
+          data-aos="zoom-out-up"
           className={cls("mt-6 ml-4 max-sm:w-[450px] md:hidden xl:hidden")}
           src={JpcMobile}
         />
@@ -108,29 +119,36 @@ const Title = () => {
           className={cls("mt-6 hidden md:block xl:hidden")}
           src={JpcTablet}
         />
-        <p
+        <div
           className={cls(
             "text-[20px] font-[700] text-center tracking-[2px] text-blue-stroke-white-2px -rotate-6 md:hidden xl:hidden"
           )}
+          data-aos="flip-up"
         >
           12-14 January 2024 @KMUTT
-        </p>
+        </div>
         <Image
           alt="joseph"
+          data-aos="fade-left"
           className={cls("absolute -z-10 top-[40px] right-0 hidden xl:block")}
           src={Joseph}
           width={300}
         />
         <Link href="/register" className="cursor-pointer">
-          <div  ref={buttonContainer} onMouseEnter={()=> {
-            registerButtonController?.setDirection(1);
-            registerButtonController?.setSpeed(1);
-            registerButtonController?.play();
-          }} onMouseLeave={()=> {
-            registerButtonController?.setDirection(1);
-            registerButtonController?.setSpeed(-1);
-            registerButtonController?.play();
-          }} />
+          <div
+            ref={buttonContainer}
+            data-aos="zoom-in"
+            onMouseEnter={() => {
+              registerButtonController?.setDirection(1);
+              registerButtonController?.setSpeed(1);
+              registerButtonController?.play();
+            }}
+            onMouseLeave={() => {
+              registerButtonController?.setDirection(1);
+              registerButtonController?.setSpeed(-1);
+              registerButtonController?.play();
+            }}
+          />
         </Link>
         {/*<Image*/}
         {/*  alt="register-button"*/}
@@ -144,6 +162,7 @@ const Title = () => {
         {/*/>*/}
         <Image
           alt="cartoon-duck"
+          data-aos="fade-right"
           className={cls(
             "absolute xl:top-[580px] xl:-left-10 xl:w-[400px] md:w-[320px] md:top-[45%] w-[260px] -left-14 top-[620px]"
           )}
@@ -156,13 +175,15 @@ const Title = () => {
         />
         <Image
           alt="cartoon-jigsaw"
+          data-aos="fade-right"
           className={cls(
-            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px] animate-bounce"
+            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px]"
           )}
           src={CartoonJigsaw}
         />
         <Image
           alt="cartoon-egg"
+          data-aos="fade-left"
           className={cls(
             "absolute xl:w-auto xl:top-[500px] xl:right-[200px] md:w-[250px] md:top-[40%] w-[120px] right-0 top-[430px]"
           )}
@@ -233,6 +254,7 @@ const Title = () => {
         {/*/>*/}
         <Image
           alt="info-cloud"
+          data-aos="fade-up"
           className={cls(
             "absolute -z-10 top-[830px] w-[90%] md:w-[80%] md:top-[56%] md:right-4 xl:top-[850px] xl:right-32"
           )}
@@ -240,6 +262,7 @@ const Title = () => {
         />
         <Image
           alt="joseph-shadow"
+          data-aos="fade-up"
           className={cls(
             "absolute w-44 md:w-[240px] xl:w-auto top-[920px] md:top-[1250px] xl:top-[980px] md:left-12 xl:left-24"
           )}
@@ -250,8 +273,13 @@ const Title = () => {
             "flex flex-col items-start absolute top-[1130px] md:top-[1250px] xl:top-[1050px] md:ml-40 xl:right-44 w-[90%] md:w-2/4"
           )}
         >
-          <Image alt="info-title" className={cls("")} src={InfoTitle} />
-          <div className="md:ml-10">
+          <Image
+            alt="info-title"
+            data-aos="fade-up"
+            className={cls("")}
+            src={InfoTitle}
+          />
+          <div className="md:ml-10" data-aos="zoom-out">
             <p className={cls("xl:pr-4 xl:text-h5 mt-9")}>
               Junior Programmers Camp คือค่ายสำหรับน้อง ๆ และเพื่อน ๆ
               <br /> ที่มีความสนใจในหลักสูตร Computer Science หรือ ComSci Inter
@@ -279,10 +307,13 @@ const Title = () => {
           className={cls(
             "absolute xl:w-auto md:w-[15%] w-[20%] bottom-14 right-6 md:bottom-[180px] md:right-12 xl:right-24"
           )}
+          data-aos="fade-up"
           src={InfoRope}
         />
         <Image
           alt="star-yellow"
+          // ref={starYellow}
+          data-aos="fade-right"
           className={cls(
             "absolute -bottom-10 left-10 md:-bottom-4 md:left-2 xl:bottom-0 xl:left-6 w-28 md:w-[20%] xl:w-auto"
           )}
@@ -290,6 +321,8 @@ const Title = () => {
         />
         <Image
           alt="star-red"
+          // ref={starRed}
+          data-aos="fade-right"
           className={cls(
             "absolute -bottom-4 right-8 md:left-[40%] xl:-bottom-2 xl:left-[430px] max-sm:w-16"
           )}
@@ -297,6 +330,8 @@ const Title = () => {
         />
         <Image
           alt="star-yellow"
+          // ref={starYellow2}
+          data-aos="fade-left"
           className={cls(
             "absolute -bottom-8 right-[420px] md:right-0 max-sm:hidden"
           )}
@@ -304,6 +339,8 @@ const Title = () => {
         />
         <Image
           alt="star-red"
+          // ref={starRed2}
+          data-aos="fade-left"
           className={cls("absolute -bottom-5 right-20 hidden xl:block")}
           src={StarRed}
         />

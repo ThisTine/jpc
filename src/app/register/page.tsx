@@ -1,21 +1,20 @@
 /* eslint-disable indent */
 "use client";
+import FormBg from "@/assets/form-background.svg";
+import RegisterConsent from "@/components/register/RegisterConsent/RegisterConsent";
 import RegisterProfile from "@/components/register/RegisterProfile/RegisterProfileForm";
 import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
 import RegisterStepper from "@/components/register/RegisterStepper";
 import RegisterTest from "@/components/register/RegisterTest/RegisterTest";
+import RegisterTitle from "@/components/register/RegisterTitle/RegisterTitle";
+import { ibm, ibmBold } from "@/utils/fonts";
 import {
   Box,
-  Button,
   Container,
   ThemeProvider,
   Typography,
-  createTheme,
+  createTheme
 } from "@mui/material";
-import FormBg from "@/assets/form-background.svg";
-import RegisterConsent from "@/components/register/RegisterConsent/RegisterConsent";
-import { ibm, ibmBold } from "@/utils/fonts";
-import RegisterTitle from "@/components/register/RegisterTitle/RegisterTitle";
 import React from "react";
 import {
   FaChevronLeft,
@@ -90,7 +89,6 @@ const Page = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          minHeight: "100vh",
           paddingBottom: currentStep == 1 ? "30px" : "120px",
           minHeight: "100vh",
           "@media (min-width: 768px)": {

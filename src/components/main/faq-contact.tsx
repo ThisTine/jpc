@@ -11,6 +11,7 @@ import FaqTopBg from "@/assets/faq-top-bg.svg";
 import IgLogo from "@/assets/ig-logo.svg";
 import Joseph from "@/assets/joseph.svg";
 import TreeBg from "@/assets/tree-bg.svg";
+import useAnimationParallax from "@/hooks/useAnimationParallax";
 import { cls } from "@/utils/misc";
 import { Modak } from "next/font/google";
 import Image from "next/image";
@@ -54,6 +55,8 @@ const faqs = [
 ];
 
 const FaqContact = () => {
+  const cloudAnimatedRef = useAnimationParallax(-250, 100);
+
   return (
     <div className={cls("relative bg-[#FF6961]")}>
       <div className="relative pt-24 xl:pt-28">
@@ -66,6 +69,7 @@ const FaqContact = () => {
             src={FaqTopBg}
           />
           <Image
+            ref={cloudAnimatedRef}
             alt="cloud"
             className={cls(
               "absolute z-0 top-6 -left-8 w-48 md:left-12 xl:w-80 xl:left-32 xl:-top-16"
@@ -82,6 +86,7 @@ const FaqContact = () => {
                 modak.className,
                 "text-[84px] text-center text-green-stroke-white-3px relative xl:text-[96px]"
               )}
+              data-aos="zoom-out"
             >
               FAQS
             </p>
@@ -113,9 +118,11 @@ const FaqContact = () => {
             "absolute h-[50px] w-full object-cover bottom-16 xl:h-auto xl:object-none xl:bottom-36"
           )}
           src={Confetti}
+          data-aos="zoom-out-up"
         />
         <Image
           alt="cartoon-duck"
+          data-aos="fade-left"
           className={cls(
             "absolute w-[120px] bottom-6 right-2 md:w-[180px] xl:w-[300px] xl:bottom-40"
           )}
@@ -127,6 +134,7 @@ const FaqContact = () => {
             "absolute w-[210px] -bottom-20 left-24 hidden xl:block"
           )}
           src={Cassette}
+          data-aos="zoom-out-up"
         />
         <Image
           alt="confetti-line"
@@ -134,6 +142,7 @@ const FaqContact = () => {
             "absolute top-[95px] h-[150px] w-full object-cover xl:h-auto xl:object-none xl:top-40"
           )}
           src={ConfettiLine}
+          data-aos="zoom-out-up"
         />
       </div>
       <div className={cls("bg-[#A5CE89] h-[500px] xl:h-[800px]")}>
@@ -141,6 +150,7 @@ const FaqContact = () => {
           className={cls(
             "h-full flex flex-col justify-center items-center space-y-7 pb-40"
           )}
+          data-aos="zoom-out"
         >
           <p
             className={cls(
@@ -158,6 +168,7 @@ const FaqContact = () => {
                   "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
                 )}
                 src={IgLogo}
+                data-aos="zoom-out-up"
               />
             </Link>
             <Link href="https://www.facebook.com/jpckmutt" target="_blank">
@@ -167,6 +178,8 @@ const FaqContact = () => {
                   "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
                 )}
                 src={FacbookLogo}
+                data-aos="zoom-out-up"
+                data-aos-delay="100"
               />
             </Link>
             <Image
@@ -175,11 +188,14 @@ const FaqContact = () => {
                 "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
               )}
               src={EmailLogo}
+              data-aos="zoom-out-up"
+              data-aos-delay="200"
             />
           </div>
         </div>
         <Image
           alt="tree-bg"
+          data-aos="zoom-out-up"
           className={cls("absolute bottom-0 ml-10 pb-8 z-0 md:ml-6 md:w-[70%]")}
           src={TreeBg}
         />
@@ -205,7 +221,7 @@ type CollapsedCardProps = {
 const CollapsedCard = ({ title, description }: CollapsedCardProps) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   return (
-    <div>
+    <div data-aos="zoom-out-up">
       <div
         className={cls("flex justify-between cursor-pointer")}
         onClick={() => setIsCollapsed(!isCollapsed)}
