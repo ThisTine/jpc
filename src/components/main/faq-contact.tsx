@@ -204,6 +204,7 @@ const FaqContact = () => {
           className={cls(
             "absolute right-0 w-[25%] md:-bottom-12 xl:-bottom-20 hidden md:block"
           )}
+          data-aos="zoom-out-left"
           src={Joseph}
         />
       </div>
