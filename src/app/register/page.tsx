@@ -87,6 +87,10 @@ const Page = () => {
           backgroundSize: "cover",
           paddingX: "24px",
           paddingTop: "30px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          minHeight: "100vh",
           paddingBottom: currentStep == 1 ? "30px" : "120px",
           "@media (min-width: 768px)": {
             paddingX: "4rem",
@@ -100,19 +104,23 @@ const Page = () => {
         <Box
           sx={{
             display: "flex",
-            minHeight: "100vh",
+            // minHeight: "100vh",
+            width: "100%",
+            maxWidth: "1440px",
             justifyContent: "center",
             paddingY: "3rem",
             paddingX: "1rem",
             backgroundColor: "white",
             borderRadius: "10px",
             border: "2px solid #A5CE89",
-            "@media (min-width: 1024px)": {
-              paddingX: "3rem",
-            },
-            "@media (min-width: 1440px)": {
-              paddingX: "5rem",
-            },
+            // "@media (min-width: 1024px)": {
+            //   paddingX: "3rem",
+            //   maxWidth: "100%",
+            // },
+            // "@media (min-width: 1440px)": {
+            //   paddingX: "5rem",
+            // },
+            paddingBottom: "7.5rem",
           }}
         >
           <Container>
@@ -130,7 +138,9 @@ const Page = () => {
             sx={{
               mt: "50px",
               display: "flex",
+              width: "100%",
               justifyContent: "space-between",
+              maxWidth: "1440px",
             }}
           >
             <Box
