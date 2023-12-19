@@ -234,6 +234,9 @@ const Title = () => {
                 "mt-11 max-sm:w-full bg-[#FFD700] rounded-2xl border-2 border-black"
               )}
               type="button"
+              onClick={() => {
+                router.push("/register");
+              }}
             >
               <div className={cls("py-4 px-16 font-semibold")}>สมัครเลย</div>
             </button>
