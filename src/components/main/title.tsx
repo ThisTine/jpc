@@ -24,9 +24,30 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import {useEffect, useMemo, useRef, useState} from "react";
+import lottie, {AnimationItem, LottiePlayer} from "lottie-web";
+import registerButtonAnimation from "@/assets/animations/register_button.json";
+
 
 const Title = () => {
   const router = useRouter();
+  const buttonContainer = useRef<HTMLDivElement|null>(null);
+  const [registerButtonController, setRegisterButtonController] = useState<AnimationItem | null>(null);
+  useEffect(() => {
+    const b = lottie.loadAnimation({
+      container: buttonContainer.current as Element,
+      renderer: "svg",
+      loop: false,
+      autoplay:false,
+      animationData: registerButtonAnimation
+    });
+    setRegisterButtonController(b);
+    return ()=> {
+      lottie.destroy();
+      setRegisterButtonController(null);
+    };
+  }, []);
+
   return (
     <div className={cls("relative")}>
       <div className={cls("absolute w-full flex justify-center")}>
@@ -79,7 +100,7 @@ const Title = () => {
         />
         <Image
           alt="jpc-mobile"
-          className={cls("mt-6 max-sm:w-[450px] md:hidden xl:hidden")}
+          className={cls("mt-6 ml-4 max-sm:w-[450px] md:hidden xl:hidden")}
           src={JpcMobile}
         />
         <Image
@@ -100,16 +121,27 @@ const Title = () => {
           src={Joseph}
           width={300}
         />
-        <Image
-          alt="register-button"
-          onClick={() => {
-            router.push("/register");
-          }}
-          className={cls(
-            "absolute xl:top-[560px] md:top-[40%] top-[520px] xl:w-[444px] md:w-[400px] w-[210px] hover:cursor-pointer"
-          )}
-          src={RegisterButton}
-        />
+        <Link href="/register" className="cursor-pointer">
+          <div  ref={buttonContainer} onMouseEnter={()=> {
+            registerButtonController?.setDirection(1);
+            registerButtonController?.setSpeed(1);
+            registerButtonController?.play();
+          }} onMouseLeave={()=> {
+            registerButtonController?.setDirection(1);
+            registerButtonController?.setSpeed(-1);
+            registerButtonController?.play();
+          }} />
+        </Link>
+        {/*<Image*/}
+        {/*  alt="register-button"*/}
+        {/*  onClick={() => {*/}
+        {/*    router.push("/register");*/}
+        {/*  }}*/}
+        {/*  className={cls(*/}
+        {/*    "absolute xl:top-[560px] md:top-[40%] top-[520px] xl:w-[444px] md:w-[400px] w-[210px] hover:cursor-pointer"*/}
+        {/*  )}*/}
+        {/*  src={RegisterButton}*/}
+        {/*/>*/}
         <Image
           alt="cartoon-duck"
           className={cls(
@@ -125,7 +157,7 @@ const Title = () => {
         <Image
           alt="cartoon-jigsaw"
           className={cls(
-            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px]"
+            "absolute xl:top-[480px] xl:left-[250px] xl:w-auto md:w-[190px] md:left-[9%] md:top-[35%] w-[120px] left-0 top-[500px] animate-bounce"
           )}
           src={CartoonJigsaw}
         />
@@ -234,6 +266,9 @@ const Title = () => {
                 "mt-11 max-sm:w-full bg-[#FFD700] rounded-2xl border-2 border-black"
               )}
               type="button"
+              onClick={() => {
+                router.push("/register");
+              }}
             >
               <div className={cls("py-4 px-16 font-semibold")}>สมัครเลย</div>
             </button>

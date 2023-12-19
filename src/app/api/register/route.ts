@@ -6,6 +6,8 @@ import {
   registerQuestionFormData,
   registerTestFormData
 } from "@/share/validation/formData";
+import {getRegisterEmailTemplate} from "@/email/register/reigsterEmailTemplate";
+import {sendmail} from "@/app/api/utils/sendmail";
 
 
 export async function POST(request: Request) {
@@ -80,10 +82,12 @@ export async function POST(request: Request) {
     try{
       const info = await fetch(profileUrl+"&"+gInfoReq.toString());
       const question = await fetch(questionUrl+"&"+questionReq.toString());
-      console.log(questionUrl+"&"+questionReq.toString());
       if (!info.ok || !question.ok){
         return NextResponse.json({error: "Failed send form to API"}, {status: 400});
       }
+      const email = await getRegisterEmailTemplate({name: data.name, to: "sutichok46@gmail.com"});
+      await sendmail(email);
+
       return NextResponse.json(data);
     }catch (e){
       return NextResponse.json(e, {status: 500});
