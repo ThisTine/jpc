@@ -79,7 +79,7 @@ const Title = () => {
         />
         <Image
           alt="jpc-mobile"
-          className={cls("mt-6 max-sm:w-[450px] md:hidden xl:hidden")}
+          className={cls("mt-6 ml-4 max-sm:w-[450px] md:hidden xl:hidden")}
           src={JpcMobile}
         />
         <Image
