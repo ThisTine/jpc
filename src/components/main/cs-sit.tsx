@@ -16,14 +16,20 @@ const CsSIT = () => {
       <div className={cls("w-[90%] justify-between flex max-xl:hidden")}>
         <div className={cls("w-[60%]")}>
           <div className="relative flex">
-            <Image alt="balloon" className={cls("w-[50%]")} src={Balloon} />
+            <Image
+              alt="balloon"
+              className={cls("w-[50%]")}
+              src={Balloon}
+              data-aos="zoom-in-right"
+            />
             <Image
               alt="confetti-balloon"
+              data-aos="zoom-in-left"
               className={cls("absolute ml-[30%]")}
               src={ConfettiBalloon}
             />
           </div>
-          <div className="ml-24">
+          <div className="ml-24" data-aos="zoom-out-up">
             <p
               className={cls(
                 modak.className,
@@ -39,7 +45,7 @@ const CsSIT = () => {
             </p>
           </div>
         </div>
-        <div className={cls("w-[500px] mt-9 static")}>
+        <div className={cls("w-[500px] mt-9 static")} data-aos="zoom-out-left">
           <div
             className={cls(
               "absolute -z-10 translate-x-3 translate-y-2 rounded-full w-[500px] h-[500px] bg-[#ff6961]"
@@ -60,14 +66,19 @@ const CsSIT = () => {
             alt="balloon"
             className={cls("w-[50%] md:w-[40%]")}
             src={Balloon}
+            data-aos="zoom-in-right"
           />
           <Image
             alt="confetti-balloon"
             className={cls("absolute ml-[25%] w-[75%] md:w-[50%] md:ml-[20%]")}
             src={ConfettiBalloon}
+            data-aos="zoom-in-left"
           />
         </div>
-        <div className={cls("w-[80%] mt-16 relative md:w-[540px]")}>
+        <div
+          className={cls("w-[80%] mt-16 relative md:w-[540px]")}
+          data-aos="zoom-out-up"
+        >
           <div
             className={cls(
               "absolute -z-10 translate-x-2 translate-y-2.5 rounded-full w-[100%] h-full bg-[#ff6961]"
@@ -80,10 +91,14 @@ const CsSIT = () => {
             modak.className,
             "text-[54px] md:text-[84px] mt-10 text-red-stroke-black-2px"
           )}
+          data-aos="zoom-out-up"
         >
           CS @ SIT
         </p>
-        <p className={cls("px-6 mt-4 text-center md:text-xl md:px-28")}>
+        <p
+          className={cls("px-6 mt-4 text-center md:text-xl md:px-28")}
+          data-aos="zoom-out-up"
+        >
           CS@SIT ย่อมาจาก Computer Science at School of Information Technology
           คือหลักสูตรวิทยาการคอมพิวเตอร์ (หลักสูตรภาษาอังกฤษ)
           จากคณะเทคโนโลยีสารสนเทศ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี
@@ -94,22 +109,26 @@ const CsSIT = () => {
         alt="confetti"
         className={cls("absolute bottom-6 -z-10 h-[50px] md:h-auto")}
         src={Confetti}
+        data-aos="zoom-in"
       />
       <div className={cls("mt-10 w-full px-4 flex justify-between")}>
         <Image
           alt="cubic"
           className={cls("w-[100px] xl:w-[250px]")}
           src={Cubic}
+          data-aos="flip-down"
         />
         <Image
           alt="cassette"
           className={cls("w-[100px] xl:w-[220px] xl:mt-16")}
           src={Cassette}
+          data-aos="flip-down"
         />
         <Image
           alt="tamagochi"
           className={cls("w-[96px] xl:w-[250px]")}
           src={Tamagochi}
+          data-aos="flip-down"
         />
       </div>
     </div>

@@ -1,21 +1,20 @@
 /* eslint-disable indent */
 "use client";
+import FormBg from "@/assets/form-background.svg";
+import RegisterConsent from "@/components/register/RegisterConsent/RegisterConsent";
 import RegisterProfile from "@/components/register/RegisterProfile/RegisterProfileForm";
 import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
 import RegisterStepper from "@/components/register/RegisterStepper";
 import RegisterTest from "@/components/register/RegisterTest/RegisterTest";
+import RegisterTitle from "@/components/register/RegisterTitle/RegisterTitle";
+import { ibm, ibmBold } from "@/utils/fonts";
 import {
   Box,
-  Button,
   Container,
   ThemeProvider,
   Typography,
-  createTheme,
+  createTheme
 } from "@mui/material";
-import FormBg from "@/assets/form-background.svg";
-import RegisterConsent from "@/components/register/RegisterConsent/RegisterConsent";
-import { ibm, ibmBold } from "@/utils/fonts";
-import RegisterTitle from "@/components/register/RegisterTitle/RegisterTitle";
 import React from "react";
 import {
   FaChevronLeft,
@@ -87,6 +86,9 @@ const Page = () => {
           backgroundSize: "cover",
           paddingX: "24px",
           paddingTop: "30px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
           paddingBottom: currentStep == 1 ? "30px" : "120px",
           minHeight: "100vh",
           "@media (min-width: 768px)": {
@@ -104,18 +106,16 @@ const Page = () => {
         <Box
           sx={{
             display: "flex",
+            // minHeight: "100vh",
+            width: "100%",
+            maxWidth: "1440px",
             justifyContent: "center",
             paddingY: "3rem",
             paddingX: "1rem",
             backgroundColor: "white",
             borderRadius: "10px",
             border: "2px solid #A5CE89",
-            "@media (min-width: 1024px)": {
-              paddingX: "3rem",
-            },
-            "@media (min-width: 1440px)": {
-              paddingX: "1rem",
-            },
+            paddingBottom: "7.5rem",
           }}
         >
           <Container
@@ -148,7 +148,9 @@ const Page = () => {
             sx={{
               mt: "50px",
               display: "flex",
+              width: "100%",
               justifyContent: "space-between",
+              maxWidth: "1440px",
             }}
           >
             <Box
