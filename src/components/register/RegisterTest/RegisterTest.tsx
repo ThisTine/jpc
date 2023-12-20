@@ -60,7 +60,7 @@ export default function RegisterTest() {
       </Stack>
       <Stack gap={2}>
         <RegisterTestMultipleChoice
-          title="1. ข้อใดคือโปรแกรมคอมพิวเตอร์ (Software) (ตอบได้หลายข้อ) ?"
+          title="1. ข้อใดคือโปรแกรมคอมพิวเตอร์ (Software)? (ตอบได้หลายข้อ)"
           name="q1"
           choices={[
             { id: "1", title: "ChatGPT" },
@@ -82,13 +82,13 @@ export default function RegisterTest() {
         />
 
         <RegisterTestMultipleChoice
-          title="3. ข้อใดจัดเป็นหมวดหมู่ของระดับภาษาโปรแกรมมิ่ง (ตอบได้หลายข้อ)?"
+          title="3. ข้อใดจัดเป็นหมวดหมู่ของระดับภาษาโปรแกรมมิ่ง? (ตอบได้หลายข้อ)"
           name="q3"
           choices={[
-            { id: "1", title: "Go" },
-            { id: "2", title: "C++" },
-            { id: "3", title: "Javascript" },
-            { id: "4", title: "PHP" },
+            { id: "1", title: "Low Level" },
+            { id: "2", title: "High Level" },
+            { id: "3", title: "Supreme Level" },
+            { id: "4", title: "Platinum Level" },
           ]}
         />
 
@@ -105,7 +105,7 @@ export default function RegisterTest() {
         />
 
         <RegisterTestMultipleChoice
-          title="5. ข้อใดคือหมายเลข IP ที่ถูกต้อง (ตอบได้หลายข้อ)?"
+          title="5. ข้อใดคือหมายเลข IP ที่ถูกต้อง? (ตอบได้หลายข้อ)"
           name="q5"
           choices={[
             { id: "1", title: "192.187.11.1" },

@@ -85,7 +85,7 @@ export async function POST(request: Request) {
       if (!info.ok || !question.ok){
         return NextResponse.json({error: "Failed send form to API"}, {status: 400});
       }
-      const email = await getRegisterEmailTemplate({name: data.name, to: "sutichok46@gmail.com"});
+      const email = await getRegisterEmailTemplate({name: data.name, to: data.email});
       await sendmail(email);
 
       return NextResponse.json(data);
