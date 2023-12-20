@@ -42,7 +42,7 @@ export default function RegisterTest() {
       </Stack>
       <Stack gap={2}>
         <RegisterTestMultipleChoice
-          title="1. ข้อใดคือโปรแกรมคอมพิวเตอร์ (Software) (ตอบได้หลายข้อ) ?"
+          title="1. ข้อใดคือโปรแกรมคอมพิวเตอร์ (Software)? (ตอบได้หลายข้อ)"
           name="q1"
           choices={[
             { id: "1", title: "ChatGPT" },
@@ -64,18 +64,18 @@ export default function RegisterTest() {
         />
 
         <RegisterTestMultipleChoice
-          title="3. ข้อใดจัดเป็นหมวดหมู่ของระดับภาษาโปรแกรมมิ่ง (ตอบได้หลายข้อ)?"
+          title="3. ข้อใดจัดเป็นหมวดหมู่ของระดับภาษาโปรแกรมมิ่ง? (ตอบได้หลายข้อ)"
           name="q3"
           choices={[
-            { id: "1", title: "Go" },
-            { id: "2", title: "C++" },
-            { id: "3", title: "Javascript" },
-            { id: "4", title: "PHP" },
+            { id: "1", title: "Low Level" },
+            { id: "2", title: "High Level" },
+            { id: "3", title: "Supreme Level" },
+            { id: "4", title: "Platinum Level" },
           ]}
         />
 
         <RegisterTestSingleChoice
-          title="4. ข้อใดจัดเป็นหมวดหมู่ของระดับภาษาโปรแกรมมิ่ง (ตอบได้หลายข้อ)?"
+          title="4. ถ้าโปรแกรมให้ผลลัพธ์ ‘315’ ค่าของ X ควรมีค่าเป็นเท่าไหร่?"
           name="q4"
           choices={[
             { id: "1", title: "26" },
@@ -86,18 +86,7 @@ export default function RegisterTest() {
         />
 
         <RegisterTestMultipleChoice
-          title="5. ข้อใดคือหมายเลข IP ที่ถูกต้อง (ตอบได้หลายข้อ)?"
-          name="q5"
-          choices={[
-            { id: "1", title: "192.187.11.1" },
-            { id: "2", title: "257.21.3.1" },
-            { id: "3", title: "28.6.223.5.231" },
-            { id: "4", title: "2606:4700:4700::64" },
-          ]}
-        />
-
-        <RegisterTestMultipleChoice
-          title="5. ข้อใดคือหมายเลข IP ที่ถูกต้อง (ตอบได้หลายข้อ)?"
+          title="5. ข้อใดคือหมายเลข IP ที่ถูกต้อง? (ตอบได้หลายข้อ)"
           name="q5"
           choices={[
             { id: "1", title: "192.187.11.1" },
@@ -113,7 +102,7 @@ export default function RegisterTest() {
         />
 
         <RegisterTestWriting
-          title="7. จงอธิบายวิธีการหา “ข้าวผัดไข่” แบบเป็นขั้นตอน "
+          title="7. จงอธิบายวิธีการทำ “ข้าวผัดไข่” แบบเป็นขั้นตอน "
           name="q7"
         />
 
