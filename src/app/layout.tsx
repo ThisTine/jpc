@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Junior Programmers Camp #16",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://jpc16.thistine.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Junior Programmers Camp #16",
