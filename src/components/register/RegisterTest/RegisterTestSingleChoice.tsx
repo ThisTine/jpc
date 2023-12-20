@@ -55,8 +55,8 @@ export default function RegisterTestSingleChoice({
           <RadioGroup name={name}>
             {renderChoices.map((choice) => (
               <FormControlLabel
-                key={choice.id}
-                control={<Radio {...register(name)} value={choice.id} />}
+                key={choice.title}
+                control={<Radio {...register(name)} value={choice.title} />}
                 label={choice.title}
               />
             ))}

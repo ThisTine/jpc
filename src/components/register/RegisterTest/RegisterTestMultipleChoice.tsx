@@ -42,8 +42,8 @@ export default function RegisterTestMultipleChoice({
         <FormControl error={!!formState.errors[name]}>
           {renderChoices.map((choice) => (
             <FormControlLabel
-              key={choice.id}
-              control={<Checkbox {...register(name)} value={choice.id} />}
+              key={choice.title}
+              control={<Checkbox {...register(name)} value={choice.title} />}
               label={choice.title}
             />
           ))}

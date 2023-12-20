@@ -2,13 +2,16 @@
 "use client";
 import FormBg from "@/assets/form-background.svg";
 import RegisterConsent from "@/components/register/RegisterConsent/RegisterConsent";
-import RegisterProfile from "@/components/register/RegisterProfile/RegisterProfileForm";
+import RegisterProfile, {
+  RegisterProfileFormData,
+} from "@/components/register/RegisterProfile/RegisterProfileForm";
 import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
 import RegisterStepper from "@/components/register/RegisterStepper";
 import RegisterSubmitter, {
   validators,
 } from "@/components/register/RegisterSubmitter";
 import RegisterTest, {
+  RegisterTestFormData,
   isAgree,
 } from "@/components/register/RegisterTest/RegisterTest";
 import RegisterTitle from "@/components/register/RegisterTitle/RegisterTitle";
@@ -59,30 +62,27 @@ const Page = () => {
         return <RegisterTest />;
       default:
         return (
-          <>
-            <RegisterSubmitter />
-            <Box
+          <Box
+            sx={{
+              minHeight: "80vh",
+              justifyContent: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box sx={{ width: "100px" }}>
+              <FaRegCheckCircle size color="#61BF00" />
+            </Box>
+            <Typography
               sx={{
-                minHeight: "80vh",
-                justifyContent: "center",
-                display: "flex",
-                flexDirection: "column",
+                mt: "1rem",
+                fontSize: "50px",
+                fontFamily: ibmBold.style.fontFamily,
               }}
             >
-              <Box sx={{ width: "100px" }}>
-                <FaRegCheckCircle size color="#61BF00" />
-              </Box>
-              <Typography
-                sx={{
-                  mt: "1rem",
-                  fontSize: "50px",
-                  fontFamily: ibmBold.style.fontFamily,
-                }}
-              >
-                Thank you!
-              </Typography>
-            </Box>
-          </>
+              Thank you!
+            </Typography>
+          </Box>
         );
     }
   };
@@ -164,8 +164,38 @@ const Page = () => {
     <form
       key="handleSubmitTest"
       onSubmit={handleSubmitTest?.((formData) => {
-        setCurrentStep((currentStep) => currentStep + 1);
-        window.scrollTo(0, 0);
+        const question = JSON.parse(
+          localStorage.getItem("registerQuestion")!
+        ) as RegisterTestFormData;
+        const profile = JSON.parse(
+          localStorage.getItem("registerProfileFormData")!
+        ) as RegisterProfileFormData;
+        const test = JSON.parse(
+          localStorage.getItem("registerTest")!
+        ) as RegisterTestFormData;
+
+        const data = {
+          ...profile,
+          ...question,
+          ...test,
+        };
+
+        fetch("/api/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            console.log(res);
+            setCurrentStep((currentStep) => currentStep + 1);
+            window.scrollTo(0, 0);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })}
     >
       <button
@@ -256,7 +286,8 @@ const Page = () => {
                   alignSelf: "center",
                   width: "100%",
                   "@media (min-width: 1024px)": {
-                    width: "700px",
+                    maxWidth: "700px",
+                    width: "100%",
                   },
                 }}
               >
