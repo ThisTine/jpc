@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   const requestData = registerQuestionFormData.merge(registerTestFormData).merge(registerProfileFormData);
   type reqType = z.infer<typeof requestData>;
 
-  const introductionMapper :Omit<reqType, "q1"| "q2"|"q3"|"q4"| "q5"|"q6"|"q7"| "q8"> = {
+  const introductionMapper :Omit<reqType, "q1"| "q2"|"q3"|"q4"| "q5"|"q6"|"q7"| "q8" | "join_date"> &{join_date:string} = {
     name: "entry.793832892",
     nickName: "entry.460075085",
     email: "entry.1923488374",
@@ -28,10 +28,11 @@ export async function POST(request: Request) {
     why_join: "entry.278131495",
     expect: "entry.1581014036",
     experience: "entry.1178586347",
-    goal: "entry.1624665163"
+    goal: "entry.1624665163",
+    join_date: "entry.1966150477"
   };
 
-  const questionMapper :Omit<reqType, "nickName"|"email"|"phone"|"school"|"educationLevel"|"dicease"|"pr"|"self_introduction"|"why_join"|"expect"|"experience"|"goal"| "q1" |"q2" |"q3"|"q5">
+  const questionMapper :Omit<reqType, "join_date"| "nickName"|"email"|"phone"|"school"|"educationLevel"|"dicease"|"pr"|"self_introduction"|"why_join"|"expect"|"experience"|"goal"| "q1" |"q2" |"q3"|"q5">
     & {q1:string, q2:string,q3:string,q5:string}= {
       name: "entry.349955612",
       q1: "entry.1702615270",
