@@ -164,13 +164,15 @@ const Title = () => {
           alt="cartoon-duck"
           data-aos="fade-right"
           className={cls(
-            "absolute xl:top-[580px] xl:-left-10 xl:w-[400px] md:w-[320px] md:top-[45%] w-[260px] -left-14 top-[620px]"
+            "absolute xl:top-[580px] xl:-left-10 xl:w-[400px] md:w-[320px] md:top-[45%] w-[200px] -left-14 top-[35%]"
           )}
           src={CartoonDuck}
         />
         <Image
           alt="sparkle"
-          className={cls("absolute top-[650px] right-8 md:hidden")}
+          className={cls(
+            "absolute top-[650px] right-8 md:hidden w-[70px] md:w-full"
+          )}
           src={Sparkle}
         />
         <Image
@@ -244,7 +246,102 @@ const Title = () => {
             fill="#87cefa"
           />
         </svg>
-        <div id="about-jpc" className="-z-10 h-[1200px] w-full bg-primary transition md:h-[1100px]" />
+        <div
+          id="about-jpc"
+          className="-z-10 w-full bg-primary transition flex flex-col items-center pt-20"
+        >
+          <Image
+            alt="info-cloud"
+            data-aos="fade-up"
+            className={cls("-z-10 w-[90%] md:w-[60%] md:self-end md:mr-14")}
+            src={InfoCloud}
+          />
+          <div
+            className={cls(
+              "flex flex-col items-center w-[90%] md:flex-row md:mt-10 justify-center"
+            )}
+          >
+            <Image
+              alt="joseph-shadow"
+              data-aos="fade-up"
+              className={cls("w-44 md:w-[240px] lg:w-[320px] xl:w-auto mt-8")}
+              src={JosephShadow}
+            />
+            <div className="xl:w-[50%]">
+              <Image
+                alt="info-title"
+                data-aos="fade-up"
+                className={cls("")}
+                src={InfoTitle}
+              />
+              <div className="md:ml-10" data-aos="zoom-out">
+                <p className={cls("xl:pr-4 xl:text-h5 mt-9")}>
+                  Junior Programmers Camp คือค่ายสำหรับน้อง ๆ และเพื่อน ๆ
+                  ที่มีความสนใจในหลักสูตร Computer Science หรือ ComSci Inter
+                  ของมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรีโดยเป็นค่ายที่มีทั้ง
+                  กิจกรรมและ วิชาการที่จะทำให้เราได้รู้จักเพื่อนใหม่ ๆ และพี่ ๆ
+                  ชาวค่าย
+                </p>
+                <button
+                  className={cls(
+                    "mt-11 cursor-pointer max-sm:w-full bg-[#FFD700] hover:bg-error transition rounded-2xl border-2 border-black animate-bounce animate-infinite animate-duration-[2000ms] animate-ease-in"
+                  )}
+                  type="button"
+                  onClick={() => {
+                    router.push("/register");
+                  }}
+                >
+                  <div className={cls("py-4 px-16 font-semibold ")}>
+                    สมัครเลย
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <Image
+            alt="info-rope"
+            className={cls(
+              "self-end w-[20%] mr-4 pb-12 xl:w-auto md:w-[15%] md:bottom-[180px]"
+            )}
+            data-aos="fade-up"
+            src={InfoRope}
+          />
+          <Image
+            alt="star-yellow"
+            data-aos="fade-right"
+            className={cls(
+              "absolute z-10 bottom-0 left-10 w-28 md:w-[20%] xl:w-auto"
+            )}
+            src={StarYellow}
+          />
+          <Image
+            alt="star-red"
+            data-aos="fade-left"
+            className={cls("self-end mr-10 w-16 md:self-center md:w-20")}
+            src={StarRed}
+          />
+          <Image
+            alt="star-yellow"
+            data-aos="fade-left"
+            className={cls(
+              "absolute z-10 bottom-0 right-10 w-28 hidden md:block"
+            )}
+            src={StarYellow}
+          />
+          {/* <Image
+            alt="star-yellow"
+            data-aos="fade-left"
+            className={cls("-bottom-8 right-[420px] md:right-0 max-sm:hidden")}
+            src={StarYellow}
+          />
+          <Image
+            alt="star-red"
+            data-aos="fade-left"
+            className={cls("-bottom-5 right-20 hidden xl:block")}
+            src={StarRed}
+          /> */}
+          {/* </div> */}
+        </div>
         {/*<Image*/}
         {/*  alt="info-bg"*/}
         {/*  className={cls(*/}
@@ -252,7 +349,8 @@ const Title = () => {
         {/*  )}*/}
         {/*  src={InfoBg}*/}
         {/*/>*/}
-        <Image
+
+        {/* <Image
           alt="info-cloud"
           data-aos="fade-up"
           className={cls(
@@ -264,13 +362,13 @@ const Title = () => {
           alt="joseph-shadow"
           data-aos="fade-up"
           className={cls(
-            "absolute w-44 md:w-[240px] xl:w-auto top-[920px] md:top-[1250px]  md:left-12 xl:left-24"
+            "absolute w-44 md:w-[240px] xl:w-auto top-[920px] md:top-[1250px] md:left-12 xl:left-24"
           )}
           src={JosephShadow}
         />
         <div
           className={cls(
-            "flex flex-col items-start absolute top-[1130px] md:top-[1250px]   md:ml-40 xl:right-44 w-[90%] md:w-2/4"
+            "flex flex-col items-start absolute top-[1130px] md:top-[1250px] md:ml-40 xl:right-44 w-[90%] md:w-2/4"
           )}
         >
           <Image
@@ -302,48 +400,50 @@ const Title = () => {
             </button>
           </div>
         </div>
-        <Image
-          alt="info-rope"
-          className={cls(
-            "absolute xl:w-auto md:w-[15%] w-[20%] bottom-14 right-6 md:bottom-[180px] md:right-12 xl:right-24"
-          )}
-          data-aos="fade-up"
-          src={InfoRope}
-        />
-        <Image
-          alt="star-yellow"
-          // ref={starYellow}
-          data-aos="fade-right"
-          className={cls(
-            "absolute -bottom-10 left-10 md:-bottom-4 md:left-2 xl:bottom-0 xl:left-6 w-28 md:w-[20%] xl:w-auto"
-          )}
-          src={StarYellow}
-        />
-        <Image
-          alt="star-red"
-          // ref={starRed}
-          data-aos="fade-right"
-          className={cls(
-            "absolute -bottom-4 right-8 md:left-[40%] xl:-bottom-2 xl:left-[430px] max-sm:w-16"
-          )}
-          src={StarRed}
-        />
-        <Image
-          alt="star-yellow"
-          // ref={starYellow2}
-          data-aos="fade-left"
-          className={cls(
-            "absolute -bottom-8 right-[420px] md:right-0 max-sm:hidden"
-          )}
-          src={StarYellow}
-        />
-        <Image
-          alt="star-red"
-          // ref={starRed2}
-          data-aos="fade-left"
-          className={cls("absolute -bottom-5 right-20 hidden xl:block")}
-          src={StarRed}
-        />
+        <div className="absolute z-10">
+          <Image
+            alt="info-rope"
+            className={cls(
+              "absolute xl:w-auto md:w-[15%] w-[20%] bottom-14 right-6 md:bottom-[180px] md:right-12 xl:right-24"
+            )}
+            data-aos="fade-up"
+            src={InfoRope}
+          />
+          <Image
+            alt="star-yellow"
+            // ref={starYellow}
+            data-aos="fade-right"
+            className={cls(
+              "z-10 absolute -bottom-10 left-10 md:-bottom-4 md:left-2 xl:bottom-0 xl:left-6 w-28 md:w-[20%] xl:w-auto"
+            )}
+            src={StarYellow}
+          />
+          <Image
+            alt="star-red"
+            // ref={starRed}
+            data-aos="fade-right"
+            className={cls(
+              "z-10 absolute -bottom-4 right-8 md:left-[40%] xl:-bottom-2 xl:left-[430px] max-sm:w-16"
+            )}
+            src={StarRed}
+          />
+          <Image
+            alt="star-yellow"
+            // ref={starYellow2}
+            data-aos="fade-left"
+            className={cls(
+              "absolute -bottom-8 right-[420px] md:right-0 max-sm:hidden"
+            )}
+            src={StarYellow}
+          />
+          <Image
+            alt="star-red"
+            // ref={starRed2}
+            data-aos="fade-left"
+            className={cls("absolute -bottom-5 right-20 hidden xl:block")}
+            src={StarRed}
+          />
+        </div> */}
       </div>
     </div>
   );
