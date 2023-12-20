@@ -185,7 +185,7 @@ const Title = () => {
           alt="cartoon-egg"
           data-aos="fade-left"
           className={cls(
-            "absolute xl:w-auto xl:top-[500px] xl:right-[200px] md:w-[250px] md:top-[40%] w-[120px] right-0 top-[430px]"
+            "absolute xl:w-auto xl:top-[500px] xl:right-[200px] md:w-[250px] md:top-[40%] w-[120px] right-0 top-[430px] animate-wiggle animate-infinite animate-duration-[2000ms] animate-ease-in"
           )}
           src={CartoonTamagochi}
         />
@@ -244,7 +244,7 @@ const Title = () => {
             fill="#87cefa"
           />
         </svg>
-        <div className="-z-10 h-[1200px] w-full bg-primary md:h-[1100px]" />
+        <div id="about-jpc" className="-z-10 h-[1200px] w-full bg-primary transition md:h-[1100px]" />
         {/*<Image*/}
         {/*  alt="info-bg"*/}
         {/*  className={cls(*/}
@@ -264,13 +264,13 @@ const Title = () => {
           alt="joseph-shadow"
           data-aos="fade-up"
           className={cls(
-            "absolute w-44 md:w-[240px] xl:w-auto top-[920px] md:top-[1250px] xl:top-[980px] md:left-12 xl:left-24"
+            "absolute w-44 md:w-[240px] xl:w-auto top-[920px] md:top-[1250px]  md:left-12 xl:left-24"
           )}
           src={JosephShadow}
         />
         <div
           className={cls(
-            "flex flex-col items-start absolute top-[1130px] md:top-[1250px] xl:top-[1050px] md:ml-40 xl:right-44 w-[90%] md:w-2/4"
+            "flex flex-col items-start absolute top-[1130px] md:top-[1250px]   md:ml-40 xl:right-44 w-[90%] md:w-2/4"
           )}
         >
           <Image
@@ -291,14 +291,14 @@ const Title = () => {
             </p>
             <button
               className={cls(
-                "mt-11 max-sm:w-full bg-[#FFD700] rounded-2xl border-2 border-black"
+                "mt-11 cursor-pointer max-sm:w-full bg-[#FFD700] hover:bg-error transition rounded-2xl border-2 border-black animate-bounce animate-infinite animate-duration-[2000ms] animate-ease-in"
               )}
               type="button"
               onClick={() => {
                 router.push("/register");
               }}
             >
-              <div className={cls("py-4 px-16 font-semibold")}>สมัครเลย</div>
+              <div className={cls("py-4 px-16 font-semibold ")}>สมัครเลย</div>
             </button>
           </div>
         </div>

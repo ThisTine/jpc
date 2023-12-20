@@ -8,6 +8,7 @@ export default function useAnimationParallax(
   const $elm = useRef<HTMLImageElement>(null);
   useEffect(() => {
     const scrollAnimation = (moveY: number) => {
+      if (!$elm.current) return;
       const element = $elm.current!;
       element.style.transform = `translateY(${moveY}px)`;
     };
