@@ -9,8 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { register } from "module";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useMemo } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -23,7 +22,7 @@ export type RegisterTestSingleChoiceProps = Readonly<{
   name: string;
   title: string;
   choices: RegisterTestChoice[];
-  src?: string;
+  src?: StaticImageData;
 }>;
 
 export default function RegisterTestSingleChoice({
@@ -46,7 +45,7 @@ export default function RegisterTestSingleChoice({
           <Image
             src={src}
             alt="test"
-            style={{ width: "100%", height: "auto", maxWidth: "480px" }}
+            style={{ width: "100%", height: "auto", maxWidth: "1024px" }}
           />
         </Box>
       ) : null}

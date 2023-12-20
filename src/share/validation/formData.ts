@@ -12,7 +12,7 @@ export const registerQuestionFormData = z.object({
 
 export const registerTestFormData = z.object({
   q1: z.array(z.string()).min(1),
-  q2: z.array(z.string()).min(1),
+  q2: z.string().min(1),
   q3: z.array(z.string()).min(1),
   q4: z.string().min(1),
   q5: z.array(z.string()).min(1),

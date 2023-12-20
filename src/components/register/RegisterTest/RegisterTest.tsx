@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Checkbox, FormControlLabel, Stack, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterTestMultipleChoice from "./RegisterTestMultipleChoice";
@@ -18,6 +12,7 @@ import RegisterLocalStorage from "../RegisterLocalStorage";
 import { validators } from "../RegisterSubmitter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { proxy, useSnapshot } from "valtio";
+import TestCode from "../../../assets/test_code.png";
 
 export interface RegisterTestFormData
   extends z.infer<typeof registerTestFormData> {}
@@ -31,7 +26,7 @@ export default function RegisterTest() {
   const form = useForm<RegisterTestFormData>({
     defaultValues: {
       q1: [],
-      q2: [],
+      q2: "",
       q3: [],
       q4: "",
       q5: [],
@@ -93,7 +88,7 @@ export default function RegisterTest() {
         />
 
         <RegisterTestSingleChoice
-          src=""
+          src={TestCode}
           title="4. ถ้าโปรแกรมให้ผลลัพธ์ '315' ค่าของ X ควรมีค่าเป็นเท่าไหร่ ?"
           name="q4"
           choices={[
