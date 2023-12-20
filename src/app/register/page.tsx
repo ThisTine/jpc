@@ -82,6 +82,16 @@ const Page = () => {
             >
               Thank you!
             </Typography>
+            <Typography
+              sx={{
+                mt: "1rem",
+                fontSize: "36px",
+                fontFamily: ibmBold.style.fontFamily,
+                fontWeight: "normal",
+              }}
+            >
+              รอผลการยืนยันในอีเมล์ของเพื่อนๆ เลยครับ
+            </Typography>
           </Box>
         );
     }
@@ -186,16 +196,10 @@ const Page = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            console.log(res);
-            setCurrentStep((currentStep) => currentStep + 1);
-            window.scrollTo(0, 0);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        });
+
+        setCurrentStep((currentStep) => currentStep + 1);
+        window.scrollTo(0, 0);
       })}
     >
       <button
