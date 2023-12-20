@@ -1,7 +1,14 @@
-import { Checkbox, FormControlLabel, Stack, Typography } from "@mui/material";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { register } from "module";
 import { useMemo } from "react";
-import { useFormContext } from "react-hook-form";
+import { Form, useFormContext } from "react-hook-form";
 
 export type RegisterTestChoice = Readonly<{
   id: string;
@@ -19,7 +26,7 @@ export default function RegisterTestMultipleChoice({
   choices,
   title,
 }: RegisterTestMultipleChoiceProps) {
-  const { register } = useFormContext();
+  const { register, formState } = useFormContext();
   const renderChoices = useMemo(
     () => choices.toSorted((choice) => Math.random() - 0.5),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,13 +39,18 @@ export default function RegisterTestMultipleChoice({
         {title}
       </Typography>
       <Stack gap={1}>
-        {renderChoices.map((choice) => (
-          <FormControlLabel
-            key={choice.id}
-            control={<Checkbox {...register(name)} value={choice.id} />}
-            label={choice.title}
-          />
-        ))}
+        <FormControl error={!!formState.errors[name]}>
+          {renderChoices.map((choice) => (
+            <FormControlLabel
+              key={choice.id}
+              control={<Checkbox {...register(name)} value={choice.id} />}
+              label={choice.title}
+            />
+          ))}
+          <FormHelperText>
+            {String(formState.errors[name]?.message ?? "")}
+          </FormHelperText>
+        </FormControl>
       </Stack>
     </Stack>
   );

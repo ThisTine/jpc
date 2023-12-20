@@ -19,7 +19,7 @@ export default function RegisterTestWriting({
   name,
   title,
 }: RegisterTestWritingProps) {
-  const { register } = useFormContext();
+  const { register, formState } = useFormContext();
 
   return (
     <Stack width="100%">
@@ -31,6 +31,8 @@ export default function RegisterTestWriting({
         multiline
         minRows={10}
         placeholder="* Your Answer *"
+        error={!!formState.errors[name]}
+        helperText={String(formState.errors[name]?.message ?? "")}
         {...register(name)}
       />
     </Stack>

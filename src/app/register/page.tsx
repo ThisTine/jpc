@@ -5,15 +5,21 @@ import RegisterConsent from "@/components/register/RegisterConsent/RegisterConse
 import RegisterProfile from "@/components/register/RegisterProfile/RegisterProfileForm";
 import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
 import RegisterStepper from "@/components/register/RegisterStepper";
-import RegisterTest from "@/components/register/RegisterTest/RegisterTest";
+import RegisterSubmitter, {
+  validators,
+} from "@/components/register/RegisterSubmitter";
+import RegisterTest, {
+  isAgree,
+} from "@/components/register/RegisterTest/RegisterTest";
 import RegisterTitle from "@/components/register/RegisterTitle/RegisterTitle";
 import { ibm, ibmBold } from "@/utils/fonts";
 import {
   Box,
+  Button,
   Container,
   ThemeProvider,
   Typography,
-  createTheme
+  createTheme,
 } from "@mui/material";
 import React from "react";
 import {
@@ -21,6 +27,7 @@ import {
   FaChevronRight,
   FaRegCheckCircle,
 } from "react-icons/fa";
+import { useSnapshot } from "valtio";
 
 const theme = createTheme({
   typography: {
@@ -52,30 +59,146 @@ const Page = () => {
         return <RegisterTest />;
       default:
         return (
-          <Box
-            sx={{
-              minHeight: "80vh",
-              justifyContent: "center",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Box sx={{ width: "100px" }}>
-              <FaRegCheckCircle size color="#61BF00" />
-            </Box>
-            <Typography
+          <>
+            <RegisterSubmitter />
+            <Box
               sx={{
-                mt: "1rem",
-                fontSize: "50px",
-                fontFamily: ibmBold.style.fontFamily,
+                minHeight: "80vh",
+                justifyContent: "center",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
-              Thank you!
-            </Typography>
-          </Box>
+              <Box sx={{ width: "100px" }}>
+                <FaRegCheckCircle size color="#61BF00" />
+              </Box>
+              <Typography
+                sx={{
+                  mt: "1rem",
+                  fontSize: "50px",
+                  fontFamily: ibmBold.style.fontFamily,
+                }}
+              >
+                Thank you!
+              </Typography>
+            </Box>
+          </>
         );
     }
   };
+
+  const { handleSubmitProfile, handleSubmitQuestion, handleSubmitTest } =
+    useSnapshot(validators);
+  const { agree_val } = useSnapshot(isAgree);
+
+  const validatorElements = [
+    <form
+      key="handleSubmitProfile"
+      onSubmit={handleSubmitProfile?.((formData) => {
+        console.log(formData);
+        setCurrentStep((currentStep) => currentStep + 1);
+        window.scrollTo(0, 0);
+      })}
+    >
+      <button
+        type="submit"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          boxShadow: "none",
+          background: "#2D73AE",
+          color: "white",
+          width: "150px",
+          paddingTop: "0.7rem",
+          paddingBottom: "0.7rem",
+          borderRadius: "12px",
+        }}
+      >
+        <Typography
+          sx={{
+            mr: "0.5rem",
+            fontFamily: ibmBold.style.fontFamily,
+          }}
+        >
+          ถัดไป
+        </Typography>
+        <FaChevronRight />
+      </button>
+    </form>,
+    <form
+      key="handleSubmitQuestion"
+      onSubmit={handleSubmitQuestion?.(() => {
+        setCurrentStep((currentStep) => currentStep + 1);
+        window.scrollTo(0, 0);
+      })}
+    >
+      <button
+        type="submit"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          boxShadow: "none",
+          background: "#2D73AE",
+          color: "white",
+          width: "150px",
+          paddingTop: "0.7rem",
+          paddingBottom: "0.7rem",
+          borderRadius: "12px",
+        }}
+      >
+        <Typography
+          sx={{
+            mr: "0.5rem",
+            fontFamily: ibmBold.style.fontFamily,
+          }}
+        >
+          ถัดไป
+        </Typography>
+        <FaChevronRight />
+      </button>
+    </form>,
+    <form
+      key="handleSubmitTest"
+      onSubmit={handleSubmitTest?.((formData) => {
+        setCurrentStep((currentStep) => currentStep + 1);
+        window.scrollTo(0, 0);
+      })}
+    >
+      <button
+        type="submit"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          boxShadow: "none",
+          background: "#2D73AE",
+          opacity: agree_val ? 1 : 0.5,
+          transition: "opacity 0.3s ease-in-out",
+          color: "white",
+          width: "150px",
+          paddingTop: "0.7rem",
+          paddingBottom: "0.7rem",
+          borderRadius: "12px",
+        }}
+        disabled={!agree_val}
+      >
+        <Typography
+          sx={{
+            mr: "0.5rem",
+            fontFamily: ibmBold.style.fontFamily,
+          }}
+        >
+          ถัดไป
+        </Typography>
+        <FaChevronRight />
+      </button>
+    </form>,
+  ];
 
   return (
     <ThemeProvider theme={theme}>
@@ -185,37 +308,7 @@ const Page = () => {
                 ย้อนกลับ
               </Typography>
             </Box>
-            <Box
-              onClick={() => {
-                setCurrentStep(currentStep + 1);
-                window.scrollTo(0, 0);
-              }}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                boxShadow: "none",
-                backgroundColor: "#2D73AE",
-                color: "white",
-                width: "150px",
-                py: "0.7rem",
-                borderRadius: "12px",
-                "&:hover": {
-                  boxShadow: "none",
-                },
-              }}
-            >
-              <Typography
-                sx={{
-                  mr: "0.5rem",
-                  fontFamily: ibmBold.style.fontFamily,
-                }}
-              >
-                ถัดไป
-              </Typography>
-              <FaChevronRight />
-            </Box>
+            {validatorElements[currentStep - 2] ?? null}
           </Box>
         ) : null}
       </Box>

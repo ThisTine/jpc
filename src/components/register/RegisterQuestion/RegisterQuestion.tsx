@@ -1,11 +1,24 @@
 "use client";
 
-import { Stack, TextField, Typography } from "@mui/material";
-import { FormProvider, useForm } from "react-hook-form";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  InputLabel,
+  MenuItem,
+  Select,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Controller, FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
 import { registerQuestionFormData } from "@/share/validation/formData";
 import { ibmBold } from "@/utils/fonts";
+import { validators } from "../RegisterSubmitter";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export interface RegisterQuestionFormData
   extends z.infer<typeof registerQuestionFormData> {}
@@ -19,8 +32,12 @@ export default function RegisterQuestion() {
       expect: "",
       experience: "",
       goal: "",
+      join_date: [],
     },
+    resolver: zodResolver(registerQuestionFormData),
   });
+
+  validators.registerHandler("handleSubmitQuestion", form.handleSubmit);
 
   return (
     <FormProvider {...form}>
@@ -44,7 +61,7 @@ export default function RegisterQuestion() {
           <Typography className="text-lg">
             🌟 เพื่อน ๆ ได้รับข่าวสารการประชาสัมพันธ์จากช่องทางใด?
           </Typography>
-          <TextField
+          {/* <TextField
             variant="outlined"
             fullWidth
             placeholder="กรุณาใส่คำตอบ"
@@ -53,6 +70,28 @@ export default function RegisterQuestion() {
             sx={{
               my: "8px",
             }}
+          /> */}
+          <Controller
+            name="pr"
+            control={form.control}
+            render={({ field }) => (
+              <FormControl fullWidth>
+                <InputLabel id="pr-label">คำตอบของคุณ*</InputLabel>
+                <Select
+                  label="คำตอบของคุณ*"
+                  error={!!form.formState.errors.pr}
+                  {...field}
+                >
+                  {"Facebook Instragram Camphub เพื่อนๆ รุ่นพี่ อาจารย์ ช่องทางประชาสัมพันธ์จากคณะ ช่องทางประชาสัมพันธ์จากมหาวิทยาลัย"
+                    .split(" ")
+                    .map((v) => (
+                      <MenuItem key={v} value={v}>
+                        {v}
+                      </MenuItem>
+                    ))}
+                </Select>
+              </FormControl>
+            )}
           />
         </Stack>
 
@@ -65,8 +104,10 @@ export default function RegisterQuestion() {
             fullWidth
             multiline
             minRows={4}
-            label="คำตอบของคุณ"
+            label="คำตอบของคุณ*"
             placeholder="กรุณาใส่คำตอบ*"
+            error={!!form.formState.errors.self_introduction}
+            helperText={form.formState.errors.self_introduction?.message}
             {...form.register("self_introduction")}
           />
         </Stack>
@@ -80,8 +121,10 @@ export default function RegisterQuestion() {
             fullWidth
             multiline
             minRows={4}
-            label="คำตอบของคุณ"
+            label="คำตอบของคุณ*"
             placeholder="กรุณาใส่คำตอบ*"
+            error={!!form.formState.errors.why_join}
+            helperText={form.formState.errors.why_join?.message}
             {...form.register("why_join")}
           />
         </Stack>
@@ -96,8 +139,10 @@ export default function RegisterQuestion() {
           fullWidth
           multiline
           minRows={4}
-          label="คำตอบของคุณ"
+          label="คำตอบของคุณ*"
           placeholder="กรุณาใส่คำตอบ*"
+          error={!!form.formState.errors.expect}
+          helperText={form.formState.errors.expect?.message}
           {...form.register("expect")}
         />
       </Stack>
@@ -112,8 +157,10 @@ export default function RegisterQuestion() {
           fullWidth
           multiline
           minRows={4}
-          label="คำตอบของคุณ"
+          label="คำตอบของคุณ*"
           placeholder="กรุณาใส่คำตอบ*"
+          error={!!form.formState.errors.experience}
+          helperText={form.formState.errors.experience?.message}
           {...form.register("experience")}
         />
       </Stack>
@@ -127,10 +174,36 @@ export default function RegisterQuestion() {
           fullWidth
           multiline
           minRows={4}
-          label="คำตอบของคุณ"
+          label="คำตอบของคุณ*"
           placeholder="กรุณาใส่คำตอบ*"
+          error={!!form.formState.errors.goal}
+          helperText={form.formState.errors.goal?.message}
           {...form.register("goal")}
         />
+      </Stack>
+
+      <Stack width="100%" my="16px">
+        <Typography className="text-lg" mb="10px">
+          🌟 สามารถเข้าร่วม JPC วันไหนบ้าง?
+        </Typography>
+        <FormControl error={!!form.formState.errors.join_date}>
+          {[
+            "วันศุกร์ที่ 12 มกราคม 2567",
+            "วันเสาร์ที่ 13 มกราคม 2567",
+            "วันอาทิตย์ที่ 14 มกราคม 2567",
+          ].map((choice) => (
+            <FormControlLabel
+              key={choice}
+              control={
+                <Checkbox {...form.register("join_date")} value={choice} />
+              }
+              label={choice}
+            />
+          ))}
+          <FormHelperText>
+            {String(form.formState.errors.join_date?.message ?? "")}
+          </FormHelperText>
+        </FormControl>
       </Stack>
 
       <RegisterLocalStorage store="registerQuestion" />

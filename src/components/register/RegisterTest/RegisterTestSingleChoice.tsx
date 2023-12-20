@@ -1,12 +1,16 @@
 import {
+  Box,
   Checkbox,
+  FormControl,
   FormControlLabel,
+  FormHelperText,
   Radio,
   RadioGroup,
   Stack,
   Typography,
 } from "@mui/material";
 import { register } from "module";
+import Image from "next/image";
 import { useMemo } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -19,14 +23,16 @@ export type RegisterTestSingleChoiceProps = Readonly<{
   name: string;
   title: string;
   choices: RegisterTestChoice[];
+  src?: string;
 }>;
 
 export default function RegisterTestSingleChoice({
   name,
   choices,
   title,
+  src,
 }: RegisterTestSingleChoiceProps) {
-  const { register } = useFormContext();
+  const { register, formState } = useFormContext();
   const renderChoices = useMemo(
     () => choices.toSorted((choice) => Math.random() - 0.5),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,17 +41,31 @@ export default function RegisterTestSingleChoice({
 
   return (
     <Stack width="100%">
+      {src ? (
+        <Box display="flex" justifyContent="center" paddingX={3}>
+          <Image
+            src={src}
+            alt="test"
+            style={{ width: "100%", height: "auto", maxWidth: "480px" }}
+          />
+        </Box>
+      ) : null}
       <Typography className="text-lg">{title}</Typography>
       <Stack gap={1}>
-        <RadioGroup name={name}>
-          {renderChoices.map((choice) => (
-            <FormControlLabel
-              key={choice.id}
-              control={<Radio {...register(name)} value={choice.id} />}
-              label={choice.title}
-            />
-          ))}
-        </RadioGroup>
+        <FormControl error={!!formState.errors[name]}>
+          <RadioGroup name={name}>
+            {renderChoices.map((choice) => (
+              <FormControlLabel
+                key={choice.id}
+                control={<Radio {...register(name)} value={choice.id} />}
+                label={choice.title}
+              />
+            ))}
+          </RadioGroup>
+          <FormHelperText>
+            {String(formState.errors[name]?.message ?? "")}
+          </FormHelperText>
+        </FormControl>
       </Stack>
     </Stack>
   );
