@@ -136,6 +136,7 @@ const Title = () => {
         />
         <Link href="/register" className="cursor-pointer">
           <div
+            className="animate-pulse animate-duration-[1000ms] animate-infinite animate-ease-in hover:animate-stop"
             ref={buttonContainer}
             data-aos="zoom-in"
             onMouseEnter={() => {
@@ -150,16 +151,6 @@ const Title = () => {
             }}
           />
         </Link>
-        {/*<Image*/}
-        {/*  alt="register-button"*/}
-        {/*  onClick={() => {*/}
-        {/*    router.push("/register");*/}
-        {/*  }}*/}
-        {/*  className={cls(*/}
-        {/*    "absolute xl:top-[560px] md:top-[40%] top-[520px] xl:w-[444px] md:w-[400px] w-[210px] hover:cursor-pointer"*/}
-        {/*  )}*/}
-        {/*  src={RegisterButton}*/}
-        {/*/>*/}
         <Image
           alt="cartoon-duck"
           data-aos="fade-right"
