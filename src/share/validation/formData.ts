@@ -1,29 +1,32 @@
-import {z} from "zod";
+import { z } from "zod";
 
 export const registerQuestionFormData = z.object({
-  pr: z.string(),
-  self_introduction: z.string(),
-  why_join: z.string(),
-  expect: z.string(),
-  experience: z.string(),
-  goal: z.string(),
+  pr: z.string().min(1),
+  self_introduction: z.string().min(1),
+  why_join: z.string().min(1),
+  expect: z.string().min(1),
+  experience: z.string().min(1),
+  goal: z.string().min(1),
+  join_date: z.array(z.string()).min(1),
 });
+
 export const registerTestFormData = z.object({
-  q1: z.array(z.string()),
-  q2: z.array(z.string()),
-  q3: z.array(z.string()),
-  q4: z.string(),
-  q5: z.array(z.string()),
-  q6: z.string(),
-  q7: z.string(),
-  q8: z.string(),
+  q1: z.array(z.string()).min(1),
+  q2: z.array(z.string()).min(1),
+  q3: z.array(z.string()).min(1),
+  q4: z.string().min(1),
+  q5: z.array(z.string()).min(1),
+  q6: z.string().min(1),
+  q7: z.string().min(1),
+  q8: z.string().min(1),
 });
+
 export const registerProfileFormData = z.object({
-  name: z.string(),
-  nickName: z.string(),
-  phone: z.string(),
-  email: z.string(),
-  school: z.string(),
-  educationLevel: z.string(),
-  dicease: z.string(),
+  name: z.string().min(1),
+  nickName: z.string().min(1),
+  phone: z.string().min(1),
+  email: z.string().min(1),
+  school: z.string().min(1),
+  educationLevel: z.string().min(1),
+  dicease: z.string().min(1),
 });
