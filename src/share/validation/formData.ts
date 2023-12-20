@@ -1,32 +1,42 @@
 import { z } from "zod";
 
 export const registerQuestionFormData = z.object({
-  pr: z.string().min(1),
-  self_introduction: z.string().min(1),
-  why_join: z.string().min(1),
-  expect: z.string().min(1),
-  experience: z.string().min(1),
-  goal: z.string().min(1),
-  join_date: z.array(z.string()).min(1),
+  pr: z.string().min(1, { message: "กรุณากรอกด้วยครับ" }),
+  self_introduction: z
+    .string()
+    .min(1, { message: "กรุณากรอกข้อมูลแนะนำตัวด้วยครับ" }),
+  why_join: z
+    .string()
+    .min(1, { message: "กรุณากรอกเหตุผลที่เข้าร่วมด้วยครับ" }),
+  expect: z.string().min(1, { message: "กรุณากรอกด้วยครับ" }),
+  experience: z.string().min(1, { message: "กรุณากรอกประสบการณ์ด้วยครับ" }),
+  goal: z.string().min(1, { message: "กรุณากรอกด้วยครับ" }),
+  join_date: z
+    .array(z.string())
+    .min(1, { message: "กรุณาเลือกวันเข้าร่วมด้วยครับ" }),
 });
 
 export const registerTestFormData = z.object({
-  q1: z.array(z.string()).min(1),
-  q2: z.string().min(1),
-  q3: z.array(z.string()).min(1),
-  q4: z.string().min(1),
-  q5: z.array(z.string()).min(1),
-  q6: z.string().min(1),
-  q7: z.string().min(1),
-  q8: z.string().min(1),
+  q1: z.array(z.string()).min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q2: z.string().min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q3: z.array(z.string()).min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q4: z.string().min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q5: z.array(z.string()).min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q6: z.string().min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q7: z.string().min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
+  q8: z.string().min(1, { message: "กรุณาตอบคำถามด้วยครับ" }),
 });
 
 export const registerProfileFormData = z.object({
-  name: z.string().min(1),
-  nickName: z.string().min(1),
-  phone: z.string().min(1),
-  email: z.string().min(1),
-  school: z.string().min(1),
-  educationLevel: z.string().min(1),
-  dicease: z.string().min(1),
+  name: z.string().min(1, { message: "กรุณากรอกชื่อด้วยครับ" }),
+  nickName: z.string().min(1, { message: "กรุณากรอกชื่อเล่นด้วยครับ" }),
+  phone: z.string().min(1, { message: "กรุณากรอกหมายเลขโทรศัพท์ด้วยครับ" }),
+  email: z.string().min(1, { message: "กรุณากรอกอีเมลด้วยครับ" }),
+  school: z
+    .string()
+    .min(1, { message: "กรุณากรอกโรงเรียน/มหาวิทยาลัยด้วยครับ" }),
+  educationLevel: z
+    .string()
+    .min(1, { message: "กรุณากรอกระดับการศึกษาด้วยครับ" }),
+  dicease: z.string().min(1, { message: "กรุณากรอกโรคด้วยครับ" }),
 });

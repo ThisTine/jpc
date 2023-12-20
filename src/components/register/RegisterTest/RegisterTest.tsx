@@ -105,7 +105,7 @@ export default function RegisterTest() {
           choices={[
             { id: "1", title: "192.187.11.1" },
             { id: "2", title: "257.21.3.1" },
-            { id: "3", title: "28.6.223.5.231" },
+            { id: "3", title: "49.228.105.40" },
             { id: "4", title: "2606:4700:4700::64" },
           ]}
         />
