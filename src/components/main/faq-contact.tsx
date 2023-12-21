@@ -59,6 +59,7 @@ const FaqContact = () => {
 
   return (
     <div className={cls("relative bg-[#FF6961]")}>
+      {/* <div className="relative pt-24 xl:pt-28"></div> */}
       <div className="relative pt-24 xl:pt-28">
         <div className="bg-[#EFF2F2]">
           <Image

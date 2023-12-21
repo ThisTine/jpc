@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkbox, Stack, Typography } from "@mui/material";
+import { Checkbox, FormControlLabel, Stack, Typography } from "@mui/material";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterTestMultipleChoice from "./RegisterTestMultipleChoice";
@@ -8,15 +8,25 @@ import RegisterTestSingleChoice from "./RegisterTestSingleChoice";
 import RegisterTestWriting from "./RegisterTestWriting";
 import { registerTestFormData } from "@/share/validation/formData";
 import { ibmBold } from "@/utils/fonts";
+import RegisterLocalStorage from "../RegisterLocalStorage";
+import { validators } from "../RegisterSubmitter";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { proxy, useSnapshot } from "valtio";
+import TestCode from "../../../assets/test_code.png";
 
 export interface RegisterTestFormData
   extends z.infer<typeof registerTestFormData> {}
 
+export const isAgree = proxy({
+  agree_val: false,
+});
+
 export default function RegisterTest() {
+  const { agree_val } = useSnapshot(isAgree);
   const form = useForm<RegisterTestFormData>({
     defaultValues: {
       q1: [],
-      q2: [],
+      q2: "",
       q3: [],
       q4: "",
       q5: [],
@@ -24,7 +34,10 @@ export default function RegisterTest() {
       q7: "",
       q8: "",
     },
+    resolver: zodResolver(registerTestFormData),
   });
+
+  validators.registerHandler("handleSubmitTest", form.handleSubmit);
 
   return (
     <FormProvider {...form}>
@@ -75,7 +88,8 @@ export default function RegisterTest() {
         />
 
         <RegisterTestSingleChoice
-          title="4. ถ้าโปรแกรมให้ผลลัพธ์ ‘315’ ค่าของ X ควรมีค่าเป็นเท่าไหร่?"
+          src={TestCode}
+          title="4. ถ้าโปรแกรมให้ผลลัพธ์ '315' ค่าของ X ควรมีค่าเป็นเท่าไหร่ ?"
           name="q4"
           choices={[
             { id: "1", title: "26" },
@@ -91,7 +105,7 @@ export default function RegisterTest() {
           choices={[
             { id: "1", title: "192.187.11.1" },
             { id: "2", title: "257.21.3.1" },
-            { id: "3", title: "28.6.223.5.231" },
+            { id: "3", title: "49.228.105.40" },
             { id: "4", title: "2606:4700:4700::64" },
           ]}
         />
@@ -118,12 +132,17 @@ export default function RegisterTest() {
             alignItems: "center",
           }}
         >
-          <Checkbox name="consent" color="primary" required disableRipple />
-          <Typography>
-            ข้าพเจ้าขอยืนยันว่าข้อมูลทั้งหมดถูกต้องและเป็นความจริงทุกประการ
-          </Typography>
+          <FormControlLabel
+            value={agree_val}
+            onChange={(_, checked) => (isAgree.agree_val = checked)}
+            control={
+              <Checkbox name="consent" color="primary" required disableRipple />
+            }
+            label="ข้าพเจ้าขอยืนยันว่าข้อมูลทั้งหมดถูกต้องและเป็นความจริงทุกประการ"
+          />
         </Stack>
       </Stack>
+      <RegisterLocalStorage store="registerTest" />
     </FormProvider>
   );
 }

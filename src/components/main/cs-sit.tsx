@@ -8,12 +8,16 @@ import CSImage from "@/assets/cs-image.svg";
 import { cls } from "@/utils/misc";
 import Image from "next/image";
 import { modak } from "@/utils/fonts";
-import { useRef} from "react";
+import { useRef } from "react";
 
 const CsSIT = () => {
   const ref = useRef<HTMLDivElement>(null);
   return (
-    <div id="about-sit" ref={ref} className={cls("pt-20 flex flex-col items-center relative transition")}>
+    <div
+      id="about-sit"
+      ref={ref}
+      className={cls("pt-6 flex flex-col items-center relative transition")}
+    >
       {/* Desktop */}
       <div className={cls("w-[90%] justify-between flex max-xl:hidden")}>
         <div className={cls("w-[60%]")}>
