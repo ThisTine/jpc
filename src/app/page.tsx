@@ -13,9 +13,12 @@ import { changeBG, RGB } from "@/utils/colors";
 export default function Home() {
   const isDisabled = false;
   useEffect(() => {
+    const isSafariBrowser = () =>
+      navigator.userAgent.indexOf("Safari") > -1 &&
+      navigator.userAgent.indexOf("Chrome") <= -1;
+
     AOS.init({
       duration: 250,
-      // once: true,
     });
   }, []);
   useEffect(() => {
@@ -50,7 +53,7 @@ export default function Home() {
       <Title />
       <CSSIT />
       <Agenda />
-      <div className="bg-[#ff6861] h-[800px]"></div>
+      {/* <div className="bg-[#ff6861] h-[800px]"></div> */}
       <FaqContact />
       <div className={cls(isDisabled && "bg-gray-50", ["", ""])} />
     </main>

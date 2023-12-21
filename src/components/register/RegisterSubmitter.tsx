@@ -20,9 +20,5 @@ export const validators = proxy<RegisterValidator>({
 });
 
 export default function RegisterSubmitter() {
-  useEffect(() => {
-    console.log("Submit!");
-  }, []);
-
   return <></>;
 }
