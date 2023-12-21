@@ -33,6 +33,7 @@ import {
   FaChevronRight,
   FaRegCheckCircle,
 } from "react-icons/fa";
+import { RiErrorWarningLine } from "react-icons/ri";
 import { useSnapshot } from "valtio";
 
 const theme = createTheme({
@@ -66,7 +67,7 @@ const Page = () => {
         return <RegisterQuestion />;
       case 4:
         return <RegisterTest />;
-      default:
+      case 5:
         return (
           <Box
             sx={{
@@ -98,12 +99,74 @@ const Page = () => {
             >
               รอผลการยืนยันในอีเมลของเพื่อน ๆ เลยครับ
             </Typography>
-              <Typography sx={{fontSize:"20px"}}>
-                  ถ้าเพื่อน ๆ ไม่ได้รับอีเมล กรุณาตรวจสอบในในหมวดหมู่ สแปม หรือ ถังขยะ หรือติดต่อเราได้ที่ Facebook หรือ Instragram ของเราได้เลยนะครับ
-              </Typography>
-              <Typography>
-                 ในกรณีที่อีเมลที่เพื่อน ๆ ได้รับติดอยู่ในหมวดหมู่ สแปม กรุณากดนำอีเมลออกจากสแปมเพื่อรับข้อมูลข่าวสารใหม่ ๆ จาก JPC ในอนาคตด้วยนะครับ
-              </Typography>
+            <Typography sx={{ fontSize: "20px" }}>
+              ถ้าเพื่อน ๆ ไม่ได้รับอีเมล กรุณาตรวจสอบในในหมวดหมู่ สแปม หรือ
+              ถังขยะ หรือติดต่อเราได้ที่ Facebook หรือ Instragram
+              ของเราได้เลยนะครับ
+            </Typography>
+            <Typography>
+              ในกรณีที่อีเมลที่เพื่อน ๆ ได้รับติดอยู่ในหมวดหมู่ สแปม
+              กรุณากดนำอีเมลออกจากสแปมเพื่อรับข้อมูลข่าวสารใหม่ ๆ จาก JPC
+              ในอนาคตด้วยนะครับ
+            </Typography>
+          </Box>
+        );
+
+      default:
+        return (
+          <Box
+            sx={{
+              minHeight: "80vh",
+              justifyContent: "center",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Box sx={{ width: "100px" }}>
+              <RiErrorWarningLine size color="red" />
+            </Box>
+            <Typography
+              sx={{
+                mt: "1rem",
+                fontSize: "50px",
+                fontFamily: ibmBold.style.fontFamily,
+              }}
+            >
+              Error occurred !
+            </Typography>
+            <Typography
+              sx={{
+                mt: "1rem",
+                fontSize: "36px",
+                fontFamily: ibmBold.style.fontFamily,
+                fontWeight: "normal",
+              }}
+            >
+              ขออภัย เรามีปัญหาในการบันทึกข้อมูล
+            </Typography>
+            <Typography sx={{ fontSize: "20px" }}>
+              กรุณาลองใหม่อีกครั้ง หรือติดต่อพวกเราผ่าน Facebook หรือ Instagram
+              ได้เลยนะครับ
+            </Typography>
+            <button
+              type="button"
+              style={{
+                marginTop: "2rem",
+                width: "200px",
+                paddingTop: "0.5rem",
+                paddingBottom: "0.5rem",
+                borderRadius: "12px",
+                color: "white",
+                fontFamily: ibmBold.style.fontFamily,
+                background: "#2D73AE",
+              }}
+              onClick={() => {
+                setCurrentStep(1);
+                window.scrollTo(0, 0);
+              }}
+            >
+              ลองใหม่อีกครั้ง
+            </button>
           </Box>
         );
     }
@@ -217,15 +280,21 @@ const Page = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(data),
-        });
-
-        setCurrentStep((currentStep) => currentStep + 1);
-        window.scrollTo(0, 0);
+        })
+          .then(() => {
+            console.log("Register success");
+            setCurrentStep(5);
+            window.scrollTo(0, 0);
+            localStorage.removeItem("registerQuestion");
+            localStorage.removeItem("registerProfileFormData");
+            localStorage.removeItem("registerTest");
+          })
+          .catch(() => {
+            setCurrentStep(6);
+            window.scrollTo(0, 0);
+          });
 
         // clear all localStorage
-        localStorage.removeItem("registerQuestion");
-        localStorage.removeItem("registerProfileFormData");
-        localStorage.removeItem("registerTest");
       })}
     >
       <button
