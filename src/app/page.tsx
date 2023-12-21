@@ -53,7 +53,7 @@ export default function Home() {
       <Title />
       <CSSIT />
       <Agenda />
-      <div className="bg-[#ff6861] h-[800px]"></div>
+      {/* <div className="bg-[#ff6861] h-[800px]"></div> */}
       <FaqContact />
       <div className={cls(isDisabled && "bg-gray-50", ["", ""])} />
     </main>
