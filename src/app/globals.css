@@ -86,23 +86,26 @@
 }
 .left,
 .right {
-  background-color: #fb666675;
+  background-color: #ffd900;
   color: #fff;
-  padding: 10px 8px 8px 13px;
-  margin: 0 20px;
-  border-radius: 50%;
+  border-radius: 10000px;
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
   bottom: 0;
-  margin: auto 10px;
-  height: 25px;
-  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
 }
 .left {
-  left: 0;
+  left: -1rem;
 }
 .right {
-  right: 0;
+  right: -1rem;
 }
 .carousel-indicator {
   margin-top: 20px;
@@ -116,5 +119,5 @@
   height: 10px;
 }
 .active {
-  background-color: yellow;
+  background-color: #ffd900;
 }
