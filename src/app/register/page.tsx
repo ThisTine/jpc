@@ -26,7 +26,8 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
-import React from "react";
+import { useSearchParams } from "next/navigation";
+import React, { useEffect } from "react";
 import {
   FaChevronLeft,
   FaChevronRight,
@@ -45,7 +46,10 @@ const theme = createTheme({
 });
 
 const Page = () => {
-  const [currentStep, setCurrentStep] = React.useState(1);
+  const param = useSearchParams();
+  const [currentStep, setCurrentStep] = React.useState(() =>
+    parseInt(param.get("step") ?? "1")
+  );
 
   const renderRegisterStep = () => {
     switch (currentStep) {
