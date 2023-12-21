@@ -1,13 +1,23 @@
 "use client";
 
-import { Stack, StackProps, TextField, Typography } from "@mui/material";
-import { FormProvider, useForm } from "react-hook-form";
+import {
+  FormControl,
+  FormHelperText,
+  Input,
+  OutlinedInput,
+  Stack,
+  StackProps,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Form, FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
 import { registerProfileFormData } from "@/share/validation/formData";
 import { validators } from "../RegisterSubmitter";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ls } from "@/utils/misc";
+import TextFieldMasked from "./RegisterProfilePhone";
 
 export interface RegisterProfileFormData
   extends z.infer<typeof registerProfileFormData> {}
@@ -66,16 +76,19 @@ export default function RegisterProfile(props: RegisterProfileProps) {
           />
         </Stack>
         <Stack width="100%">
-          <Typography className="text-lg">เบอร์ติดต่อ</Typography>
-          <TextField
-            variant="outlined"
-            fullWidth
-            placeholder="เบอร์ติดต่อ"
-            error={!!form.formState.errors.phone}
-            helperText={form.formState.errors.phone?.message}
-            // component={TextFieldMasked}
-            {...form.register("phone")}
-          />
+          <FormControl fullWidth variant="outlined">
+            <Typography className="text-lg">เบอร์ติดต่อ</Typography>
+            <OutlinedInput
+              fullWidth
+              placeholder="0XX-XXX-XXXX"
+              error={!!form.formState.errors.phone}
+              inputComponent={TextFieldMasked as any}
+              {...form.register("phone")}
+            />
+            <FormHelperText error={!!form.formState.errors.phone}>
+              {form.formState.errors.phone?.message}
+            </FormHelperText>
+          </FormControl>
         </Stack>
         <Stack width="100%">
           <Typography className="text-lg">อีเมล</Typography>

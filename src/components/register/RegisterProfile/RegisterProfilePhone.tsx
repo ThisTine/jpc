@@ -15,7 +15,8 @@ const TextFieldMasked = React.forwardRef<HTMLInputElement, PhoneMaskProps>(
         {...other}
         mask="0##-###-####"
         definitions={{
-          "#": /[1-9]/,
+          "0": /0/,
+          "#": /\d/,
         }}
         inputRef={ref}
         onAccept={(value: any) =>

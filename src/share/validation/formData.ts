@@ -38,7 +38,31 @@ export const registerTestFormData = z.object({
 export const registerProfileFormData = z.object({
   name: z.string().min(1, { message: "กรุณากรอกชื่อด้วยครับ" }),
   nickName: z.string().min(1, { message: "กรุณากรอกชื่อเล่นด้วยครับ" }),
-  phone: z.string().min(1, { message: "กรุณากรอกหมายเลขโทรศัพท์ด้วยครับ" }),
+  phone: z
+    .string()
+    .min(1, { message: "กรุณากรอกหมายเลขโทรศัพท์ด้วยครับ" })
+    .refine(
+      (value) => {
+        if (value.length !== 12) {
+          return false;
+        }
+
+        // Ensure the first character is '0'
+        if (!value.startsWith("0")) {
+          return false;
+        }
+
+        // Ensure the rest of the characters are digits
+        const restOfDigits = value.substring(1);
+        if (!/^\d{2}-\d{3}-\d{4}$/.test(restOfDigits)) {
+          return false;
+        }
+        return true;
+      },
+      {
+        message: "กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้องด้วยครับ",
+      }
+    ),
   email: z.string().email({
     message: "กรุณากรอกอีเมลให้ถูกต้องด้วยครับ",
   }),
