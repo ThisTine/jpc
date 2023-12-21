@@ -166,7 +166,7 @@ const FaqContact = () => {
               <Image
                 alt="ig-logo"
                 className={cls(
-                  "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+                  "z-10 w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
                 )}
                 src={IgLogo}
                 data-aos="zoom-out-up"
@@ -176,7 +176,7 @@ const FaqContact = () => {
               <Image
                 alt="facebook-logo"
                 className={cls(
-                  "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+                  "z-10 w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
                 )}
                 src={FacbookLogo}
                 data-aos="zoom-out-up"
@@ -186,7 +186,7 @@ const FaqContact = () => {
             <Image
               alt="email-logo"
               className={cls(
-                "w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
+                "z-10 w-[40px] h-auto md:w-[70px] xl:w-[106px] cursor-pointer"
               )}
               src={EmailLogo}
               data-aos="zoom-out-up"
@@ -197,7 +197,7 @@ const FaqContact = () => {
         <Image
           alt="tree-bg"
           data-aos="zoom-out-up"
-          className={cls("absolute bottom-0 ml-10 pb-8 z-0 md:ml-6 md:w-[70%]")}
+          className={cls("absolute bottom-0 ml-10 pb-8 -z-10 md:ml-6 md:w-[70%]")}
           src={TreeBg}
         />
         <Image
