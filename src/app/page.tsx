@@ -16,9 +16,12 @@ import MainCarouselCarousel from "@/components/main/MainGalleryCarousel/MainGall
 export default function Home() {
   const isDisabled = false;
   useEffect(() => {
+    const isSafariBrowser = () =>
+      navigator.userAgent.indexOf("Safari") > -1 &&
+      navigator.userAgent.indexOf("Chrome") <= -1;
+
     AOS.init({
       duration: 250,
-      // once: true,
     });
   }, []);
   useEffect(() => {

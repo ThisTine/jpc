@@ -94,9 +94,7 @@ const Title = () => {
         <Image
           alt="title-bg"
           data-aos="zoom-out-up"
-          className={cls(
-            "absolute -z-10 top-[80px] mr-[100px] hidden xl:block"
-          )}
+          className={cls("absolute top-[80px] mr-[100px] hidden xl:block")}
           src={TitleBg}
           width={1100}
         />
@@ -130,7 +128,7 @@ const Title = () => {
         <Image
           alt="joseph"
           data-aos="fade-left"
-          className={cls("absolute -z-10 top-[40px] right-0 hidden xl:block")}
+          className={cls("absolute top-[40px] right-0 hidden xl:block")}
           src={Joseph}
           width={300}
         />
@@ -239,12 +237,12 @@ const Title = () => {
         </svg>
         <div
           id="about-jpc"
-          className="-z-10 w-full bg-primary transition flex flex-col items-center pt-20"
+          className="w-full bg-primary transition flex flex-col items-center pt-20"
         >
           <Image
             alt="info-cloud"
             data-aos="fade-up"
-            className={cls("-z-10 w-[90%] md:w-[60%] md:self-end md:mr-14")}
+            className={cls("w-[90%] md:w-[60%] md:self-end md:mr-14")}
             src={InfoCloud}
           />
           <div

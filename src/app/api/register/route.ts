@@ -8,7 +8,13 @@ import {
 } from "@/share/validation/formData";
 import {getRegisterEmailTemplate} from "@/email/register/reigsterEmailTemplate";
 import {sendmail} from "@/app/api/utils/sendmail";
-
+import winston from "winston";
+import {sendWebHook} from "@/utils/sendWebHook";
+const logger = winston.createLogger({
+  transports: [
+    new winston.transports.Console(),
+  ]
+});
 
 export async function POST(request: Request) {
 
@@ -81,9 +87,18 @@ export async function POST(request: Request) {
       }
     }
     try{
-      const info = await fetch(profileUrl+"&"+gInfoReq.toString());
-      const question = await fetch(questionUrl+"&"+questionReq.toString());
-      if (!info.ok || !question.ok){
+      const infoUrl = profileUrl+"&"+gInfoReq.toString();
+      const questioncomUrl = questionUrl+"&"+questionReq.toString();
+      const info = await fetch(infoUrl);
+      const question = await fetch(questioncomUrl);
+      if(!info.ok){
+        logger.error(req, {infoUrl, questioncomUrl});
+        sendWebHook("Basic info form error, please check the debug url here : ", infoUrl);
+        return NextResponse.json({error: "Failed send form to API"}, {status: 400});
+      }
+      if (!question.ok){
+        logger.error(req, {infoUrl, questioncomUrl});
+        sendWebHook("Academic question form error, please check the debug url here :",questioncomUrl);
         return NextResponse.json({error: "Failed send form to API"}, {status: 400});
       }
       const email = await getRegisterEmailTemplate({name: data.name, to: data.email});
@@ -91,10 +106,14 @@ export async function POST(request: Request) {
 
       return NextResponse.json(data);
     }catch (e){
+      logger.error(req,e);
+      sendWebHook((e??"").toString(), JSON.stringify(req.email ?? ""));
       return NextResponse.json(e, {status: 500});
     }
 
   }catch (e){
+    logger.error(req,e);
+    sendWebHook((e??"").toString(), JSON.stringify(req.email ?? ""));
     return NextResponse.json(e, {status: 400});
   }
 }
