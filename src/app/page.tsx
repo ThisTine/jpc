@@ -9,6 +9,9 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { changeBG, RGB } from "@/utils/colors";
+import GalleryHeader from "@/assets/carousel_activity.svg";
+import Image from "next/image";
+import MainCarouselCarousel from "@/components/main/MainGalleryCarousel/MainGalleryCarousel";
 
 export default function Home() {
   const isDisabled = false;
@@ -53,7 +56,20 @@ export default function Home() {
       <Title />
       <CSSIT />
       <Agenda />
-      {/* <div className="bg-[#ff6861] h-[800px]"></div> */}
+      <div className="bg-[#ff6861]">
+        <div className="container mx-auto h-full flex flex-col justify-center items-center">
+          <Image
+            src={GalleryHeader}
+            alt="Gallery Header"
+            data-aos="zoom-out-down"
+            className={cls("max-sm:w-full object-fill")}
+          />
+
+          <div className="flex w-full justify-center mt-5">
+            <MainCarouselCarousel />
+          </div>
+        </div>
+      </div>
       <FaqContact />
       <div className={cls(isDisabled && "bg-gray-50", ["", ""])} />
     </main>

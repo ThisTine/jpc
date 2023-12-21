@@ -134,6 +134,11 @@ export default function RegisterTest() {
         >
           <FormControlLabel
             value={agree_val}
+            sx={{
+              '& .MuiFormControlLabel-asterisk': {
+                display:'none'
+              }
+            }}
             onChange={(_, checked) => (isAgree.agree_val = checked)}
             control={
               <Checkbox name="consent" color="primary" required disableRipple />
