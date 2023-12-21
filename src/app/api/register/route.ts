@@ -91,9 +91,14 @@ export async function POST(request: Request) {
       const questioncomUrl = questionUrl+"&"+questionReq.toString();
       const info = await fetch(infoUrl);
       const question = await fetch(questioncomUrl);
-      if (!info.ok || !question.ok){
+      if(!info.ok){
         logger.error(req, {infoUrl, questioncomUrl});
-        sendWebHook("Form Error", JSON.stringify(req.email ?? ""));
+        sendWebHook("Basic info form error, please check the debug url here : ", infoUrl);
+        return NextResponse.json({error: "Failed send form to API"}, {status: 400});
+      }
+      if (!question.ok){
+        logger.error(req, {infoUrl, questioncomUrl});
+        sendWebHook("Academic question form error, please check the debug url here :",questioncomUrl);
         return NextResponse.json({error: "Failed send form to API"}, {status: 400});
       }
       const email = await getRegisterEmailTemplate({name: data.name, to: data.email});
