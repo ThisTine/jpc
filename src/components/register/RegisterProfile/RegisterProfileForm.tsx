@@ -7,7 +7,6 @@ import RegisterLocalStorage from "../RegisterLocalStorage";
 import { registerProfileFormData } from "@/share/validation/formData";
 import { validators } from "../RegisterSubmitter";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ls } from "@/utils/misc";
 
 export interface RegisterProfileFormData
   extends z.infer<typeof registerProfileFormData> {}
@@ -17,13 +16,13 @@ export interface RegisterProfileProps extends StackProps {}
 export default function RegisterProfile(props: RegisterProfileProps) {
   const form = useForm<RegisterProfileFormData>({
     defaultValues: {
-      name: ls("registerProfileFormData", "name") ?? "",
-      nickName: ls("registerProfileFormData", "nickName") ?? "",
-      phone: ls("registerProfileFormData", "phone") ?? "",
-      email: ls("registerProfileFormData", "email") ?? "",
-      school: ls("registerProfileFormData", "school") ?? "",
-      educationLevel: ls("registerProfileFormData", "educationLevel") ?? "",
-      dicease: ls("registerProfileFormData", "dicease") ?? "",
+      name: "",
+      nickName: "",
+      phone: "",
+      email: "",
+      school: "",
+      educationLevel: "",
+      dicease: "",
     },
     resolver: zodResolver(registerProfileFormData),
   });
