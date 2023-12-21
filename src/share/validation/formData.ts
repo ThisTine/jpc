@@ -11,17 +11,9 @@ export const registerQuestionFormData = z.object({
   expect: z.string().min(1, { message: "กรุณากรอกด้วยครับ" }),
   experience: z.string().min(1, { message: "กรุณากรอกประสบการณ์ด้วยครับ" }),
   goal: z.string().min(1, { message: "กรุณากรอกด้วยครับ" }),
-  join_date: z.array(z.string().nullable()).refine(
-    (dates) => {
-      const nonNullStrings = dates.filter(
-        (date) => typeof date === "string" && date.trim() !== ""
-      );
-      return nonNullStrings.length > 0;
-    },
-    {
-      message: "กรุณาเลือกวันเข้าร่วมด้วยครับ",
-    }
-  ),
+  join_date: z
+    .array(z.string())
+    .min(1, { message: "กรุณาเลือกวันเข้าร่วมด้วยครับ" }),
 });
 
 export const registerTestFormData = z.object({
@@ -46,5 +38,5 @@ export const registerProfileFormData = z.object({
   educationLevel: z
     .string()
     .min(1, { message: "กรุณากรอกระดับการศึกษาด้วยครับ" }),
-  dicease: z.string(),
+  dicease: z.string().min(1, { message: "กรุณากรอกโรคด้วยครับ" }),
 });

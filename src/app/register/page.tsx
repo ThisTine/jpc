@@ -5,9 +5,7 @@ import RegisterConsent from "@/components/register/RegisterConsent/RegisterConse
 import RegisterProfile, {
   RegisterProfileFormData,
 } from "@/components/register/RegisterProfile/RegisterProfileForm";
-import RegisterQuestion, {
-  RegisterQuestionFormData,
-} from "@/components/register/RegisterQuestion/RegisterQuestion";
+import RegisterQuestion from "@/components/register/RegisterQuestion/RegisterQuestion";
 import RegisterStepper from "@/components/register/RegisterStepper";
 import RegisterSubmitter, {
   validators,
@@ -26,8 +24,7 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
-import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   FaChevronLeft,
   FaChevronRight,
@@ -46,11 +43,7 @@ const theme = createTheme({
 });
 
 const Page = () => {
-  // get current step from param names "step"
-  const param = useSearchParams();
-  const [currentStep, setCurrentStep] = React.useState(() =>
-    parseInt(param.get("step") ?? "1")
-  );
+  const [currentStep, setCurrentStep] = React.useState(1);
 
   const renderRegisterStep = () => {
     switch (currentStep) {
@@ -107,14 +100,6 @@ const Page = () => {
   const { handleSubmitProfile, handleSubmitQuestion, handleSubmitTest } =
     useSnapshot(validators);
   const { agree_val } = useSnapshot(isAgree);
-
-  useEffect(() => {
-    window.history.replaceState(
-      {},
-      "",
-      `/register?step=${currentStep.toString()}`
-    );
-  }, [currentStep]);
 
   const validatorElements = [
     <form
@@ -188,10 +173,10 @@ const Page = () => {
     </form>,
     <form
       key="handleSubmitTest"
-      onSubmit={handleSubmitTest?.(() => {
+      onSubmit={handleSubmitTest?.((formData) => {
         const question = JSON.parse(
           localStorage.getItem("registerQuestion")!
-        ) as RegisterQuestionFormData;
+        ) as RegisterTestFormData;
         const profile = JSON.parse(
           localStorage.getItem("registerProfileFormData")!
         ) as RegisterProfileFormData;
@@ -203,7 +188,6 @@ const Page = () => {
           ...profile,
           ...question,
           ...test,
-          join_date: question.join_date.filter((date) => date != null),
         };
 
         fetch("/api/register", {
@@ -216,11 +200,6 @@ const Page = () => {
 
         setCurrentStep((currentStep) => currentStep + 1);
         window.scrollTo(0, 0);
-
-        // clear all localStorage
-        localStorage.removeItem("registerQuestion");
-        localStorage.removeItem("registerProfileFormData");
-        localStorage.removeItem("registerTest");
       })}
     >
       <button
@@ -334,7 +313,7 @@ const Page = () => {
           >
             <Box
               onClick={() => {
-                setCurrentStep((currentStep) => currentStep - 1);
+                setCurrentStep(currentStep - 1);
                 window.scrollTo(0, 0);
               }}
               sx={{

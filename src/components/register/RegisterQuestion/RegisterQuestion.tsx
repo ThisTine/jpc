@@ -12,41 +12,27 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import {
-  Controller,
-  FormProvider,
-  useController,
-  useFieldArray,
-  useForm,
-} from "react-hook-form";
+import { Controller, FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import RegisterLocalStorage from "../RegisterLocalStorage";
 import { registerQuestionFormData } from "@/share/validation/formData";
 import { ibmBold } from "@/utils/fonts";
 import { validators } from "../RegisterSubmitter";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ls } from "@/utils/misc";
-import { useEffect, useState } from "react";
 
 export interface RegisterQuestionFormData
   extends z.infer<typeof registerQuestionFormData> {}
 
-export const DEFAULT_JOIN_DATES = [
-  "วันศุกร์ที่ 12 มกราคม 2567",
-  "วันเสาร์ที่ 13 มกราคม 2567",
-  "วันอาทิตย์ที่ 14 มกราคม 2567",
-];
-
 export default function RegisterQuestion() {
   const form = useForm<RegisterQuestionFormData>({
     defaultValues: {
-      pr: ls("registerQuestion", "pr") ?? "Hello",
-      self_introduction: ls("registerQuestion", "self_introduction") ?? "",
-      why_join: ls("registerQuestion", "why_join") ?? "",
-      expect: ls("registerQuestion", "expect") ?? "",
-      experience: ls("registerQuestion", "experience") ?? "",
-      goal: ls("registerQuestion", "goal") ?? "",
-      join_date: ls("registerQuestion", "join_date") ?? DEFAULT_JOIN_DATES,
+      pr: "",
+      self_introduction: "",
+      why_join: "",
+      expect: "",
+      experience: "",
+      goal: "",
+      join_date: [],
     },
     resolver: zodResolver(registerQuestionFormData),
   });
@@ -201,11 +187,19 @@ export default function RegisterQuestion() {
           🌟 สามารถเข้าร่วม JPC วันไหนบ้าง?
         </Typography>
         <FormControl error={!!form.formState.errors.join_date}>
-          <Checkboxes
-            control={form.control}
-            name="join_date"
-            options={DEFAULT_JOIN_DATES}
-          />
+          {[
+            "วันศุกร์ที่ 12 มกราคม 2567",
+            "วันเสาร์ที่ 13 มกราคม 2567",
+            "วันอาทิตย์ที่ 14 มกราคม 2567",
+          ].map((choice) => (
+            <FormControlLabel
+              key={choice}
+              control={
+                <Checkbox {...form.register("join_date")} value={choice} />
+              }
+              label={choice}
+            />
+          ))}
           <FormHelperText>
             {String(form.formState.errors.join_date?.message ?? "")}
           </FormHelperText>
@@ -216,46 +210,3 @@ export default function RegisterQuestion() {
     </FormProvider>
   );
 }
-
-const Checkboxes = ({
-  options,
-  control,
-  name,
-}: {
-  options: string[];
-  control: any;
-  name: string;
-}) => {
-  const { field } = useController({
-    control,
-    name,
-  });
-  const [value, setValue] = useState(field.value || []);
-
-  return (
-    <>
-      {options.map((option, index) => (
-        <FormControlLabel
-          key={option}
-          control={
-            <Checkbox
-              onChange={(e) => {
-                const valueCopy = [...value];
-                // update checkbox value
-                valueCopy[index] = e.target.checked ? e.target.value : null;
-                // send data to react hook form
-                field.onChange(valueCopy);
-                // update local state
-                setValue(valueCopy);
-              }}
-              key={option}
-              checked={value.includes(option)}
-              value={option}
-            />
-          }
-          label={option}
-        />
-      ))}
-    </>
-  );
-};
