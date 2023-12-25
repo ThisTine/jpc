@@ -1,5 +1,6 @@
 import {getGoogleAuth} from "@/app/api/utils/getGoogleAuth";
 import {google} from "googleapis";
+import dayjs from "dayjs";
 
 export const appendSheet = (sheetsName:"Basic infomation"|"Academic", values: string[])=>{
   const auth = getGoogleAuth();
@@ -12,7 +13,7 @@ export const appendSheet = (sheetsName:"Basic infomation"|"Academic", values: st
     requestBody:{
       range: sheetsName,
       values:[
-        [new Date().toISOString(),
+        [dayjs().format("MM/DD/YYYY HH:mm:ss"),
           ...values]
       ]
     }
