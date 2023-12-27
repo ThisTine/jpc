@@ -19,3 +19,21 @@ export const appendSheet = (sheetsName:"Basic infomation"|"Academic", values: st
     }
   });
 };
+
+export const updateSheet = (values: string[], ind: number)=>{
+  const auth = getGoogleAuth();
+  const service = google.sheets({version: 'v4', auth});
+  const spreadSheetId = process.env.SPREAD_SHEET_ID;
+  return service.spreadsheets.values.update({
+    spreadsheetId: spreadSheetId,
+    range: `Personal infomation!C${ind}`,
+    valueInputOption: "USER_ENTERED",
+    requestBody:{
+      range: `Personal infomation!C${ind}`,
+      values:[
+        [dayjs().format("MM/DD/YYYY HH:mm:ss"),
+          ...values]
+      ]
+    }
+  });
+};

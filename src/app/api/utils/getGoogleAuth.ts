@@ -7,6 +7,6 @@ export const getGoogleAuth = ()=>{
 
   return new GoogleAuth({
     credentials: keys,
-    scopes: ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/spreadsheets']
+    scopes: ['https://www.googleapis.com/auth/cloud-platform', 'https://www.googleapis.com/auth/spreadsheets','https://www.googleapis.com/auth/drive']
   });
 };
