@@ -49,7 +49,8 @@ export async function POST(request: NextRequest) {
       await updateSheet([
         data.fullname,data.nickname,data.idCard,data.birthDate
         ,data.address,data.bloodType,data.religion,data.deceased,data.medic,data.allergyFood,data.shirtSize,
-        data.parentName,data.parentPhone,data.relationship,data.emergencyName,data.emergencyPhone,JSON.parse(data.stayDate).join(", "),
+        data.parentName,data.parentPhone,data.relationship,data.emergencyName,data.emergencyPhone,data.isStay, JSON.parse(data.stayDate).join(", "),
+        data.goBackTransportation,data.isStayProof,
         url ??""
       ],ind);
       const emailTemplate = await getBasicInfoEmailTemplate({name:data.fullname,to:email});

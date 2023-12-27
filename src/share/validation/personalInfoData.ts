@@ -78,6 +78,8 @@ export const personalInfoData = z.object({
         message: "กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้องด้วยครับ",
       }
     ),
+  isStay: z.string().min(1,{message: "กรุณาเลือกว่าจะพักค้างคืนหรือไม่ด้วยครับ"}).refine(v=>['ต้องการ','ไม่ต้องการ'].includes(v),"กรุณาเลือกว่าจะพักค้างคืนหรือไม่ด้วยครับ"),
+  goBackTransportation: z.string(),
   stayDate: z.string().refine(d =>{
     const value = JSON.parse(d);
     if(!Array.isArray(value)) return false;
@@ -88,5 +90,5 @@ export const personalInfoData = z.object({
     const val = ["11 มกราคม","12 มกราคม","13 มกราคม","14 มกราคม"];
     return value.every(v=>val.includes(v));
   },{message:"กรุณาเลือกวันเข้าพักให้ถูกต้องด้วยครับ"}),
-
+  isStayProof: z.string().min(1,{message:"กรุณาเลือกว่าต้องการใบยืนยันไหมด้วยครับ"}).refine(v=>['ต้องการ','ไม่ต้องการ'].includes(v),"กรุณาเลือกว่าต้องการใบยืนยันไหมด้วยครับ"),
 });
