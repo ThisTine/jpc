@@ -6,6 +6,7 @@ export const getBasicInfoEmailTemplate = async ({name,to}:{name:string,to:string
   const template = EMAIL_TEMPLATE.replace(/:name:/g, name).replace(/images\//g, "cid:images/");
   const bannerPath = process.cwd() + '/src/email/basicinfo/images/banner.png';
   const gameboyPath = process.cwd() + '/src/email/basicinfo/images/gameboy.png';
+  const lineQrPath = process.cwd() + '/src/email/basicinfo/images/line-qr.jpeg';
 
   return {
     from: EMAIL_FORM,
@@ -22,6 +23,11 @@ export const getBasicInfoEmailTemplate = async ({name,to}:{name:string,to:string
         filename:'gameBoy.png',
         cid:'images/gameboy.png',
         path:gameboyPath
+      },
+      {
+        filename:'line-qr.jpeg',
+        cid:'images/line-qr.jpeg',
+        path:lineQrPath
       }
     ]
   } as Mail.Options;
