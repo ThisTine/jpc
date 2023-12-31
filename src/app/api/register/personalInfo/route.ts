@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
   const encryptedEmail = request.nextUrl.searchParams.get("emailToken");
   let email: string|undefined;
   let ind: number|undefined;
+  let team: string|undefined;
   if(!encryptedEmail){
     return new Response("no email token", {status: 400});
   }
@@ -22,6 +23,7 @@ export async function POST(request: NextRequest) {
     email = decryptData(encryptedEmail);
     const data = await queryEmail(email);
     ind = data.ind+1;
+    team = data.team;
     if(data.isRegistered){
       return new Response("email already registered", {status: 400});
     }
@@ -53,7 +55,7 @@ export async function POST(request: NextRequest) {
         data.goBackTransportation,data.isStayProof,
         url ??""
       ],ind);
-      const emailTemplate = await getBasicInfoEmailTemplate({name:data.fullname,to:email});
+      const emailTemplate = await getBasicInfoEmailTemplate({name:data.fullname,to:email, team});
       sendmail(emailTemplate);
       return new Response(JSON.stringify(data), {status: 200});
 
