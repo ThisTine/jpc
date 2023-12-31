@@ -26,8 +26,8 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
-import { useSearchParams } from "next/navigation";
-import React, {useEffect, useState} from "react";
+import {useRouter, useSearchParams} from "next/navigation";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import {
   FaChevronLeft,
   FaChevronRight,
@@ -35,6 +35,7 @@ import {
 } from "react-icons/fa";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { useSnapshot } from "valtio";
+import {getIsClosedRegisterFrom} from "@/app/api/utils/getFormStatus";
 
 const theme = createTheme({
   typography: {
@@ -48,9 +49,16 @@ const theme = createTheme({
 
 const Page = () => {
   const param = useSearchParams();
+  const route = useRouter();
   const [currentStep, setCurrentStep] = React.useState(() =>
     parseInt(param.get("step") ?? "1")
   );
+
+  useLayoutEffect(() => {
+    if(getIsClosedRegisterFrom() && route){
+      route.replace("/close");
+    }
+  }, [route]);
 
   const renderRegisterStep = () => {
     switch (currentStep) {
