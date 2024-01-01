@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+import {getIsClosedPersonalInfoFrom} from "@/app/api/utils/getFormStatus";
 
 
 const secret_key = process.env.SECRET_KEY??"";
@@ -18,7 +19,8 @@ const encryptionIV = crypto
   .substring(0, 16);
 
 // Encrypt data
-export function encryptData(data:string) {
+export function encryptData(rawData:string) {
+  const data = "A"+rawData;
   const cipher = crypto.createCipheriv(ecnryption_method, key, encryptionIV);
   return Buffer.from(
     cipher.update(data, 'utf8', 'hex') + cipher.final('hex')
@@ -29,8 +31,13 @@ export function encryptData(data:string) {
 export function decryptData(encryptedData:string) {
   const buff = Buffer.from(encryptedData, 'base64');
   const decipher = crypto.createDecipheriv(ecnryption_method, key, encryptionIV);
-  return (
+  const email = (
     decipher.update(buff.toString('utf8'), 'hex', 'utf8') +
     decipher.final('utf8')
-  ); // Decrypts data and converts to utf8
+  );
+  if(email[0] === "A" && getIsClosedPersonalInfoFrom()){
+    throw new Error("form closed");
+  }
+
+  return email.substring(1);  // Decrypts data and converts to utf8
 }
