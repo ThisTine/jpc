@@ -32,11 +32,6 @@ export default function RegisterTestSingleChoice({
   src,
 }: RegisterTestSingleChoiceProps) {
   const { register, formState } = useFormContext();
-  const renderChoices = useMemo(
-    () => choices.toSorted((choice) => Math.random() - 0.5),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
 
   return (
     <Stack width="100%">
@@ -53,7 +48,7 @@ export default function RegisterTestSingleChoice({
       <Stack gap={1}>
         <FormControl error={!!formState.errors[name]}>
           <RadioGroup name={name}>
-            {renderChoices.map((choice) => (
+            {choices.map((choice) => (
               <FormControlLabel
                 key={choice.title}
                 control={<Radio {...register(name)} value={choice.title} />}

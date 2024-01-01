@@ -27,11 +27,6 @@ export default function RegisterTestMultipleChoice({
   title,
 }: RegisterTestMultipleChoiceProps) {
   const { register, formState } = useFormContext();
-  const renderChoices = useMemo(
-    () => choices.toSorted((choice) => Math.random() - 0.5),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
 
   return (
     <Stack width="100%">
@@ -40,7 +35,7 @@ export default function RegisterTestMultipleChoice({
       </Typography>
       <Stack gap={1}>
         <FormControl error={!!formState.errors[name]}>
-          {renderChoices.map((choice) => (
+          {choices.map((choice) => (
             <FormControlLabel
               key={choice.title}
               control={<Checkbox {...register(name)} value={choice.title} />}

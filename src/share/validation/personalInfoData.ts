@@ -3,7 +3,8 @@ import dayjs from "dayjs";
 
 export const personalInfoData = z.object({
   fullname: z.string().min(1, {message: "กรุณากรอกชื่อด้วยครับ"}),
-  nickname: z.string().regex(/([A-Za-z])+/).min(1, {message: "กรุณากรอกชื่อเล่น (เป็นภาษาอังกฤษ) ด้วยครับ"}),
+  nicknameEn: z.string().regex(/([A-Za-z])+/).min(1, {message: "กรุณากรอกชื่อเล่น (เป็นภาษาอังกฤษ) ด้วยครับ"}),
+  nicknameTh: z.string().min(1, {message: "กรุณากรอกชื่อเล่น (เป็นภาษาไทย) ด้วยครับ"}),
   idCard: z.string().refine(
     (value) => {
       if (value.length !== 17) {
