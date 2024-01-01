@@ -20,11 +20,6 @@ export const getBasicInfoEmailTemplate = async ({name,to,team}:{name:string,to:s
         path:bannerPath
       },
       {
-        filename:'gameBoy.png',
-        cid:'images/gameboy.png',
-        path:gameboyPath
-      },
-      {
         filename:'line-qr.jpeg',
         cid:'images/line-qr.jpeg',
         path:lineQrPath
