@@ -29,7 +29,7 @@ export const updateSheet = (values: string[], ind: number)=>{
     range: `Personal infomation!D${ind}`,
     valueInputOption: "USER_ENTERED",
     requestBody:{
-      range: `Personal infomation!C${ind}`,
+      range: `Personal infomation!D${ind}`,
       values:[
         [dayjs().format("MM/DD/YYYY HH:mm:ss"),
           ...values]
