@@ -11,6 +11,7 @@ import {sendmail} from "@/app/api/utils/sendmail";
 import winston from "winston";
 import {sendWebHook} from "@/utils/sendWebHook";
 import {appendSheet} from "@/app/api/utils/appendSheet";
+import {getIsClosedRegisterFrom} from "@/app/api/utils/getFormStatus";
 const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
@@ -18,7 +19,9 @@ const logger = winston.createLogger({
 });
 
 export async function POST(request: Request) {
-
+  if(getIsClosedRegisterFrom()){
+    return NextResponse.json("closed", {status: 400});
+  }
   const requestData = registerQuestionFormData.merge(registerTestFormData).merge(registerProfileFormData);
   const req = await request.json();
   try{
