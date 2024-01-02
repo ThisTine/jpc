@@ -1,4 +1,4 @@
-import React, {FC, useEffect} from "react";
+import React, {FC, useEffect, useState} from "react";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {personalInfoData} from "@/share/validation/personalInfoData";
@@ -9,7 +9,7 @@ import IsStayProofForm from "@/components/personalInfo/isStayProofForm";
 import Payment from "@/components/personalInfo/payment";
 import SuccessPage from "@/components/personalInfo/success";
 import {
-  Box,
+  Box, Button,
   Container,
   createTheme,
   ThemeProvider,
@@ -19,6 +19,7 @@ import FormBg from "@/assets/form-background.svg";
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 import {ibm, ibmBold} from "@/utils/fonts";
 import {PersonalInfoFormData} from "@/app/confirm/page";
+import {object} from "zod";
 
 const theme = createTheme({
   typography: {
@@ -33,6 +34,9 @@ const theme = createTheme({
 
 const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) => {
   const [currentStep, setCurrentStep] = React.useState(1);
+  const [file,setFile] = useState<File | null>(null);
+  const [isUploaded,setIsUploaded] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
   const form = useForm<PersonalInfoFormData>({
     defaultValues: {
       fullname: fullname,
@@ -69,19 +73,39 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
     case 4:
       return <IsStayProofForm form={form}/>;
     case 5:
-      return <Payment/>;
+      return <Payment form={form} file={file} setFile={setFile} isUploaded={isUploaded} setIsUploaded={setIsUploaded} />;
     case 6:
       return <SuccessPage/>;
     default:
       return null;
     }
   };
-
+  const sendData = async ()=>{
+    const formData = new FormData();
+    if(file){
+      formData.append("image", file, file?.name);
+    }
+    const data = form.getValues();
+    const keys = Object.keys(data);
+    for(let k of keys){
+      formData.append(k, data[k as keyof typeof data].toString() );
+    }
+    await fetch(`api/register/personalInfo?emailToken=${token}`,{method:"post",body: formData});
+  };
   return (
     <ThemeProvider theme={theme}>
       <Box
         component="form"
         onSubmit={form.handleSubmit(v=>{
+          if(currentStep !== 5){
+            setCurrentStep(s=>s+1);
+          }else {
+            setIsLoading(true);
+            sendData()
+              .then(()=>setCurrentStep(6))
+              .finally(()=>setIsLoading(false));
+          }
+
 
         },(v)=>{
           let isok = false;
@@ -114,6 +138,7 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
           }
 
           console.log("v",v);
+          console.log(currentStep);
 
 
           if(isok){
@@ -220,12 +245,11 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
               <Box/>
             )}
 
-            <Box
-              component="button"
+            <Button
+              variant="contained"
+              className="bg-[#2D73AE]"
               type="submit"
-              onClick={() => {
-
-              }}
+              disabled={(isLoading || (currentStep === 5 && (!isUploaded || !file)))}
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -245,10 +269,16 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
                   fontFamily: ibmBold.style.fontFamily,
                 }}
               >
-                ถัดไป
+                {currentStep === 5 ? "ส่งข้อมูล" : "ถัดไป"}
               </Typography>
-              <FaChevronRight/>
-            </Box>
+              { isLoading ? <svg className="-ml-1 mr-3 h-5 w-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                <path className="opacity-75" fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+              </svg> :
+                <FaChevronRight/> }
+            </Button>
           </Box>
         ) : null}
       </Box>

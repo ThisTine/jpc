@@ -35,7 +35,6 @@ export default function RegisterTestSingleChoice({
   value
 }: RegisterTestSingleChoiceProps) {
   const { register, formState } = useFormContext();
-  console.log(value);
   return (
     <Stack width="100%">
       {src ? (

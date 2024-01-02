@@ -33,6 +33,7 @@ const IsStayProofForm: React.FC<IsStayProofFormProps> = ({ form }) => {
           <RegisterTestSingleChoice
             title=""
             name="isStayProof"
+            value={form.getValues().isStayProof}
             choices={[
               { id: "1", title: "ต้องการ" },
               { id: "2", title: "ไม่ต้องการ" },

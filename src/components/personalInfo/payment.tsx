@@ -1,7 +1,9 @@
 import { ibmBold, ibmMedium } from "@/utils/fonts";
 import { Button, Checkbox, Stack, Typography, styled } from "@mui/material";
-import React from "react";
+import React, {FC, useMemo, useState} from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import {UseFormReturn} from "react-hook-form";
+import {PersonalInfoFormData} from "@/app/confirm/page";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -15,7 +17,23 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-const Payment = () => {
+interface PaymentProps{
+    form: UseFormReturn<PersonalInfoFormData, any, undefined>;
+    file: File | null;
+    setFile: React.Dispatch<React.SetStateAction<File | null>>;
+    isUploaded: boolean;
+    setIsUploaded: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Payment:FC<PaymentProps> = ({form,file,setFile,isUploaded,setIsUploaded}) => {
+  const price = useMemo(() => {
+    let price = 350;
+    if (form.getValues().isStay === "ต้องการ" && form.getValues().stayDate.length > 0) {
+      price += form.getValues().stayDate.length * 200;
+    }
+    return price;
+  }, [form.getValues().isStay, form.getValues().stayDate]);
+  console.log(file);
   return (
     <Stack width="100%" gap={5}>
       <Typography
@@ -101,7 +119,7 @@ const Payment = () => {
             fontFamily: ibmMedium.style.fontFamily,
           }}
         >
-          350 บาท
+          {price } บาท
         </Typography>
       </Stack>
       <Stack gap={2}>
@@ -121,8 +139,8 @@ const Payment = () => {
           }}
           startIcon={<FaCloudUploadAlt />}
         >
-          เพิ่มไฟล์
-          <VisuallyHiddenInput type="file" />
+          { file ? file.name : "เพิ่มไฟล์"}
+          <VisuallyHiddenInput onChange={f=>setFile(f.target?.files![0])} type="file" />
         </Button>
       </Stack>
       <Stack
@@ -132,7 +150,7 @@ const Payment = () => {
           alignItems: "center",
         }}
       >
-        <Checkbox />
+        <Checkbox checked={isUploaded} onChange={v=>setIsUploaded(v.target.checked)} />
         <Typography
           sx={{
             fontSize: "16px",
