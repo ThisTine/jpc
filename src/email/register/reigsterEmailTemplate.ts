@@ -3,7 +3,7 @@ import {EMAIL_FORM} from "@/share/constants";
 // @ts-ignore
 import EMAIL_TEMPLATE from "./index.html";
 export const getRegisterEmailTemplate = async ({name,to}:{name:string,to:string}) => {
-  const template = EMAIL_TEMPLATE.replace(/:name:/g, name);
+  const template = EMAIL_TEMPLATE.replace(/:name:/g, name).replace(/images\//g, "cid:images/");
   const bannerPath = process.cwd() + '/src/email/register/images/banner.png';
   const gameboyPath = process.cwd() + '/src/email/register/images/gameboy.png';
 
