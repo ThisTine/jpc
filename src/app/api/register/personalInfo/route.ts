@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
         url ??""
       ],ind);
       const emailTemplate = await getBasicInfoEmailTemplate({name:data.fullname,to:email, team});
-      sendmail(emailTemplate);
+      await sendmail(emailTemplate);
       return new Response(JSON.stringify(data), {status: 200});
 
     }catch (e){
