@@ -82,6 +82,7 @@ export const personalInfoData = z.object({
   isStay: z.string().min(1,{message: "กรุณาเลือกว่าจะพักค้างคืนหรือไม่ด้วยครับ"}).refine(v=>['ต้องการ','ไม่ต้องการ'].includes(v),"กรุณาเลือกว่าจะพักค้างคืนหรือไม่ด้วยครับ"),
   goBackTransportation: z.string(),
   stayDate: z.string().refine(d =>{
+    if(!d) return false;
     const value = JSON.parse(d);
     if(!Array.isArray(value)) return false;
     const isDuplicate = value.some((item, index) => value.indexOf(item) !== index);

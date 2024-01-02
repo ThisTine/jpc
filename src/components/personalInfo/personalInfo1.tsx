@@ -6,7 +6,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import RegisterTestSingleChoice from "../register/RegisterTest/RegisterTestSingleChoice";
-import { PersonalInfoFormData } from "@/app/personalInfo/page";
+import { PersonalInfoFormData } from "@/app/confirm/page";
 import ShirtChartSize from "@/assets/size-chart.png";
 import Image from "next/image";
 import dayjs from "dayjs";

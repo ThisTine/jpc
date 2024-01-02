@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { FormProvider, UseFormReturn } from "react-hook-form";
 import RegisterTestSingleChoice from "../register/RegisterTest/RegisterTestSingleChoice";
-import { PersonalInfoFormData } from "@/app/personalInfo/page";
+import { PersonalInfoFormData } from "@/app/confirm/page";
 import TextFieldMasked from "../register/RegisterProfile/RegisterProfilePhone";
 
 interface PersonalInfoProps {

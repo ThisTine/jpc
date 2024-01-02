@@ -1,4 +1,4 @@
-import { PersonalInfoFormData } from "@/app/personalInfo/page";
+import { PersonalInfoFormData } from "@/app/confirm/page";
 import { ibmBold } from "@/utils/fonts";
 import { Stack, Typography } from "@mui/material";
 import React from "react";

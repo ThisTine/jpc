@@ -1,35 +1,41 @@
-/* eslint-disable indent */
-"use client";
-import { ibm, ibmBold } from "@/utils/fonts";
-import {
-  Box,
-  Container,
-  ThemeProvider,
-  Typography,
-  createTheme,
-} from "@mui/material";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import React from "react";
-import FormBg from "@/assets/form-background.svg";
+import React, {FC, useEffect} from "react";
+import {useForm} from "react-hook-form";
+import {zodResolver} from "@hookform/resolvers/zod";
+import {personalInfoData} from "@/share/validation/personalInfoData";
 import PersonalInfo1 from "@/components/personalInfo/personalInfo1";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { personalInfoData } from "@/share/validation/personalInfoData";
 import PersonalInfo2 from "@/components/personalInfo/personalInfo2";
 import IsStayForm from "@/components/personalInfo/isStayForm";
 import IsStayProofForm from "@/components/personalInfo/isStayProofForm";
 import Payment from "@/components/personalInfo/payment";
 import SuccessPage from "@/components/personalInfo/success";
+import {
+  Box,
+  Container,
+  createTheme,
+  ThemeProvider,
+  Typography
+} from "@mui/material";
+import FormBg from "@/assets/form-background.svg";
+import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
+import {ibm, ibmBold} from "@/utils/fonts";
+import {PersonalInfoFormData} from "@/app/confirm/page";
 
-export interface PersonalInfoFormData
-  extends z.infer<typeof personalInfoData> {}
+const theme = createTheme({
+  typography: {
+    allVariants: {
+      fontFamily: ibm.style.fontFamily,
+      textTransform: "none",
+      fontSize: "16px",
+    },
+  },
+});
 
-const PersonalInfoPage = () => {
+
+const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) => {
   const [currentStep, setCurrentStep] = React.useState(1);
   const form = useForm<PersonalInfoFormData>({
     defaultValues: {
-      fullname: "",
+      fullname: fullname,
       nicknameEn: "",
       nicknameTh: "",
       idCard: "",
@@ -52,29 +58,32 @@ const PersonalInfoPage = () => {
     },
     resolver: zodResolver(personalInfoData),
   });
-
+  useEffect(() => {
+    console.log(form.formState);
+  }, [form.formState]);
   const renderPersonalInfoStep = () => {
     switch (currentStep) {
-      case 1:
-        return <PersonalInfo1 form={form} />;
-      case 2:
-        return <PersonalInfo2 form={form} />;
-      case 3:
-        return <IsStayForm form={form} />;
-      case 4:
-        return <IsStayProofForm form={form} />;
-      case 5:
-        return <Payment />;
-      case 6:
-        return <SuccessPage />;
-      default:
-        return null;
+    case 1:
+      return <PersonalInfo1 form={form}/>;
+    case 2:
+      return <PersonalInfo2 form={form}/>;
+    case 3:
+      return <IsStayForm form={form}/>;
+    case 4:
+      return <IsStayProofForm form={form}/>;
+    case 5:
+      return <Payment/>;
+    case 6:
+      return <SuccessPage/>;
+    default:
+      return null;
     }
   };
 
   return (
     <ThemeProvider theme={theme}>
       <Box
+        component="form"
         sx={{
           background: `url(${FormBg.src})`,
           backgroundRepeat: "no-repeat",
@@ -157,7 +166,7 @@ const PersonalInfoPage = () => {
                   },
                 }}
               >
-                <FaChevronLeft />
+                <FaChevronLeft/>
                 <Typography
                   sx={{
                     ml: "0.5rem",
@@ -168,32 +177,17 @@ const PersonalInfoPage = () => {
                 </Typography>
               </Box>
             ) : (
-              <Box />
+              <Box/>
             )}
 
             <Box
+              component="button"
+              type="button"
               onClick={() => {
+                form.handleSubmit(v=>{});
+                console.log("CLicked");
                 setCurrentStep(currentStep + 1);
                 window.scrollTo(0, 0);
-                console.log(form.getValues().nicknameEn);
-                console.log(form.getValues().nicknameTh);
-                console.log(form.getValues().idCard);
-                console.log(form.getValues().birthDate);
-                console.log(form.getValues().address);
-                console.log(form.getValues().bloodType);
-                console.log(form.getValues().religion);
-                console.log(form.getValues().medic);
-                console.log(form.getValues().allergyFood);
-                console.log(form.getValues().shirtSize);
-                console.log(form.getValues().parentName);
-                console.log(form.getValues().parentPhone);
-                console.log(form.getValues().relationship);
-                console.log(form.getValues().emergencyName);
-                console.log(form.getValues().emergencyPhone);
-                console.log(form.getValues().isStay);
-                console.log(form.getValues().stayDate);
-                console.log(form.getValues().goBackTransportation);
-                console.log(form.getValues().isStayProof);
               }}
               sx={{
                 display: "flex",
@@ -216,7 +210,7 @@ const PersonalInfoPage = () => {
               >
                 ถัดไป
               </Typography>
-              <FaChevronRight />
+              <FaChevronRight/>
             </Box>
           </Box>
         ) : null}
@@ -224,15 +218,4 @@ const PersonalInfoPage = () => {
     </ThemeProvider>
   );
 };
-
 export default PersonalInfoPage;
-
-const theme = createTheme({
-  typography: {
-    allVariants: {
-      fontFamily: ibm.style.fontFamily,
-      textTransform: "none",
-      fontSize: "16px",
-    },
-  },
-});

@@ -49,7 +49,7 @@ export async function POST(request: NextRequest) {
       let url = driveResponse.data.id;
       url = `https://drive.google.com/file/d/${url}/view`;
       await updateSheet([
-        data.fullname,data.nickname,data.idCard,data.birthDate
+        data.fullname,data.nicknameEn,data.nicknameTh,data.idCard,data.birthDate
         ,data.address,data.bloodType,data.religion,data.deceased,data.medic,data.allergyFood,data.shirtSize,
         data.parentName,data.parentPhone,data.relationship,data.emergencyName,data.emergencyPhone,data.isStay, JSON.parse(data.stayDate).join(", "),
         data.goBackTransportation,data.isStayProof,
