@@ -22,8 +22,8 @@ export const personalInfoData = z.object({
     return !! dayjs(d).format("MM/DD/YYYY");
   },{message:"กรุณากรอกวันเกิดให้ถูกต้องด้วยครับ"}),
   address:z.string().min(1, {message: "กรุณากรอกที่อยู่ด้วยครับ"}),
-  bloodType: z.string().min(1,{message: "กรุณากรอกกรุ๊ปเลือดด้วยครับ"})
-    .refine((value)=>["A","B","AB","O"].includes(value),{message: "กรุณากรอกกรุ๊ปเลือดให้ถูกต้องด้วยครับ"}),
+  bloodType: z.string().min(1,{message: "กรุณาเลือกกรุ๊ปเลือดด้วยครับ"})
+    .refine((value)=>["A","B","AB","O"].includes(value),{message: "กรุณาเลือกกรุ๊ปเลือดให้ถูกต้องด้วยครับ"}),
   religion: z.string(),
   medic: z.string(),
   allergyFood: z.string(),
