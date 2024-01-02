@@ -52,15 +52,12 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
       emergencyName: "",
       emergencyPhone: "",
       isStay: "",
-      stayDate: "",
+      stayDate: [],
       goBackTransportation: "",
       isStayProof: "",
     },
     resolver: zodResolver(personalInfoData),
   });
-  useEffect(() => {
-    console.log(form.formState);
-  }, [form.formState]);
   const renderPersonalInfoStep = () => {
     switch (currentStep) {
     case 1:
@@ -88,18 +85,43 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
 
         },(v)=>{
           let isok = false;
-          const step1Data: string[] = ['fullname','nicknameTh','nicknameEn'
-            ,'idCard','shirtSize','birthDate','address','bloodType','religion','medic','allergyFood',
-          ] as (keyof PersonalInfoFormData)[];
+
 
           if(currentStep === 1){
+            const step1Data: string[] = ['fullname','nicknameTh','nicknameEn'
+              ,'idCard','shirtSize','birthDate','address','bloodType','religion','medic','allergyFood',
+            ] as (keyof PersonalInfoFormData)[];
             isok = Object.keys(v).filter(x=> step1Data.includes(x)).length === 0;
           }
 
-          if(isok){
-            setCurrentStep(currentStep + 1);
-            window.scrollTo(0, 0);
+          if(currentStep === 2){
+            const step2Data: string[]= [
+              'parentName','parentPhone','relationship','emergencyPhone','emergencyName','isStay'
+            ] as (keyof PersonalInfoFormData)[];
+            isok = Object.keys(v).filter(x=> step2Data.includes(x)).length === 0;
           }
+
+          if(currentStep === 3){
+            if(form.getValues().isStay === "ต้องการ"){
+              isok = Object.keys(v).filter(x=> x === "stayDate").length === 0;
+            }else {
+              isok = Object.keys(v).filter(x=> x === "goBackTransportation").length === 0;
+            }
+          }
+
+          if(currentStep === 4){
+            isok = Object.keys(v).filter(x=> x === "isStayProof" as (keyof PersonalInfoFormData)).length === 0;
+          }
+
+          console.log("v",v);
+
+
+          if(isok){
+            form.clearErrors();
+            setCurrentStep(currentStep + 1);
+          }
+          window.scrollTo(0, 0);
+
 
         })}
         sx={{

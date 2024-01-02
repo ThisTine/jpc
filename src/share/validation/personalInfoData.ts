@@ -25,7 +25,6 @@ export const personalInfoData = z.object({
   bloodType: z.string().min(1,{message: "กรุณากรอกกรุ๊ปเลือดด้วยครับ"})
     .refine((value)=>["A","B","AB","O"].includes(value),{message: "กรุณากรอกกรุ๊ปเลือดให้ถูกต้องด้วยครับ"}),
   religion: z.string(),
-  deceased: z.string(),
   medic: z.string(),
   allergyFood: z.string(),
   shirtSize: z.string().min(1,{message: "กรุณาเลือกขนาดเสื้อด้วยครับ"})
@@ -81,9 +80,9 @@ export const personalInfoData = z.object({
     ),
   isStay: z.string().min(1,{message: "กรุณาเลือกว่าจะพักค้างคืนหรือไม่ด้วยครับ"}).refine(v=>['ต้องการ','ไม่ต้องการ'].includes(v),"กรุณาเลือกว่าจะพักค้างคืนหรือไม่ด้วยครับ"),
   goBackTransportation: z.string(),
-  stayDate: z.string().refine(d =>{
+  stayDate: z.array(z.string()).refine(d =>{
     if(!d) return false;
-    const value = JSON.parse(d);
+    const value = d;
     if(!Array.isArray(value)) return false;
     const isDuplicate = value.some((item, index) => value.indexOf(item) !== index);
     if(isDuplicate){

@@ -16,6 +16,7 @@ import { useFormContext } from "react-hook-form";
 export type RegisterTestChoice = Readonly<{
   id: string;
   title: string;
+  value?: string;
 }>;
 
 export type RegisterTestSingleChoiceProps = Readonly<{
@@ -23,6 +24,7 @@ export type RegisterTestSingleChoiceProps = Readonly<{
   title: string;
   choices: RegisterTestChoice[];
   src?: StaticImageData;
+  value?: string;
 }>;
 
 export default function RegisterTestSingleChoice({
@@ -30,9 +32,10 @@ export default function RegisterTestSingleChoice({
   choices,
   title,
   src,
+  value
 }: RegisterTestSingleChoiceProps) {
   const { register, formState } = useFormContext();
-
+  console.log(value);
   return (
     <Stack width="100%">
       {src ? (
@@ -47,11 +50,11 @@ export default function RegisterTestSingleChoice({
       <Typography className="text-lg">{title}</Typography>
       <Stack gap={1}>
         <FormControl error={!!formState.errors[name]}>
-          <RadioGroup name={name}>
+          <RadioGroup defaultValue={value} name={name}>
             {choices.map((choice) => (
               <FormControlLabel
                 key={choice.title}
-                control={<Radio {...register(name)} value={choice.title} />}
+                control={<Radio {...register(name)} value={choice.value ?? choice.title} />}
                 label={choice.title}
               />
             ))}

@@ -66,11 +66,12 @@ const IsStayForm: React.FC<IsStayFormProps> = ({ form }) => {
             <RegisterTestMultipleChoice
               title=""
               name="stayDate"
+              value={form.getValues().stayDate}
               choices={[
-                { id: "1", title: "11 มกราคม 2567" },
-                { id: "2", title: "12 มกราคม 2567" },
-                { id: "3", title: "13 มกราคม 2567" },
-                { id: "4", title: "14 มกราคม 2567" },
+                { id: "1", title: "11 มกราคม 2567", value: "11 มกราคม" },
+                { id: "2", title: "12 มกราคม 2567", value: "12 มกราคม" },
+                { id: "3", title: "13 มกราคม 2567", value: "13 มกราคม" },
+                { id: "4", title: "14 มกราคม 2567", value: "14 มกราคม" },
               ]}
             />
           ) : (

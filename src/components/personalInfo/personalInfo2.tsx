@@ -106,6 +106,7 @@ const PersonalInfo2: React.FC<PersonalInfoProps> = ({ form }) => {
           <RegisterTestSingleChoice
             title="🌟 ต้องการค้างคืนโดยมีการจัดหาที่พักให้หรือไม่ (200฿/คืน)"
             name="isStay"
+            value={form.getValues().isStay}
             choices={[
               { id: "1", title: "ต้องการ" },
               { id: "2", title: "ไม่ต้องการ" },

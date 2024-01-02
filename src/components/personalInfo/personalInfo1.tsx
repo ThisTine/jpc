@@ -1,5 +1,5 @@
 import { ibmBold } from "@/utils/fonts";
-import { Stack, TextField, Typography } from "@mui/material";
+import {FormControl, FormHelperText, OutlinedInput, Stack, TextField, Typography} from "@mui/material";
 import React from "react";
 import { FormProvider, UseFormReturn } from "react-hook-form";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -10,6 +10,7 @@ import { PersonalInfoFormData } from "@/app/confirm/page";
 import ShirtChartSize from "@/assets/size-chart.png";
 import Image from "next/image";
 import dayjs from "dayjs";
+import {RegisterProfileIdCard} from "@/components/register/RegisterProfile/RegisterProfileIdCard";
 
 interface PersonalInfoProps {
   form: UseFormReturn<PersonalInfoFormData, any, undefined>;
@@ -65,22 +66,27 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
           />
         </Stack>
         <Stack width="100%">
-          <Typography className="text-lg">🌟 เลขบัตรประชาชน</Typography>
-          <TextField
-            variant="outlined"
-            fullWidth
-            placeholder="ใส่เลขบัตรประชาชนของคุณ"
-            error={!!form.formState.errors.idCard}
-            helperText={form.formState.errors.idCard?.message}
-            {...form.register("idCard")}
-          />
+
+          <FormControl fullWidth variant="outlined">
+            <Typography className="text-lg">🌟 เลขบัตรประชาชน</Typography>
+            <OutlinedInput
+              fullWidth
+              placeholder="ใส่เลขบัตรประชาชนของคุณ"
+              error={!!form.formState.errors.idCard}
+              inputComponent={RegisterProfileIdCard as any}
+              {...form.register("idCard")}
+            />
+            <FormHelperText error={!!form.formState.errors.idCard?.message}>
+              {form.formState.errors.idCard?.message}
+            </FormHelperText>
+          </FormControl>
         </Stack>
         <Stack width="100%">
           <Typography className="mb-4 text-lg">🌟 วัน/เดือน/ปี เกิด</Typography>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DatePicker
               label="วัน/เดือน/ปี"
-              value={form.getValues("birthDate")}
+              value={dayjs(form.getValues().birthDate, "DD/MM/YYYY")}
               onChange={(newValue) => {
                 form.setValue(
                   "birthDate",
@@ -105,12 +111,13 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
           <RegisterTestSingleChoice
             title="🌟 หมู่โลหิต (กรุ๊ปเลือด)"
             name="bloodType"
+            value={form.getValues().bloodType}
             choices={[
-              { id: "1", title: "หมู่ A" },
-              { id: "2", title: "หมู่ B" },
-              { id: "3", title: "หมู่ O" },
-              { id: "4", title: "หมู่ AB" },
-              { id: "4", title: "อื่น ๆ" },
+              { id: "1", title: "หมู่ A", value: "A" },
+              { id: "2", title: "หมู่ B", value: "B" },
+              { id: "3", title: "หมู่ O", value: "O" },
+              { id: "4", title: "หมู่ AB", value: "AB" },
+              { id: "4", title: "อื่น ๆ", value: "other" },
             ]}
           />
         </Stack>
@@ -118,6 +125,7 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
           <RegisterTestSingleChoice
             title="🌟 ศาสนา"
             name="religion"
+            value={form.getValues().religion}
             choices={[
               { id: "1", title: "พุทธ" },
               { id: "2", title: "คริสต์" },
