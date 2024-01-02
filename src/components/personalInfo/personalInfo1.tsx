@@ -1,5 +1,12 @@
 import { ibmBold } from "@/utils/fonts";
-import {FormControl, FormHelperText, OutlinedInput, Stack, TextField, Typography} from "@mui/material";
+import {
+  FormControl,
+  FormHelperText,
+  OutlinedInput,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { FormProvider, UseFormReturn } from "react-hook-form";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -10,7 +17,7 @@ import { PersonalInfoFormData } from "@/app/confirm/page";
 import ShirtChartSize from "@/assets/size-chart.png";
 import Image from "next/image";
 import dayjs from "dayjs";
-import {RegisterProfileIdCard} from "@/components/register/RegisterProfile/RegisterProfileIdCard";
+import { RegisterProfileIdCard } from "@/components/register/RegisterProfile/RegisterProfileIdCard";
 
 interface PersonalInfoProps {
   form: UseFormReturn<PersonalInfoFormData, any, undefined>;
@@ -66,7 +73,6 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
           />
         </Stack>
         <Stack width="100%">
-
           <FormControl fullWidth variant="outlined">
             <Typography className="text-lg">🌟 เลขบัตรประชาชน</Typography>
             <OutlinedInput
@@ -117,7 +123,7 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
               { id: "2", title: "หมู่ B", value: "B" },
               { id: "3", title: "หมู่ O", value: "O" },
               { id: "4", title: "หมู่ AB", value: "AB" },
-              { id: "4", title: "อื่น ๆ", value: "other" },
+              { id: "5", title: "อื่น ๆ", value: "other" },
             ]}
           />
         </Stack>
@@ -131,7 +137,7 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
               { id: "2", title: "คริสต์" },
               { id: "3", title: "อิสลาม" },
               { id: "4", title: "ไม่ระบุ" },
-              { id: "4", title: "อื่น ๆ" },
+              { id: "5", title: "อื่น ๆ" },
             ]}
           />
         </Stack>
@@ -163,18 +169,21 @@ const PersonalInfo1: React.FC<PersonalInfoProps> = ({ form }) => {
           />
         </Stack>
         <Stack width="100%">
-          <Typography className="text-lg">🌟 Size chart (Oversize)</Typography>
+          <Typography className="text-lg">
+            🌟 ขนาดเสื้อ Size chart (Oversize)
+          </Typography>
           <Image src={ShirtChartSize} alt="size chart" />
-          <TextField
-            sx={{
-              mt: "1rem",
-            }}
-            variant="outlined"
-            fullWidth
-            placeholder="กรุณาใส่คำตอบ"
-            error={!!form.formState.errors.shirtSize}
-            helperText={form.formState.errors.shirtSize?.message}
-            {...form.register("shirtSize")}
+          <RegisterTestSingleChoice
+            title=""
+            name="shirtSize"
+            value={form.getValues().shirtSize}
+            choices={[
+              { id: "1", title: "free size" },
+              { id: "2", title: "M" },
+              { id: "3", title: "L" },
+              { id: "4", title: "XL" },
+              { id: "5", title: "2XL" },
+            ]}
           />
         </Stack>
       </Stack>
