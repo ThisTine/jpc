@@ -30,7 +30,7 @@ export async function POST(request: Request) {
       await appendSheet("Basic infomation", [data.name, data.nickName,data.phone,data.email,data.school,data.educationLevel,data.dicease,data.pr,data.self_introduction,data.why_join,data.expect,data.experience,data.goal,data.join_date.join(", ")]);
       await appendSheet("Academic", [data.name, data.q1.join(", "),data.q2,data.q3.join(", "),data.q4,data.q5.join(", "),data.q6,data.q7,data.q8]);
       const email = await getRegisterEmailTemplate({name: data.name, to: data.email});
-      await sendmail(email);
+      sendmail(email);
 
       return NextResponse.json(data);
     }catch (e){
