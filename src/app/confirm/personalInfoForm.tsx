@@ -84,6 +84,24 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
     <ThemeProvider theme={theme}>
       <Box
         component="form"
+        onSubmit={form.handleSubmit(v=>{
+
+        },(v)=>{
+          let isok = false;
+          const step1Data: string[] = ['fullname','nicknameTh','nicknameEn'
+            ,'idCard','shirtSize','birthDate','address','bloodType','religion','medic','allergyFood',
+          ] as (keyof PersonalInfoFormData)[];
+
+          if(currentStep === 1){
+            isok = Object.keys(v).filter(x=> step1Data.includes(x)).length === 0;
+          }
+
+          if(isok){
+            setCurrentStep(currentStep + 1);
+            window.scrollTo(0, 0);
+          }
+
+        })}
         sx={{
           background: `url(${FormBg.src})`,
           backgroundRepeat: "no-repeat",
@@ -182,12 +200,9 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
 
             <Box
               component="button"
-              type="button"
+              type="submit"
               onClick={() => {
-                form.handleSubmit(v=>{});
-                console.log("CLicked");
-                setCurrentStep(currentStep + 1);
-                window.scrollTo(0, 0);
+
               }}
               sx={{
                 display: "flex",
