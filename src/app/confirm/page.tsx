@@ -38,7 +38,8 @@ const Page = ()=>{
   if(!fullName || !token){
       return <HeroPage>
           <h1 className="text-h2 text-red-700" >โหลดข้อมูลผิดพลาด</h1>
-          <h2>กรุณาติดต่อพวกเราที่ Facebook หรือ Instagram ของ JPC</h2>
+          <h2 className="text-h4">ท่านอาจกรอกข้อมูลไปแล้ว</h2>
+          <h2>หากท่านต้องการเปลี่ยนแปลงข้อมูล กรุณาติดต่อพวกเราที่ Facebook หรือ Instagram ของ JPC</h2>
       </HeroPage>;
   }
   return <PersonalInfoForm fullname={fullName} token={token}/>;

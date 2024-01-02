@@ -1,4 +1,4 @@
-import {personalInfoData} from "@/share/validation/personalInfoData";
+import {personalInfoData as personalInfoDataFe } from "@/share/validation/personalInfoData";
 import {uploadFile} from "@/app/api/utils/uploadFile";
 import {decryptData} from "@/utils/AESEncryption";
 import {NextRequest} from "next/server";
@@ -8,6 +8,11 @@ import {
   getBasicInfoEmailTemplate
 } from "@/email/basicinfo/basicInfoEmailTemplate";
 import {sendmail} from "@/app/api/utils/sendmail";
+import {z} from "zod";
+
+const personalInfoData = personalInfoDataFe.merge(z.object({
+  stayDate: z.string()
+}));
 
 export async function POST(request: NextRequest) {
   const req = await request.formData();
@@ -50,8 +55,8 @@ export async function POST(request: NextRequest) {
       url = `https://drive.google.com/file/d/${url}/view`;
       await updateSheet([
         data.fullname,data.nicknameEn,data.nicknameTh,data.idCard,data.birthDate
-        ,data.address,data.bloodType,data.religion,data.deceased,data.medic,data.allergyFood,data.shirtSize,
-        data.parentName,data.parentPhone,data.relationship,data.emergencyName,data.emergencyPhone,data.isStay, JSON.parse(data.stayDate).join(", "),
+        ,data.address,data.bloodType,data.religion,data.medic,data.allergyFood,data.shirtSize,
+        data.parentName,data.parentPhone,data.relationship,data.emergencyName,data.emergencyPhone,data.isStay, data.stayDate,
         data.goBackTransportation,data.isStayProof,
         url ??""
       ],ind);

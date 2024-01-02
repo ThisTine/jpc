@@ -19,7 +19,7 @@ import FormBg from "@/assets/form-background.svg";
 import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
 import {ibm, ibmBold} from "@/utils/fonts";
 import {PersonalInfoFormData} from "@/app/confirm/page";
-import {object} from "zod";
+import {RiErrorWarningLine} from "react-icons/ri";
 
 const theme = createTheme({
   typography: {
@@ -77,10 +77,65 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
     case 6:
       return <SuccessPage/>;
     default:
-      return null;
+      return (
+        <Box
+          sx={{
+            minHeight: "80vh",
+            justifyContent: "center",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Box sx={{ width: "100px" }}>
+            <RiErrorWarningLine size color="red" />
+          </Box>
+          <Typography
+            sx={{
+              mt: "1rem",
+              fontSize: "50px",
+              fontFamily: ibmBold.style.fontFamily,
+            }}
+          >
+              Error occurred !
+          </Typography>
+          <Typography
+            sx={{
+              mt: "1rem",
+              fontSize: "36px",
+              fontFamily: ibmBold.style.fontFamily,
+              fontWeight: "normal",
+            }}
+          >
+              ขออภัย เรามีปัญหาในการบันทึกข้อมูล
+          </Typography>
+          <Typography sx={{ fontSize: "20px" }}>
+              กรุณาลองใหม่อีกครั้ง หรือติดต่อพวกเราผ่าน Facebook หรือ Instagram
+              ได้เลยนะครับ
+          </Typography>
+          <button
+            type="button"
+            style={{
+              marginTop: "2rem",
+              width: "200px",
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
+              borderRadius: "12px",
+              color: "white",
+              fontFamily: ibmBold.style.fontFamily,
+              background: "#2D73AE",
+            }}
+            onClick={() => {
+              setCurrentStep(1);
+              window.scrollTo(0, 0);
+            }}
+          >
+              ลองใหม่อีกครั้ง
+          </button>
+        </Box>
+      );
     }
   };
-  const sendData = async ()=>{
+  const sendData = ()=>{
     const formData = new FormData();
     if(file){
       formData.append("image", file, file?.name);
@@ -90,7 +145,7 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
     for(let k of keys){
       formData.append(k, data[k as keyof typeof data].toString() );
     }
-    await fetch(`api/register/personalInfo?emailToken=${token}`,{method:"post",body: formData});
+    return  fetch(`api/register/personalInfo?emailToken=${token}`,{method:"post",body: formData});
   };
   return (
     <ThemeProvider theme={theme}>
@@ -102,7 +157,15 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
           }else {
             setIsLoading(true);
             sendData()
-              .then(()=>setCurrentStep(6))
+              .then((res)=>{
+                if(res.ok){
+                  setCurrentStep(6);
+                }else{
+                  throw new Error("Error");
+                }
+              }).catch(e=>{
+                setCurrentStep(7);
+              })
               .finally(()=>setIsLoading(false));
           }
 
@@ -136,9 +199,6 @@ const PersonalInfoPage:FC<{fullname:string,token:string}> = ({fullname,token}) =
           if(currentStep === 4){
             isok = Object.keys(v).filter(x=> x === "isStayProof" as (keyof PersonalInfoFormData)).length === 0;
           }
-
-          console.log("v",v);
-          console.log(currentStep);
 
 
           if(isok){
