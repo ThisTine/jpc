@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import {getIsClosedPersonalInfoFrom} from "@/app/api/utils/getFormStatus";
+import {getIsClosedPersonalInfoFrom, getIsClosedPersonalInfoFrom2} from "@/app/api/utils/getFormStatus";
 
 
 const secret_key = process.env.SECRET_KEY??"";
@@ -36,6 +36,9 @@ export function decryptData(encryptedData:string) {
     decipher.final('utf8')
   );
   if(email[0] === "A" && getIsClosedPersonalInfoFrom()){
+    throw new Error("form closed");
+  }
+  if(email[0] === "B" && getIsClosedPersonalInfoFrom2()){
     throw new Error("form closed");
   }
 
