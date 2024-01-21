@@ -30,8 +30,15 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import Phase3MainCarouselCarousel from "./MainGalleryCarousel";
 import SecondaryGallery from "./SecondaryGallery";
+import About from "@/assets/about.svg";
 
-const Phase3Title = () => {
+const Phase3Title = ({
+  galleryPhotos,
+  sliderPhotos,
+}: {
+  sliderPhotos: string[];
+  galleryPhotos: string[];
+}) => {
   const router = useRouter();
   const buttonContainer = useRef<HTMLDivElement | null>(null);
   const starYellow = useAnimationParallax(-500, 100, 1);
@@ -82,30 +89,32 @@ const Phase3Title = () => {
       <Image
         alt="logo"
         data-aos="zoom-out-right"
-        className={cls("xl:w-[175px] xl:h-auto w-[110px] h-[75px]")}
+        className={cls("xl:w-[175px] xl:h-auto w-[110px] h-[75px] z-3")}
         src={LogoIcon}
       />
-      <div className={cls("flex flex-col items-center relative")}>
+      <div className={cls("flex flex-col items-center relative z-3")}>
         <Image
           alt="title"
           data-aos="zoom-out-up"
-          className={cls("mt-0 hidden xl:block w-full max-w-[350px]")}
+          className={cls("mt-0 hidden xl:block w-full max-w-[350px]  z-3")}
           src={JpcGalleryTitle}
         />
-        {/* <Image
+        <Image
           alt="jpc-mobile"
           data-aos="zoom-out-up"
-          className={cls("mt-6 ml-4 max-sm:w-[450px] md:hidden xl:hidden")}
-          src={JpcMobile}
+          className={cls(
+            "mt-6 ml-4 px-12 max-sm:w-[450px] md:hidden xl:hidden  z-3"
+          )}
+          src={JpcGalleryTitle}
         />
         <Image
           alt="jpc-tablet"
-          className={cls("mt-6 hidden md:block xl:hidden")}
-          src={JpcTablet}
-        /> */}
+          className={cls("mt-6  px-8 hidden md:block xl:hidden  z-3")}
+          src={JpcGalleryTitle}
+        />
         <p
           className={cls(
-            "xl:pr-4 xl:text-body1 font-medium mt-9 w-full max-w-[1024px] text-center"
+            "xl:pr-4 xl:text-body1 font-medium mt-9 w-full max-w-[1024px] text-center  z-3"
           )}
         >
           รวมภาพกิจกรรมค่ายสานฝันน้อง ม.ปลาย สู่สายอาชีพโปรแกรมเมอร์ ครั้งที่ 16
@@ -143,7 +152,7 @@ const Phase3Title = () => {
             }}
           />
         </Link> */}
-        <Phase3MainCarouselCarousel />
+        <Phase3MainCarouselCarousel sliderPhotos={sliderPhotos} />
         {/* <Image
           alt="cartoon-duck"
           data-aos="fade-right"
@@ -232,7 +241,7 @@ const Phase3Title = () => {
         </svg>
         <div
           id="about-jpc"
-          className="relative w-full bg-primary transition flex flex-col items-center"
+          className="relative w-full bg-primary transition flex flex-col items-center  z-3"
         >
           <Image
             alt="info-cloud"
@@ -240,7 +249,7 @@ const Phase3Title = () => {
             className={cls("w-[90%] md:w-[60%] md:self-end md:mr-14")}
             src={InfoCloud}
           />
-          <SecondaryGallery />
+          <SecondaryGallery galleryPhotos={galleryPhotos} />
           <Image
             alt="cartoon-duck"
             data-aos="fade-right"
@@ -252,7 +261,7 @@ const Phase3Title = () => {
         </div>
         <div
           id="join-jpc"
-          className="w-full bg-primary transition flex flex-col items-center pt-20"
+          className="w-full bg-primary transition flex flex-col items-center pt-20  z-3"
         >
           <Image
             alt="info-cloud"
@@ -262,7 +271,7 @@ const Phase3Title = () => {
           />
           <div
             className={cls(
-              "flex flex-col items-center w-[90%] md:flex-row md:mt-10 justify-center"
+              "flex flex-col items-center w-[90%] md:flex-row md:mt-10 justify-center  z-3"
             )}
           >
             <Image
@@ -458,6 +467,11 @@ const Phase3Title = () => {
             src={StarRed}
           />
         </div> */}
+      </div>
+      <div className="absolute w-full top-full h-[60px] overflow-hidden z-10">
+        <div className="w-full h-full relative">
+          <Image src={About} className="absolute w-full bottom-0" />
+        </div>
       </div>
     </div>
   );

@@ -38,6 +38,13 @@
     0px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
+.text-white-stroke-black-5px {
+  color: #fff;
+  text-shadow: -5px -5px 0 #000, 0 -5px 0 #000, 5px -5px 0 #000, 5px 0 0 #000,
+    5px 5px 0 #000, 0 5px 0 #000, -5px 5px 0 #000, -5px 0 0 #000,
+    0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
 .text-yellow-stroke-black-2px {
   color: #ffd700;
   text-shadow: -2px -2px 0 #000, 0 -2px 0 #000, 2px -2px 0 #000, 2px 0 0 #000,
@@ -54,7 +61,7 @@
   width: 100%;
 }
 .carousel {
-  padding: 10px;
+  padding: 5px;
   background-color: white;
   border-radius: 10px;
   max-width: 1440px;

@@ -8,43 +8,66 @@ import {
 } from "@/components/ui/carousel";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-function Phase3MainCarouselCarousel() {
+function Phase3MainCarouselCarousel({
+  sliderPhotos,
+}: {
+  sliderPhotos: string[];
+}) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
-
-  console.log(current, count);
 
   React.useEffect(() => {
     if (!api) {
       return;
     }
 
-    setCount(api.scrollSnapList().length);
+    const handleResize: () => void = () => {
+      setCount(api.scrollSnapList().length);
+      setCurrent(1);
+
+      api.on("select", () => {
+        setCurrent(api.selectedScrollSnap() + 1);
+      });
+    };
+
+    handleResize();
     setCurrent(api.selectedScrollSnap() + 1);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, [api]);
 
   return (
     <Carousel className="w-full w-full mt-8" setApi={setApi}>
       <CarouselContent className="-ml-1">
-        {Array.from({ length: 5 }).map((_, index) => (
+        {sliderPhotos.map((path, index) => (
           <CarouselItem
-            key={index}
+            key={path}
             className="pl-4 pr-4 md:basis-1/2 lg:basis-1/3"
           >
             <div className="carousel">
-              <div className="carousel-images"></div>
+              <div className="carousel-images">
+                <Image
+                  src={path}
+                  alt="carousel"
+                  className="w-full h-full object-cover"
+                  layout="responsive"
+                  width={1}
+                  height={1}
+                />
+              </div>
             </div>
           </CarouselItem>
         ))}
       </CarouselContent>
       <div className="carousel-indicator">
-        {Array.from({ length: 5 }).map((image, index) => (
+        {Array.from({ length: count }).map((image, index) => (
           <motion.div
             key={index}
             className={`dot ${current === index + 1 ? "active" : ""}`}
