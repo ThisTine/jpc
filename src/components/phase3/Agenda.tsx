@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import AgendaBg from "@/assets/agenda-phase3.svg";
-import AgendaLogo from "@/assets/agenda-logo.svg";
+import AdmissionMobile from "@/assets/admission-title-mobile.svg";
+import AdmissionDesktop from "@/assets/admission-title-desktop.svg";
 import { cls } from "@/utils/misc";
 import { ibmBold } from "@/utils/fonts";
 import { modak } from "@/utils/fonts";
@@ -11,28 +12,27 @@ const Phase3Agenda = () => {
     <div
       className={cls(
         ibmBold.className,
-        "flex flex-col items-center md:pt-0 pt-[70px] relative mt-[90px]"
+        "flex flex-col items-center pt-[70px] relative mt-[50px] xl:pt-0"
       )}
     >
       <div
-        className="absolute top-[6%] flex justify-center px-[54px]"
+        className="absolute top-0 mt-10 flex justify-center px-[54px]"
         data-aos="zoom-out"
       >
-        <div
-          className={cls(
-            modak.className,
-            "xl:text-[6.5vw] w-full max-w-[450px] md:max-w-full md:text-[70px] text-[42px] text-center leading-none text-yellow-stroke-black-2px relative"
-          )}
-        >
-          Admission Schedule
-          <Image
-            alt="agenda-icon"
-            className="absolute left-[0%] md:left-[-7rem] top-[-40%] w-[100px] xl:w-[150px]"
-            src={AgendaLogo}
-            data-aos="zoom-out"
-            data-aos-delay="250"
-          />
-        </div>
+        <Image
+          alt="admission-icon"
+          className="md:hidden"
+          src={AdmissionMobile}
+          data-aos="zoom-out"
+          data-aos-delay="250"
+        />
+        <Image
+          alt="admission-icon"
+          className="hidden md:block"
+          src={AdmissionDesktop}
+          data-aos="zoom-out"
+          data-aos-delay="250"
+        />
       </div>
       <div
         className={cls(

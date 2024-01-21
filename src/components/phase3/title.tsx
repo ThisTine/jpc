@@ -1,25 +1,17 @@
 "use client";
 import registerButtonAnimation from "@/assets/animations/register_button.json";
 import CartoonDuck from "@/assets/cartoon-duck.svg";
-import CartoonJigsaw from "@/assets/cartoon-jigsaw.svg";
-import CartoonTamagochi from "@/assets/cartoon-tamagochi.svg";
 import TopConfetti from "@/assets/confetti-top.svg";
 import IgLogo from "@/assets/ig-logo.svg";
 import InfoCloud from "@/assets/info-cloud.svg";
 import InfoRope from "@/assets/info-rope.svg";
-import InfoTitle from "@/assets/info-title.svg";
 import JosephShadow from "@/assets/joseph-shadow.svg";
 import Joseph from "@/assets/joseph-title.svg";
 import JpcGalleryTitle from "@/assets/title-gallery.svg";
 import WannaBeCSSIT from "@/assets/wanna-be-cssit.svg";
-import JpcMobile from "@/assets/jpc-mobile.svg";
-import JpcTablet from "@/assets/jpc-tablet.svg";
 import LogoIcon from "@/assets/logo.svg";
-import Sparkle from "@/assets/sparkle.svg";
 import StarRed from "@/assets/star-red.svg";
 import StarYellow from "@/assets/star-yellow.svg";
-import TitleBg from "@/assets/title-bg.svg";
-import TitleIcon from "@/assets/title.svg";
 import useAnimationParallax from "@/hooks/useAnimationParallax";
 import { cls } from "@/utils/misc";
 import { motion } from "framer-motion";
@@ -114,19 +106,15 @@ const Phase3Title = ({
         />
         <p
           className={cls(
-            "xl:pr-4 xl:text-body1 font-medium mt-9 w-full max-w-[1024px] text-center  z-3"
+            "xl:text-body1 font-medium mt-9 w-full max-w-[1024px] text-center z-3 px-12 md:px-24"
           )}
         >
           รวมภาพกิจกรรมค่ายสานฝันน้อง ม.ปลาย สู่สายอาชีพโปรแกรมเมอร์ ครั้งที่ 16
-          <br />
           Junior Programmers Camp 16 โดยนักศึกษาคณะเทคโนโลยีสารสนเทศ
-          สาขาวิทยาการคอมพิวเตอร์ <br />
-          (หลักสูตรภาษาอังกฤษ) มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี เมื่อวันที่
-          12 - 14 มกราคม 2567
-          <br />
+          สาขาวิทยาการคอมพิวเตอร์ (หลักสูตรภาษาอังกฤษ)
+          มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี เมื่อวันที่ 12 - 14 มกราคม 2567
           ตลอดทั้ง 3 วันนี้พี่ ๆ หวังว่าน้อง ๆ ทุกคนจะได้รับความรู้
           ความสนุกและมิตรภาพดี ๆ กลับไปไม่มากก็น้อย ยินดีที่ได้พบกับทุกคนนะ💗
-          <br />
         </p>
         <Image
           alt="joseph"
@@ -246,18 +234,18 @@ const Phase3Title = ({
           <Image
             alt="info-cloud"
             data-aos="fade-up"
-            className={cls("w-[90%] md:w-[60%] md:self-end md:mr-14")}
+            className={cls("w-[90%] md:w-[60%] md:self-end md:mr-14 pb-10")}
             src={InfoCloud}
           />
           <SecondaryGallery galleryPhotos={galleryPhotos} />
-          <Image
+          {/* <Image
             alt="cartoon-duck"
             data-aos="fade-right"
             className={cls(
               "absolute xl:bottom-[580px] xl:-left-10 xl:w-[400px] md:w-[320px] md:bottom-[10%] w-[200px] -left-14 bottom-[10%]"
             )}
             src={CartoonDuck}
-          />
+          /> */}
         </div>
         <div
           id="join-jpc"

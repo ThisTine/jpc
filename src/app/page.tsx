@@ -1,4 +1,5 @@
 import Phase3Agenda from "@/components/phase3/Agenda";
+import Phase3Footer from "@/components/phase3/Footer";
 import Phase3Sponsor from "@/components/phase3/Sponsor";
 import Phase3CsSIT from "@/components/phase3/cs-sit";
 import Phase3FaqContact from "@/components/phase3/faq-contact";
@@ -13,6 +14,7 @@ export default async function Home() {
       <Phase3Sponsor />
       <Phase3CsSIT />
       <Phase3FaqContact />
+      <Phase3Footer />
     </main>
   );
 }

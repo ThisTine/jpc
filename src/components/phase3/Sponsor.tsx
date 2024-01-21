@@ -13,7 +13,7 @@ export default function Phase3Sponsor() {
     <div
       className={cls(
         ibmBold.className,
-        "flex flex-col items-center md:pt-0 relative bg-[#DAE7A7]"
+        "flex flex-col items-center relative bg-[#DAE7A7] pt-32 xl:pt-0"
       )}
     >
       <Image
@@ -23,7 +23,7 @@ export default function Phase3Sponsor() {
       />
 
       <div
-        className="w-full max-w-[1024px] flex flex-col justify-center items-center lef-0 w-full z-10"
+        className="lef-0 z-10 flex w-full max-w-[1024px] flex-col items-center justify-center"
         style={{ transform: "translateY(-30%)" }}
       >
         <div className="flex justify-center" data-aos="zoom-out  z-10">
@@ -33,18 +33,22 @@ export default function Phase3Sponsor() {
               "xl:text-[4.5vw] md:text-[56px] text-[36px] px-56 text-center text-white-stroke-black-3px"
             )}
           >
-            Our Sponsor
+            Our sponsors
           </p>
         </div>
-        <div className="flex w-full gap-8 justify-center items-center mt-8 px-4 max-w-[500px]">
+        <div className="mt-8 flex w-1/2 max-w-[500px] flex-col items-center justify-center gap-8 px-4 md:flex-row">
           <Image src={Lungnoom} alt="lungnoom" className="w-full flex-1" />
           <Image src={Innovasive} alt="innovasive" className="w-full flex-1" />
         </div>
-        <div className="flex w-full gap-8 justify-center items-center mt-8 z-10">
-          <Image src={AMD} alt="AMD" />
-          <Image src={CampHub} alt="Camphub" />
+        <div className="z-10 mt-8 flex w-1/2 flex-col items-center justify-center gap-8 md:flex-row">
+          <Image src={AMD} alt="AMD" className="w-full md:w-[60%] flex-1" />
+          <Image
+            src={CampHub}
+            alt="Camphub"
+            className="w-full md:w-[80%] flex-1"
+          />
         </div>
-        <div className="flex w-full gap-8 justify-center items-center mt-8 px-4 z-10">
+        <div className="z-10 mt-8 flex w-[60%] items-center justify-center gap-8 px-4">
           <Image
             src={ConnectedTech}
             alt="AMD"
