@@ -19,7 +19,7 @@ export default async function Home() {
   );
 }
 
-export const fetchImages = async () => {
+const fetchImages = async () => {
   const res = await fetch("http://localhost:3000/api/photos", {
     next: {
       revalidate: 60,

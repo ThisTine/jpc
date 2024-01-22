@@ -44,19 +44,19 @@ function Phase3MainCarouselCarousel({
   }, [api]);
 
   return (
-    <Carousel className="w-full w-full mt-8" setApi={setApi}>
+    <Carousel className="mt-8 w-full" setApi={setApi}>
       <CarouselContent className="-ml-1">
         {sliderPhotos.map((path, index) => (
           <CarouselItem
             key={path}
-            className="pl-4 pr-4 md:basis-1/2 lg:basis-1/3"
+            className="px-4 md:basis-1/2 lg:basis-1/3"
           >
             <div className="carousel">
               <div className="carousel-images">
                 <Image
                   src={path}
                   alt="carousel"
-                  className="w-full h-full object-cover"
+                  className="h-full w-full object-cover"
                   layout="responsive"
                   width={1}
                   height={1}

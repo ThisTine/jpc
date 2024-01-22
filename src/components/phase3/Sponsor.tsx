@@ -41,11 +41,11 @@ export default function Phase3Sponsor() {
           <Image src={Innovasive} alt="innovasive" className="w-full flex-1" />
         </div>
         <div className="z-10 mt-8 flex w-1/2 flex-col items-center justify-center gap-8 md:flex-row">
-          <Image src={AMD} alt="AMD" className="w-full md:w-[60%] flex-1" />
+          <Image src={AMD} alt="AMD" className="w-full flex-1 md:w-[60%]" />
           <Image
             src={CampHub}
             alt="Camphub"
-            className="w-full md:w-[80%] flex-1"
+            className="w-full flex-1 md:w-[80%]"
           />
         </div>
         <div className="z-10 mt-8 flex w-[60%] items-center justify-center gap-8 px-4">
