@@ -52,6 +52,7 @@ const Carousel = React.forwardRef<
       opts,
       setApi,
       plugins,
+      // eslint-disable-next-line react/prop-types
       className,
       children,
       ...props
