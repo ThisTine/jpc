@@ -1,6 +1,7 @@
 import { ibmBold } from "@/utils/fonts";
 import { cls } from "@/utils/misc";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function SecondaryGallery({
   galleryPhotos,
@@ -29,15 +30,15 @@ export default function SecondaryGallery({
             </div>
           ))}
       </div>
-      <div
+      <Link
         className={
           (cls(ibmBold.className),
           "font-bold rounded-xl h-[54px] border-2 border-[#000000] bg-[#A5CE89] px-6 text-center pt-3 cursor-pointer")
         }
-        onClick={() => {}}
+        href="https://s.thistine.com/jpc16-pic"
       >
         Download pictures
-      </div>
+      </Link>
     </div>
   );
 }
