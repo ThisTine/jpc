@@ -11,24 +11,22 @@ export default function SecondaryGallery({
   return (
     <div className="flex flex-col items-center gap-10">
       <div className="grid w-full max-w-[1280px] grid-cols-1 gap-6 px-8 md:grid-cols-3">
-        {[...galleryPhotos, ...galleryPhotos, galleryPhotos]
-          .slice(0, 9)
-          .map((image, index) => (
-            <div
-              key={index}
-              className="rounded-xl border bg-white p-1 text-center"
-              style={{ aspectRatio: "16/9" }}
-            >
-              <Image
-                src={image as string}
-                alt="gallery"
-                className="h-full w-full rounded-lg object-cover"
-                layout="responsive"
-                width={16}
-                height={9}
-              />
-            </div>
-          ))}
+        {(galleryPhotos ?? []).slice(0, 9).map((image, index) => (
+          <div
+            key={index}
+            className="rounded-xl border bg-white p-1 text-center"
+            style={{ aspectRatio: "16/9" }}
+          >
+            <Image
+              src={image}
+              alt="gallery"
+              className="h-full w-full rounded-lg object-cover"
+              layout="responsive"
+              width={16}
+              height={9}
+            />
+          </div>
+        ))}
       </div>
       <Link
         className={
