@@ -20,11 +20,16 @@ export default async function Home() {
 }
 
 const fetchImages = async () => {
-  const res = await fetch("http://localhost:3000/api/photos", {
-    next: {
-      revalidate: 60,
-    },
-  });
-  const images = await res.json();
-  return images as { sliderPhotos: string[]; galleryPhotos: string[] };
+  try{
+    const res = await fetch("http://localhost:3000/api/photos", {
+      next: {
+        revalidate: 60,
+      },
+    });
+    const images = await res.json();
+    return images as { sliderPhotos: string[]; galleryPhotos: string[] };
+  }catch (err){
+    return { sliderPhotos: [], galleryPhotos: [] };
+  }
+
 };
