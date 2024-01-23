@@ -21,7 +21,7 @@ export default async function Home() {
 
 const fetchImages = async () => {
   try{
-    const res = await fetch("http://localhost:3000/api/photos", {
+    const res = await fetch("https://cdn.sjpc.me/list", {
       next: {
         revalidate: 60,
       },
