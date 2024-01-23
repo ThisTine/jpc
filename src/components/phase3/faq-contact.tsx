@@ -61,7 +61,7 @@ const Phase3FaqContact = () => {
   const cloudAnimatedRef = useAnimationParallax(-250, 100);
 
   return (
-    <div className="mt-16 relative">
+    <div className="relative mt-16">
       <div className="relative">
         <div
           className={cls("absolute -top-4 w-full px-4 flex justify-between")}

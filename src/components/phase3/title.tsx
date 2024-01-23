@@ -7,7 +7,7 @@ import InfoCloud from "@/assets/info-cloud.svg";
 import InfoRope from "@/assets/info-rope.svg";
 import JosephShadow from "@/assets/joseph-shadow.svg";
 import Joseph from "@/assets/joseph-title.svg";
-import JpcGalleryTitle from "@/assets/title-gallery.svg";
+import JpcGalleryTitle from "@/assets/JPC16.png";
 import WannaBeCSSIT from "@/assets/wanna-be-cssit.svg";
 import LogoIcon from "@/assets/logo.svg";
 import StarRed from "@/assets/star-red.svg";
@@ -229,7 +229,7 @@ const Phase3Title = ({
         </svg>
         <div
           id="about-jpc"
-          className="relative w-full bg-primary transition flex flex-col items-center  z-3"
+          className="z-3 relative flex w-full flex-col items-center bg-primary  transition"
         >
           <Image
             alt="info-cloud"
@@ -249,7 +249,7 @@ const Phase3Title = ({
         </div>
         <div
           id="join-jpc"
-          className="w-full bg-primary transition flex flex-col items-center pt-20  z-3"
+          className="z-3 flex w-full flex-col items-center bg-primary pt-20  transition"
         >
           <Image
             alt="info-cloud"
@@ -456,9 +456,9 @@ const Phase3Title = ({
           />
         </div> */}
       </div>
-      <div className="absolute w-full top-full h-[60px] overflow-hidden z-10">
-        <div className="w-full h-full relative">
-          <Image src={About} className="absolute w-full bottom-0" />
+      <div className="absolute top-full z-10 h-[60px] w-full overflow-hidden">
+        <div className="relative h-full w-full">
+          <Image alt="about" src={About} className="absolute bottom-0 w-full" />
         </div>
       </div>
     </div>

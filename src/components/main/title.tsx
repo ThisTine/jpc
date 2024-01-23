@@ -237,7 +237,7 @@ const Title = () => {
         </svg>
         <div
           id="about-jpc"
-          className="w-full bg-primary transition flex flex-col items-center pt-20"
+          className="flex w-full flex-col items-center bg-primary pt-20 transition"
         >
           <Image
             alt="info-cloud"

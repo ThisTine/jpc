@@ -29,6 +29,9 @@ dependencies:
   '@sentry/nextjs':
     specifier: ^7.91.0
     version: 7.91.0(next@14.0.3)(react@18.2.0)(webpack@5.89.0)
+  '@sentry/utils':
+    specifier: ^7.94.1
+    version: 7.94.1
   '@types/aos':
     specifier: ^3.0.7
     version: 3.0.7
@@ -1020,11 +1023,23 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /@sentry/types@7.94.1:
+    resolution: {integrity: sha512-A7CdEXFSgGyWv2BT2p9cAvJfb+dypvOtsY8ZvZvdPLUa7kqCV7ndhURUqKjvMBzsL2GParHn3ehDTl2eVc7pvA==}
+    engines: {node: '>=8'}
+    dev: false
+
   /@sentry/utils@7.91.0:
     resolution: {integrity: sha512-fvxjrEbk6T6Otu++Ax9ntlQ0sGRiwSC179w68aC3u26Wr30FAIRKqHTCCdc2jyWk7Gd9uWRT/cq+g8NG/8BfSg==}
     engines: {node: '>=8'}
     dependencies:
       '@sentry/types': 7.91.0
+    dev: false
+
+  /@sentry/utils@7.94.1:
+    resolution: {integrity: sha512-gQ2EaMpUU1gGH3S+iqpog9gkXbCo8tlhGYA9a5FUtEtER3D3OAlp8dGFwClwzWDAwzjdLT1+X55zmEptU1cP/A==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@sentry/types': 7.94.1
     dev: false
 
   /@sentry/vercel-edge@7.91.0:

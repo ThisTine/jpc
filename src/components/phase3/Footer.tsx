@@ -4,7 +4,7 @@ import React from "react";
 
 const Phase3Footer = () => {
   return (
-    <div className="z-10 my-8 flex flex-col items-center gap-6 px-8 text-center md:px-20 md:mt-20 md:gap-12">
+    <div className="z-10 my-8 flex flex-col items-center gap-6 px-8 text-center md:mt-20 md:gap-12 md:px-20">
       <p className="text-with-white-stroke-2px text-[28px] md:text-[44px] xl:text-[60px]">
         ขอขอบคุณน้อง ๆ ที่ให้ความสนใจ และเข้ามาเป็นหัวใจของค่าย{" "}
         <span className={cls(modak.className, "text-[36px] md:text-[74px]")}>

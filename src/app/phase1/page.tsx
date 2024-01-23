@@ -57,7 +57,7 @@ export default function Home() {
       <CSSIT />
       <Agenda />
       <div className="bg-[#ff6861]">
-        <div className="container mx-auto h-full flex flex-col justify-center items-center">
+        <div className="container mx-auto flex h-full flex-col items-center justify-center">
           <Image
             src={GalleryHeader}
             alt="Gallery Header"
@@ -65,7 +65,7 @@ export default function Home() {
             className={cls("max-sm:w-full object-fill")}
           />
 
-          <div className="flex w-full justify-center mt-5">
+          <div className="mt-5 flex w-full justify-center">
             <MainCarouselCarousel />
           </div>
         </div>
