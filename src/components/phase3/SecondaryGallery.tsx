@@ -20,7 +20,7 @@ export default function SecondaryGallery({
               style={{ aspectRatio: "16/9" }}
             >
               <Image
-                src={image}
+                src={image as string}
                 alt="gallery"
                 className="h-full w-full rounded-lg object-cover"
                 layout="responsive"
