@@ -2,19 +2,33 @@ import { ibmBold } from "@/utils/fonts";
 import { cls } from "@/utils/misc";
 import Image from "next/image";
 import Link from "next/link";
+import {useState} from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export default function SecondaryGallery({
   galleryPhotos,
 }: {
   galleryPhotos: string[];
 }) {
+  const [photoIndex, setPhotoIndex] = useState(-1);
   return (
     <div className="flex flex-col items-center gap-10">
+      <Lightbox
+        open={photoIndex !== -1}
+        index={photoIndex}
+        close={() => setPhotoIndex(-1)}
+        slides={galleryPhotos.map((image) => ({src: image, caption: ""}))}
+      />
       <div className="grid w-full max-w-[1280px] grid-cols-1 gap-6 px-8 md:grid-cols-3">
-        {(galleryPhotos ?? []).slice(0, 9).map((image, index) => (
+        {(galleryPhotos ?? []).map((image, index) => (
           <div
             key={index}
-            className="rounded-xl border bg-white p-1 text-center"
+            onClick={() => {
+              console.log("clicked",index);
+              setPhotoIndex(index);
+            }}
+            className="cursor-pointer rounded-xl border bg-white p-1 text-center"
             style={{ aspectRatio: "16/9" }}
           >
             <Image
