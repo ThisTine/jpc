@@ -286,9 +286,6 @@ const Phase3Title = ({
                     "mt-11 cursor-pointer max-sm:w-full bg-[#FFD700] hover:bg-error transition rounded-2xl border-2 border-black animate-bounce animate-infinite animate-duration-[2000ms] animate-ease-in"
                   )}
                   type="button"
-                  onClick={() => {
-                    router.push("/register");
-                  }}
                 >
                   <a
                     href="https://sit.kmutt.ac.th"
